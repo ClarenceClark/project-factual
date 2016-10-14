@@ -2,10 +2,7 @@
   (:require [re-frame.core :as r]
             [com.rpl.specter :as s]))
 
-(defn group-from-id [group-id db]
-  (s/select* [:groups group-id] db))
-
-(r/register-sub
+(r/reg-sub
   :active-item-group
   (fn [db _]
-    (group-from-id (:active-item-group-id db) db)))
+    (vals (:items db))))

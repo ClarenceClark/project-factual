@@ -4,10 +4,11 @@
 
 (defn items-list-elem [item]
   "Elements of the items-list; summaries are controlled through CSS"
-  [:li {:class (str "items-list-elem" (when (:active item) " list-elem-active"))}
+  [:li {:class (str "items-list-elem" #_(when (:active item) " list-elem-active"))}
    [:div {:class "list-elem-title"}
-    (first (str/split-lines (:content item)))]
-   [:p {:class ""}]])
+    (:name item)]
+   [:p {:class ""}
+    (first (str/split-lines (:content item)))]])
 
 (defn items-list []
   (let [items (r/subscribe [:active-item-group])]

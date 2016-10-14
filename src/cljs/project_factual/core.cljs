@@ -1,17 +1,14 @@
 (ns project-factual.core
   (:require [reagent.core :as reagent]
             [cljsjs.react]
-            [project-factual.views.main :as main]))
+            [re-frame.core :as r]
+            [project-factual.subs]
+            [project-factual.handlers]
+            [project-factual.views.main :as main]
+            [clojure.string :as str]))
 
-
-(defn main-page
+(defn main
   []
-  [main/main-page])
-
-(defn mount-root
-  []
-  (reagent/render [main-page] (.getElementById js/document "app")))
-
-(defn init!
-  []
-  (mount-root))
+  (r/dispatch-sync [:init-db])
+  (reagent/render [main/main-page]
+                  (.getElementById js/document "app")))
