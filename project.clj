@@ -1,8 +1,8 @@
 (defproject project-factual "0.1.0-alpha1"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
-  :license {:name "MIT"
-            :url "https://opensource.org/licenses/MIT"}
+  :license {:name "GPLv3"
+            :url "https://www.gnu.org/licenses/gpl-3.0.en.html"}
 
   :source-paths ["src/cljs"]
 
