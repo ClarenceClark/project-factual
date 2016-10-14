@@ -7,13 +7,13 @@
   [:li {:class (str "items-list-elem" #_(when (:active item) " list-elem-active"))}
    [:div {:class "list-elem-title"}
     (:name item)]
-   [:p {:class ""}
+   [:p {:class "list-elem-summary one-line-summary"}
     (first (str/split-lines (:content item)))]])
 
 (defn items-list []
   (let [items (r/subscribe [:active-item-group])]
     (fn []
-      [:div
+      [:div {:class "items-list-container"}
        [:ul
         (for [item @items]
           [items-list-elem item])]])))
