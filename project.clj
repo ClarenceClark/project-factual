@@ -35,7 +35,7 @@
                                               :compiler {:source-map true
                                                          :main       "project-factual.dev"
                                                          :verbose true}
-                                              :figwheel {:on-jsload "project-factual.core/mount-root"}}}}
+                                              :figwheel {:on-jsload "project-factual.core/main"}}}}
                    :source-paths ["env/dev/cljs"]
                    :dependencies [[figwheel-sidecar "0.5.7"]]
                    :plugins [[lein-ancient "0.6.8"]]}

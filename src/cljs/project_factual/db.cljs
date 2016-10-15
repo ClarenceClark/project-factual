@@ -34,5 +34,8 @@
               :type "markdown"
               :name "I am running out of ideas"
               :content "I don't know what else to write"}}
+   :groups {1 {:id 1
+               :name "Default"
+               :elements [1 2 3]}}
    :active-item-id 1
-   :groups []})
+   :active-group-id 1})

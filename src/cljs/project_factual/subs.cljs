@@ -6,3 +6,8 @@
   :active-item-group
   (fn [db _]
     (vals (:items db))))
+
+(r/reg-sub
+  :active-item
+  (fn [db _]
+    (:active-item-id db)))
