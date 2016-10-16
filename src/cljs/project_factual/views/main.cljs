@@ -4,6 +4,6 @@
             [project-factual.views.markdown-editor :as markdown-editor]))
 
 (defn main-page []
-  [:div
+  [:div {:class "main"}
    [items-list/items-list]
    [markdown-editor/editor]])

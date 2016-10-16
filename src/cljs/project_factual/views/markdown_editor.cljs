@@ -19,6 +19,5 @@
                       {}]))}))
 
 (defn editor []
-  [:div {:class "editor"
-         :id "editor"}
+  [:div {:class "editor"}
    [codemirror-component]])

@@ -16,7 +16,6 @@
 (r/reg-event-db
   :init-textarea
   (fn [db [_ dom opts]]
-    (println "hello world")
     (assoc db :editor (editor/new-editor dom opts))))
 
 ;; ----------
