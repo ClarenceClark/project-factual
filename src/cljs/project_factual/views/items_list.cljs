@@ -13,7 +13,7 @@
 
 (defn items-list []
   (let [items (r/subscribe [:active-item-group])
-        active-item (r/subscribe [:active-item])]
+        active-item (r/subscribe [:active-item-id])]
     (fn []
       [:div {:class "items-list-container"}
        [:ul

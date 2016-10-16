@@ -1,14 +1,24 @@
 (ns project-factual.views.markdown-editor
   "Actual html hiccup view for the app, wrapper is in p/editor"
-  (:require [re-frame.core :as r]))
+  (:require [re-frame.core :as r]
+            [reagent.core :as reagent]
+            [cljsjs.codemirror]))
 
-(defn no-item-active []
-  [:p "No item currently active"])
+(defn- codemirror-component []
+  ;(let [active-item (r/subscribe [:active-item])]
+    (reagent/create-class
+      {:reagent-render
+       (fn []
+         [:textarea.codemirror-textarea])
 
-(defn markdown-editor []
-  (let [active-item (r/subscribe :items/active)]
-    (fn []
-      [:div
-        (if (nil? @active-item)
-          [no-item-active]
-          [:textarea {:id "main-markdown-editor"}])])))
+       ; Init CodeMirror instance on mount
+       :component-did-mount
+       (fn [this]
+         (r/dispatch [:init-textarea
+                      (reagent/dom-node this)
+                      {}]))}))
+
+(defn editor []
+  [:div {:class "editor"
+         :id "editor"}
+   [codemirror-component]])

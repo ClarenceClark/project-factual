@@ -1,6 +1,7 @@
 (ns project-factual.handlers
   (:require [re-frame.core :as r]
-            [project-factual.db :as db]))
+            [project-factual.db :as db]
+            [project-factual.editor :as editor]))
 
 (r/reg-event-db
   :init-db
@@ -11,6 +12,12 @@
   :items-list-elem-clicked
   (fn [db [_ id]]
     (assoc db :active-item-id id)))
+
+(r/reg-event-db
+  :init-textarea
+  (fn [db [_ dom opts]]
+    (println "hello world")
+    (assoc db :editor (editor/new-editor dom opts))))
 
 ;; ----------
 ;; REPL conveniences

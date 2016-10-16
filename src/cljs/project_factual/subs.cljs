@@ -8,6 +8,11 @@
     (vals (:items db))))
 
 (r/reg-sub
-  :active-item
+  :active-item-id
   (fn [db _]
     (:active-item-id db)))
+
+(r/reg-sub
+  :active-item
+  (fn [db _]
+    ((:items db) (:active-item-id db))))

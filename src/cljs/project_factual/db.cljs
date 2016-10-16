@@ -38,4 +38,5 @@
                :name "Default"
                :elements [1 2 3]}}
    :active-item-id 1
-   :active-group-id 1})
+   :active-group-id 1
+   :editor nil})
