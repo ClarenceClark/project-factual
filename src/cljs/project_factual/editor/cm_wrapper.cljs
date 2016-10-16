@@ -28,7 +28,7 @@
       cm
       "changes"
       (fn [instance changes]
-        (r/dispatch [:on-editor-changes instance changes])))))
+        (r/dispatch [:write-editor-value-to-database instance])))))
 
 (defn new-editor
   "return a new codemirror editor"
@@ -41,6 +41,8 @@
 ;;; cljs cm interface
 ;;; ----
 
-(defn get-value [cm] (.getValue cm))
-(defn set-value [cm new-value] (.setValue cm new-value))
+(defn get-doc [cm] (.getDoc cm))
+
+(defn get-value [cm] (.getValue (get-doc cm)))
+(defn set-value [cm new-value] (.setValue (get-doc cm) new-value))
 (defn get-line [cm line] (.getLine cm line))

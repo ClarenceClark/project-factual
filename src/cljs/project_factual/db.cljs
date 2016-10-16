@@ -17,11 +17,9 @@
 (defn testing-database []
   {:items {1 {:id 1
               :type "markdown"
-              :name "Element 1"
-              :content "This is a bunch of markdown text. Seriously. Trust me."}
+              :content "First line\nSecond line"}
            2 {:id 2
               :type "markdown"
-              :name "Another element!"
               :content (multiline-string "# Mary had a little lamb"
                                          " "
                                          "Mary had a little lamb  "
@@ -32,8 +30,7 @@
                                          "That was as white as snow")}
            3 {:id 3
               :type "markdown"
-              :name "I am running out of ideas"
-              :content "I don't know what else to write"}}
+              :content "Header only test"}}
    :groups {1 {:id 1
                :name "Default"
                :elements [1 2 3]}}
