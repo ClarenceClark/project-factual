@@ -8,7 +8,7 @@
   (reagent/create-class
     {:reagent-render
      (fn []
-       [:textarea.codemirror-textarea])
+       [:textarea#codemirror-textarea])
 
      ; Init CodeMirror instance on mount
      :component-did-mount

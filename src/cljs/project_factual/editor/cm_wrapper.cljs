@@ -22,13 +22,11 @@
        event
        handler))
 
-(defn- register-all-event-handlers [cm]
-  (do
-    (register-event-handler
-      cm
-      "changes"
-      (fn [instance changes]
-        (r/dispatch [:save-editor-value instance])))))
+(defn register-all-event-handlers [cm]
+  (register-event-handler
+    cm
+    "changes"
+    #(r/dispatch [:save-editor-value])))
 
 (defn new-editor
   "return a new codemirror editor"

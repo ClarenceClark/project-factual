@@ -22,7 +22,7 @@
 
 (r/reg-event-db
   :save-editor-value
-  (fn [db [_ id]]
+  (fn [db [_]]
     (let [editor (:editor db)]
       (save-editor-value db editor))))
 

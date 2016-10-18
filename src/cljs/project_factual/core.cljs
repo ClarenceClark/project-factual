@@ -17,4 +17,4 @@
 
 ;;; REPL Conveniences
 
-(def repl-db @re-frame.db/app-db)
+(def repl-db re-frame.db/app-db)
