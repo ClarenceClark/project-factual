@@ -14,28 +14,42 @@
   (fn [db [_ dom opts]]
     (assoc db :editor (editor/new-editor dom opts))))
 
+(defn save-editor-value
+  [db editor]
+  (assoc-in db
+            [:items (:active-item-id db) :content]
+            (editor/get-value editor)))
+
 (r/reg-event-db
-  :write-editor-value-to-database
-  (fn [db [_ cm]]
-    (let [active-item-id (:active-item-id db)
-          new-value (editor/get-value cm)]
-      (update-in  db [:items active-item-id :content] new-value))))
+  :save-editor-value
+  (fn [db [_ id]]
+    (let [editor (:editor db)]
+      (save-editor-value db editor))))
 
 (r/reg-event-fx
   :new-active-item
   (fn [{:keys [db]} [_ id]]
-    {:dispatch [:write-editor-value-to-database (:editor db)]
-     :set-editor-value [(:editor db) (get-in db [:items id :content])]
-     :db (assoc db :active-item-id id)}))
+    (let [editor (:editor db)]
+      {:db (let [editor-saved (save-editor-value db editor)
+                 new-active (assoc editor-saved :active-item-id id)]
+             new-active)
+       :set-editor-value [editor (get-in db [:items id :content])]})))
+
 
 ;; ------------
 ;; Side-effects
 ;; ------------
 
+
 (r/reg-fx
   :set-editor-value
   (fn [[cm new-value]]
     (editor/set-value cm new-value)))
+
+(r/reg-fx
+  :dispatch-sync
+  (fn [event]
+    (r/dispatch event)))
 
 ;; ----------
 ;; REPL conveniences
@@ -63,6 +77,6 @@
     (assoc db k v)))
 
 (r/reg-event-db
-  :repl-magic-editor
-  (fn [db [_ editor]]
-    (assoc db :editor editor)))
+  :repl-reset-items
+  (fn [db _]
+    (assoc db :items (:items (db/testing-database)))))

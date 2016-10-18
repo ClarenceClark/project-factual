@@ -28,7 +28,7 @@
       cm
       "changes"
       (fn [instance changes]
-        (r/dispatch [:write-editor-value-to-database instance])))))
+        (r/dispatch [:save-editor-value instance])))))
 
 (defn new-editor
   "return a new codemirror editor"
