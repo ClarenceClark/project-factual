@@ -14,10 +14,10 @@
   "Elements of the items-list; summaries are controlled through CSS"
   (fn [item active-item-id]
     (let [lines (filter #(not (str/blank? %)) ; We don't want to preview blank lines
-                        (str/split-lines (:content item)))
-          id (:id item)]
+                        (str/split-lines (:item.content item)))
+          id (:item.id item)]
       [:li {:class    (str "items-list-elem" (when (= id @active-item-id) " list-elem-active"))
-            :on-click #(r/dispatch [:new-active-item (:id item)])}
+            :on-click #(r/dispatch [:new-active-item id])}
        [:div {:class "list-elem-title"}
         (space-if-blank (first lines))]
        [:p {:class "list-elem-summary one-line-summary"}
