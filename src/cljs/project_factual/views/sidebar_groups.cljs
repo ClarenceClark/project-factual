@@ -1,25 +1,16 @@
 (ns project-factual.views.sidebar-groups
   (:require [re-frame.core :as r]))
 
-(defn builtin-group-list-elem [group]
-  [:li #(r/dispatch [:on-item-group-clicked (:id group)])
-   [:img (:img group)]
-   [:div.group-name
-    (:name group)]])
-
-(defn builtin-elems []
-  (let [inbox (r/subscribe [:groups/inbox])
-        all-items (r/subscribe [:itmes/all])
-        favs (r/subscribe [:items/favourite])
-        trash (r/subscribe [:items/trash])]
-    (fn []
-      [:ul
-       [builtin-group-list-elem @inbox]
-       [builtin-group-list-elem @all-items]
-       [builtin-group-list-elem @favs]
-       [builtin-group-list-elem @trash]])))
+(defn sidebar-group-elem [group]
+  [:li {:class "group-name"
+        :on-click (r/dispatch [:new-active-group (:group.id group)])}
+   [:div (:group.name group)]])
 
 (defn sidebar-groups []
-  (let [user-groups (r/subscribe [:user-root-groups])]
+  (let [active (r/subscribe [:sidebar-active])
+        groups (r/subscribe [:groups])]
     (fn []
-      [builtin-elems])))
+      [:div {:class (str "sidebar-groups" (when-not @active " hidden"))}
+       [:ul
+        (for [group @groups]
+          [sidebar-group-elem group])]])))

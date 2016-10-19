@@ -16,3 +16,13 @@
   :active-item
   (fn [db _]
     ((:items db) (:active-item-id db))))
+
+(r/reg-sub
+  :groups
+  (fn [db _]
+    (vals (:groups db))))
+
+(r/reg-sub
+  :sidebar-active
+  (fn [db _]
+    (:sidebar-active db)))

@@ -15,7 +15,8 @@
                  [re-frame "0.8.0"]
                  [com.rpl/specter "0.11.2"]]
 
-  :plugins [[lein-cljsbuild "1.1.3"]]
+  :plugins [[lein-cljsbuild "1.1.3"]
+            [lein-ancient "0.6.8"]]
 
   :min-lein-version "2.5.3"
 
@@ -37,12 +38,7 @@
                                                          :verbose true}
                                               :figwheel {:on-jsload "project-factual.core/main"}}}}
                    :source-paths ["env/dev/cljs"]
-                   :dependencies [[figwheel-sidecar "0.5.7"]]
-                   :plugins [[lein-ancient "0.6.8"]]}
-                             ;[lein-kibit "0.1.2"]
-                             ;[lein-cljfmt "0.4.1"]
-                             ;[lein-figwheel "0.5.0-6"]]}
-
+                   :dependencies [[figwheel-sidecar "0.5.7"]]}
              :production {:cljsbuild {:builds {:app {:compiler {:optimizations :advanced
                                                                 :main          "project-factual.prod"
                                                                 :parallel-build true

@@ -5,7 +5,7 @@
 
 (defn- space-if-blank [str]
   (if (str/blank? str)
-    ; Trick browser into rendering a line so that the
+    ; Trick browser into rendering a blank line so that the
     ; item sizes are consistent (it looks prettier)
     (gstring/unescapeEntities "&nbsp;")
     str))

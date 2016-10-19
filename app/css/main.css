@@ -62,3 +62,14 @@ html, body {
 .list-elem-active:hover {
     background-color: #eef3f8;
 }
+
+.sidebar-groups {
+    position: absolute;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    margin: 0;
+}

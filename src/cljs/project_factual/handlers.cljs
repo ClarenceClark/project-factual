@@ -53,10 +53,16 @@
              new-active)
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
 
+(r/reg-event-db
+  :new-active-group
+  [default-interceptors]
+  (fn [db [id]]
+    (println "New active group: " id)
+    (assoc db :active-group-id id)))
+
 ;; ------------
 ;; Side-effects
 ;; ------------
-
 
 (r/reg-fx
   :set-editor-value

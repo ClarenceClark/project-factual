@@ -3,10 +3,6 @@
 
 ;; DATABASE SPEC
 
-;; ITEMS
-
-;; TODO: write specs
-
 (s/def ::item.id int?)
 (s/def ::item.type keyword?)
 (s/def ::item.content string?)
@@ -55,4 +51,5 @@
                :group.elements [1 2 3]}}
    :active-item-id 1
    :active-group-id 1
+   :sidebar-active false
    :editor nil})
