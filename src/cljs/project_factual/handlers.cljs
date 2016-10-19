@@ -57,8 +57,18 @@
   :new-active-group
   [default-interceptors]
   (fn [db [id]]
-    (println "New active group: " id)
     (assoc db :active-group-id id)))
+
+(r/reg-event-db
+  :toggle-sidebar-visibility
+  (fn [db]
+    (update db :sidebar-active not)))
+
+(r/reg-event-db
+  :set-sidebar-visibility
+  [default-interceptors]
+  (fn [db [visibility]]
+    (assoc db :sidebar-active visibility)))
 
 ;; ------------
 ;; Side-effects

@@ -63,13 +63,38 @@ html, body {
     background-color: #eef3f8;
 }
 
-.sidebar-groups {
+.sidebar {
     position: absolute;
     background-color: #fff;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    width: 200px;
+    width: 300px;
     margin: 0;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0 0 0 0;
+    margin: 20px 0 0 0;
+}
+
+.sidebar-elem {
+    padding: 7px 20px 7px 30px;
+}
+
+.sidebar-elem:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.sidebar-elem-active
+.sidebar-elem-active:hover {
+    background-color: #eef3f8;
+}
+
+.hidden {
+    display: none;
 }

@@ -26,3 +26,8 @@
   :sidebar-active
   (fn [db _]
     (:sidebar-active db)))
+
+(r/reg-sub
+  :active-group-id
+  (fn [db _]
+    (:active-group-id db)))
