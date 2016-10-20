@@ -52,4 +52,5 @@
    :active-item-id 1
    :active-group-id 1
    :sidebar-active false
+   :screen-dim true
    :editor nil})

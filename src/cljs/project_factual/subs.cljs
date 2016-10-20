@@ -31,3 +31,8 @@
   :active-group-id
   (fn [db _]
     (:active-group-id db)))
+
+(r/reg-sub
+  :screen-dim
+  (fn [db _]
+    (:screen-dim db)))

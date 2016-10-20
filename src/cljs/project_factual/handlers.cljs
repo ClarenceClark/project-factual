@@ -60,15 +60,12 @@
     (assoc db :active-group-id id)))
 
 (r/reg-event-db
-  :toggle-sidebar-visibility
-  (fn [db]
-    (update db :sidebar-active not)))
-
-(r/reg-event-db
   :set-sidebar-visibility
   [default-interceptors]
   (fn [db [visibility]]
-    (assoc db :sidebar-active visibility)))
+    (-> db
+        (assoc :sidebar-active visibility)
+        (assoc :screen-dim visibility))))
 
 ;; ------------
 ;; Side-effects
