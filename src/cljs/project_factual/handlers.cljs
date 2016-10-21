@@ -48,9 +48,9 @@
   [default-interceptors]
   (fn [{:keys [db]} [id]]
     (let [editor (:editor db)]
-      {:db (let [editor-saved (save-editor-value db editor)
-                 new-active (assoc editor-saved :active-item-id id)]
-             new-active)
+      {:db (-> db
+             (save-editor-value editor)
+             (assoc :active-item-id id))
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
 
 (r/reg-event-db

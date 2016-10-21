@@ -49,14 +49,7 @@ html, body {
     text-overflow: ellipsis;
 }
 
-.items-list-elem {
-    padding:12px 25px 12px 25px;
-    cursor: pointer;
-}
-
-.items-list-elem:hover {
-    background-color: #eee;
-}
+.items-list-elem { padding:12px 25px 12px 25px;  }
 
 .list-elem-active,
 .list-elem-active:hover {
@@ -87,11 +80,6 @@ html, body {
     padding: 7px 20px 7px 30px;
 }
 
-.sidebar-elem:hover {
-    background-color: #eee;
-    cursor: pointer;
-}
-
 .sidebar .sidebar-elem-active,
 .sidebar .sidebar-elem-active:hover {
     background-color: #eef3f8;
@@ -115,4 +103,14 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: 2;
+}
+
+.items-toolbar-icon {
+    display: inline-block;
+    padding: 15px;
+}
+
+.hover-background:hover {
+    background-color: #eee;
+    cursor: pointer;
 }
