@@ -10,9 +10,17 @@ html, body {
     height: 100%;
 }
 
-.editor {
+.content {
+    position: relative;
     height: 100%;
     overflow: hidden;
+}
+
+.editor {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 100%;
 }
 
 .items-list-container {
@@ -105,6 +113,10 @@ html, body {
     z-index: 2;
 }
 
+.items-toolbar {
+    border-bottom: 1px solid #f0f0f0;
+}
+
 .items-toolbar-icon {
     display: inline-block;
     padding: 15px;
@@ -113,4 +125,8 @@ html, body {
 .hover-background:hover {
     background-color: #eee;
     cursor: pointer;
+}
+
+.items-toolbar .new-item {
+    float: right;
 }

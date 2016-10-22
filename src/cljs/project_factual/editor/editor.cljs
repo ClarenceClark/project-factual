@@ -2,7 +2,11 @@
   "Actual html hiccup view for the app, wrapper is in p/editor"
   (:require [re-frame.core :as r]
             [reagent.core :as reagent]
-            [cljsjs.codemirror]))
+            [cljsjs.codemirror]
+            [cljsjs.codemirror.addon.edit.continuelist]
+            [cljsjs.codemirror.addon.edit.closebrackets]
+            [cljsjs.codemirror.addon.edit.matchbrackets]
+            [cljsjs.codemirror.mode.markdown]))
 
 (defn- codemirror-component []
   (reagent/create-class
@@ -15,8 +19,18 @@
      (fn [this]
        (r/dispatch [:init-textarea
                     (reagent/dom-node this)
-                    {}]))}))
+                    {:autofocus true
+                     :mode "markdown"
+                     :matchBrackets true
+                     :autoCloseBrackets true
+                     :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList"}}]))
+
+     ; Destoy cm instance on unmount, or else it will cause a memory leak
+     :componentWillUnmount
+     (fn [this]
+       (r/dispatch [:destroy-editor]))}))
 
 (defn editor []
-  [:div {:class "editor"}
-   [codemirror-component]])
+  [:div {:class "content"}
+   [:div.editor
+    [codemirror-component]]])

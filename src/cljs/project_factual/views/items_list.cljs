@@ -30,7 +30,9 @@
           :on-click #(r/dispatch [:set-sidebar-visibility true])}
     [:i.icon-menu]]
    [:div {:class "items-toolbar-icon"}
-    [:i.icon-search]]])
+    [:i.icon-search]]
+   [:div {:class "items-toolbar-icon new-item"}
+    [:i.icon-doc-new]]])
 
 (defn items-list []
   (let [items (r/subscribe [:active-item-group])

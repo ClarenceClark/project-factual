@@ -67,19 +67,26 @@
         (assoc :sidebar-active visibility)
         (assoc :screen-dim visibility))))
 
+(r/reg-event-fx
+  :destroy-editor
+  [default-interceptors]
+  (fn [{:keys [db]}]
+    {:editor-destroy (:editor db)
+     :db (assoc db :editor nil)}))
+
 ;; ------------
 ;; Side-effects
 ;; ------------
 
 (r/reg-fx
+  :editor-destroy
+  (fn [editor]
+    (editor/destroy-editor editor)))
+
+(r/reg-fx
   :set-editor-value
   (fn [[cm new-value]]
     (editor/set-value cm new-value)))
-
-(r/reg-fx
-  :dispatch-sync
-  (fn [event]
-    (r/dispatch event)))
 
 ;; ----------
 ;; REPL conveniences

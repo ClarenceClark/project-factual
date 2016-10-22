@@ -39,6 +39,8 @@
 ;;; cljs cm interface
 ;;; ----
 
+(defn destroy-editor [cm] (.toTextArea cm))
+
 (defn get-doc [cm] (.getDoc cm))
 
 (defn get-value [cm] (.getValue (get-doc cm)))
