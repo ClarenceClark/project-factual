@@ -31,7 +31,8 @@
     [:i.icon-menu]]
    [:div {:class "items-toolbar-icon"}
     [:i.icon-search]]
-   [:div {:class "items-toolbar-icon new-item"}
+   [:div {:class "items-toolbar-icon hover-background new-item"
+          :on-click #(r/dispatch [:new-item :item.markdown])}
     [:i.icon-doc-new]]])
 
 (defn items-list []

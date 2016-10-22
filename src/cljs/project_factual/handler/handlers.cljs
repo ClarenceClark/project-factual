@@ -2,7 +2,8 @@
   (:require [re-frame.core :as r]
             [project-factual.data.db :as db]
             [project-factual.editor.cm-wrapper :as editor]
-            [cljs.spec :as s]))
+            [cljs.spec :as s]
+            [clojure.set :as set]))
 
 (defn check-db-against-spec
   "Throws an exception if db does not match spec"
@@ -43,6 +44,31 @@
   [default-interceptors]
   (fn [db [visibility]]
     (assoc db :sidebar-active visibility)))
+
+(defn difference [col1 col2]
+  (set/difference (set col1) (set col2)))
+
+(defn min-unused-id [col]
+  "Takes a collection of numbers, and finds the
+   smallest number not present that's greater than the minimum.
+   Very very inefficient, but I don't care. It won't get called that much."
+  (apply min (difference (range
+                           (apply min col)
+                           ; +2 so that the generated list has an elem that is higher than
+                           ; (max col), which allows `difference` to pick it as the missing elem
+                           (+ 2 (apply max col)))
+                         col)))
+
+(r/reg-event-fx
+  :new-item
+  [default-interceptors]
+  (fn [{:keys [db]} [type]]
+    (let [id (min-unused-id (keys (:items db)))
+          item {:item.id id
+                :item.type type
+                :item.content ""}]
+      {:db (assoc-in db [:items id] item)
+       :dispatch [:new-active-item id]})))
 
 ;; ----------
 ;; REPL conveniences
