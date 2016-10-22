@@ -36,16 +36,33 @@
            2 {:item.id 2
               :item.type :item.markdown
               :item.content (multiline-string "# Mary had a little lamb"
-                                         " "
-                                         "Mary had a little lamb  "
-                                         "Little lamb  "
-                                         "Little lamb  "
-                                         " "
-                                         "Mary had a little lamb  "
-                                         "That was as white as snow")}
+                                              " "
+                                              "Mary had a little lamb  "
+                                              "Little lamb  "
+                                              "Little lamb  "
+                                              " "
+                                              "Mary had a little lamb  "
+                                              "That was as white as snow")}
            3 {:item.id 3
               :item.type :item.markdown
-              :item.content "Header only test"}}
+              :item.content (str "# Intro\nGo ahead, play around with the editor!
+                                  Be sure to check out **bold** and *italic* styling,
+                                  or even [links](http://google.com).
+                                  You can type the Markdown syntax, use the toolbar,
+                                  or use shortcuts like `cmd-b` or `ctrl-b`.\n\n
+                                  ## Lists\nUnordered lists can be started using
+                                  the toolbar or by typing `* `, `- `, or `+ `.
+                                  Ordered lists can be started by typing `1. `.\n\n
+                                  #### Unordered\n
+                                  * Lists are a piece of cake\n
+                                  * They even auto continue as you type\n
+                                  * A double enter will end them\n
+                                  * Tabs and shift-tabs work too\n\n
+                                  #### Ordered\n
+                                  1. Numbered lists...\n
+                                  2. ...work too!\n
+                                  3. \n\n## What about images?
+                                  \n![Yes](http://i.imgur.com/sZlktY7.png)")}}
    :groups {1 {:group.id 1
                :group.name "All"
                :group.type :group.filter
