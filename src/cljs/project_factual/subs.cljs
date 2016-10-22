@@ -35,4 +35,5 @@
 (r/reg-sub
   :screen-dim
   (fn [db _]
-    (:screen-dim db)))
+    ; The only source of screen dim (currently) is the sidebar
+    (:sidebar-active db)))

@@ -18,7 +18,6 @@
 (s/def ::active-item-id int?)
 (s/def ::active-group-id int?)
 (s/def ::sidebar-active boolean?)
-(s/def ::screen-dim boolean?)
 
 (s/def ::db (s/keys :req-un [::items ::groups ::active-item-id ::active-group-id ::editor]))
 
@@ -74,5 +73,4 @@
    :active-item-id 1
    :active-group-id 1
    :sidebar-active false
-   :screen-dim false
    :editor nil})

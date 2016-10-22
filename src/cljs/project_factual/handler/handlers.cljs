@@ -42,9 +42,7 @@
   :set-sidebar-visibility
   [default-interceptors]
   (fn [db [visibility]]
-    (-> db
-        (assoc :sidebar-active visibility)
-        (assoc :screen-dim visibility))))
+    (assoc db :sidebar-active visibility)))
 
 ;; ----------
 ;; REPL conveniences
