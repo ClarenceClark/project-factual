@@ -14,7 +14,10 @@
                 :matchBrackets true
                 :autoCloseBrackets true
                 :lineNumbers false
-                :lineWrapping true}
+                :lineWrapping true
+                :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList"
+                            "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
+                            "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
                clj-opts))))
 
 (defn- register-event-handler [cm event handler]
@@ -46,3 +49,4 @@
 (defn get-value [cm] (.getValue (get-doc cm)))
 (defn set-value [cm new-value] (.setValue (get-doc cm) new-value))
 (defn get-line [cm line] (.getLine cm line))
+(defn exec-command [cm command] (.execCommand cm command))

@@ -19,11 +19,7 @@
      (fn [this]
        (r/dispatch [:init-textarea
                     (reagent/dom-node this)
-                    {:autofocus true
-                     :mode "markdown"
-                     :matchBrackets true
-                     :autoCloseBrackets true
-                     :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList"}}]))
+                    {}]))
 
      ; Destoy cm instance on unmount, or else it will cause a memory leak
      :componentWillUnmount

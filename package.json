@@ -3,7 +3,6 @@
   "license": "Private",
   "private": true,
   "dependencies": {
-    "simplemde": "*",
     "fs-extra": "*"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-(ns project-factual.handlers
+(ns project-factual.handler.handlers
   (:require [re-frame.core :as r]
             [project-factual.data.db :as db]
             [project-factual.editor.cm-wrapper :as editor]
@@ -24,33 +24,12 @@
   (fn [db]
     (merge db/testing-database db)))
 
-(r/reg-event-db
-  :init-textarea
-  [default-interceptors]
-  (fn [db [dom opts]]
-    (assoc db :editor (editor/new-editor dom opts))))
-
-(defn save-editor-value
-  [db editor]
-  (assoc-in db
-            [:items (:active-item-id db) :item.content]
-            (editor/get-value editor)))
-
-(r/reg-event-db
-  :save-editor-value
-  [default-interceptors]
-  (fn [db]
-    (let [editor (:editor db)]
-      (save-editor-value db editor))))
-
 (r/reg-event-fx
   :new-active-item
   [default-interceptors]
   (fn [{:keys [db]} [id]]
     (let [editor (:editor db)]
-      {:db (-> db
-             (save-editor-value editor)
-             (assoc :active-item-id id))
+      {:db (assoc db :active-item-id id)
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
 
 (r/reg-event-db
@@ -66,27 +45,6 @@
     (-> db
         (assoc :sidebar-active visibility)
         (assoc :screen-dim visibility))))
-
-(r/reg-event-fx
-  :destroy-editor
-  [default-interceptors]
-  (fn [{:keys [db]}]
-    {:editor-destroy (:editor db)
-     :db (assoc db :editor nil)}))
-
-;; ------------
-;; Side-effects
-;; ------------
-
-(r/reg-fx
-  :editor-destroy
-  (fn [editor]
-    (editor/destroy-editor editor)))
-
-(r/reg-fx
-  :set-editor-value
-  (fn [[cm new-value]]
-    (editor/set-value cm new-value)))
 
 ;; ----------
 ;; REPL conveniences

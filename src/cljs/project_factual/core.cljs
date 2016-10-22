@@ -3,7 +3,8 @@
             [cljsjs.react]
             [re-frame.core :as r]
             [project-factual.subs :as subs]
-            [project-factual.handlers :as handlers]
+            [project-factual.handler.handlers :as handlers]
+            [project-factual.handler.editor-handlers :as editor-handlers]
             [project-factual.editor.cm-wrapper :as editor]
             [project-factual.views.main :as main]
             [clojure.string :as str]))
