@@ -32,6 +32,13 @@
     {:exec-cm-command [(:editor db) cmd]
      :db db}))
 
+(r/reg-event-fx
+  :set-editor-contents-bypass
+  (fn [{:keys [db]}]
+    {:db db
+     :set-editor-value [(:editor db)
+                        (get-in db [:items (:active-item-id db) :item.content])]}))
+
 ;; ------------
 ;; Side-effects
 ;; ------------

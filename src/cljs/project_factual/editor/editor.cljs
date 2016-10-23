@@ -19,7 +19,10 @@
      (fn [this]
        (r/dispatch [:init-textarea
                     (reagent/dom-node this)
-                    {}]))
+                    {}])
+       ; This will ALWAYS happen after cm in initialised since the event queue is FIFO
+       ; Let's hope it stays that way
+       (r/dispatch [:set-editor-contents-bypass]))
 
      ; Destoy cm instance on unmount, or else it will cause a memory leak
      :componentWillUnmount
