@@ -21,8 +21,8 @@
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
                clj-opts))))
 
-(def typo-js (js/require "typo-js"))
-(def spellcheck (typo-js. "en_GB" false false #js{:dictionaryPath "./dict"}))
+;(def typo-js (js/require "typo-js"))
+(def spellcheck (js/Typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
 (def word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
 (def number-regex #"[0-9]+")
 

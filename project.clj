@@ -33,7 +33,8 @@
   :figwheel {:css-dirs ["app/css"]}
 
   :profiles {:dev {:cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:source-map true
+                                              :compiler {:optimizations :none
+                                                         :source-map true
                                                          :main       "project-factual.dev"
                                                          :verbose true}
                                               :figwheel {:on-jsload "project-factual.core/mount-root"}}}}
