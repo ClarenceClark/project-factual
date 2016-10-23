@@ -19,7 +19,7 @@
       [:li {:class    (str "items-list-elem hover-background"
                            (when (= id @active-item-id) " list-elem-active"))
             :on-click #(r/dispatch [:new-active-item id])}
-       [:div {:class "list-elem-title"}
+       [:div {:class "list-elem-title one-line-summary"}
         (space-if-blank (first lines))]
        [:p {:class "list-elem-summary one-line-summary"}
         (space-if-blank (second lines))]])))

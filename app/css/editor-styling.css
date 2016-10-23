@@ -30,6 +30,10 @@
     color: #183691;
 }
 
+.CodeMirror .CodeMirror-code .CodeMirror-matchingbracket {
+    background: rgba(0,0,0,0.05);
+}
+
 .CodeMirror .CodeMirror-selected {
     background: #d9d9d9;
 }
@@ -79,4 +83,8 @@
 
 .CodeMirror .CodeMirror-placeholder {
     opacity: .5;
+}
+
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+    background: rgba(255,0,0,.15)
 }

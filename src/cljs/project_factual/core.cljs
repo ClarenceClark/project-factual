@@ -9,12 +9,14 @@
             [project-factual.views.main :as main]
             [clojure.string :as str]))
 
-(defn main
-  []
-  (r/dispatch-sync [:init-db])
+(defn mount-root []
   (reagent/render [main/main-page]
                   (.getElementById js/document "app")))
 
+(defn main
+  []
+  (r/dispatch-sync [:init-db])
+  (mount-root))
 
 ;;; REPL Conveniences
 
