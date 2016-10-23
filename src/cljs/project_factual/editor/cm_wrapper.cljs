@@ -24,6 +24,7 @@
 (def typo-js (js/require "typo-js"))
 (def spellcheck (typo-js. "en_GB" false false #js{:dictionaryPath "./dict"}))
 (def word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
+(def number-regex #"[0-9]+")
 
 (defn advance-to-next-word-seperator [stream word seperators]
   "WARNING: SIDE EFFECTS, advances stream to the next seperator"
@@ -40,9 +41,10 @@
       (do (.next stream)
           nil)
       (let [word (advance-to-next-word-seperator stream "" word-seperators)]
-        (if (not (.check spellcheck word))
-          "spell-error"
-          nil)))))
+        (if (or (.check spellcheck word)
+                (re-matches number-regex word)) ; Is a number
+          nil
+          "spell-error")))))
 
 (def spellcheck-overlay #js{"token" spellcheck-tokeniser})
 
