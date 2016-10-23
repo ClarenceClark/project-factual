@@ -44,13 +44,13 @@
                                               "That was as white as snow")}
            3 {:item.id 3
               :item.type :item.markdown
-              :item.content (str "# Intro\nGo ahead, play around with the editor!"
-                                  "Be sure to check out **bold** and *italic* styling,"
-                                  "or even [links](http://google.com)."
-                                  "You can type the Markdown syntax, use the toolbar,"
+              :item.content (str "# Intro\nGo ahead, play around with the editor! "
+                                  "Be sure to check out **bold** and *italic* styling, "
+                                  "or even [links](http://google.com). "
+                                  "You can type the Markdown syntax, use the toolbar, "
                                   "or use shortcuts like `cmd-b` or `ctrl-b`.\n\n"
-                                  "## Lists\nUnordered lists can be started using"
-                                  "the toolbar or by typing `* `, `- `, or `+ `."
+                                  "## Lists\nUnordered lists can be started using "
+                                  "the toolbar or by typing `* `, `- `, or `+ `. "
                                   "Ordered lists can be started by typing `1. `.\n\n"
                                   "#### Unordered\n"
                                   "* Lists are a piece of cake\n"

@@ -22,7 +22,7 @@
                clj-opts))))
 
 (def typo-js (js/require "typo-js"))
-(def spellcheck (typo-js. "en_US"))
+(def spellcheck (typo-js. "en_GB" false false #js{:dictionaryPath "./dict"}))
 (def word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
 
 (defn advance-to-next-word-seperator [stream word seperators]

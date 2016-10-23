@@ -3,9 +3,8 @@
 .CodeMirror {
     font-family: "Garamond", serif;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 20px;
+    padding: 0 15px 0 15px;
 }
 
 .CodeMirror .CodeMirror-lines {
@@ -14,7 +13,8 @@
     margin-right: auto;
 }
 
-.CodeMirror .CodeMirror-code .cm-variable-2 {
+.CodeMirror .CodeMirror-code .cm-variable-2,
+.CodeMirror .CodeMirror-code .cm-variable-3 {
     color: #000;
 }
 
