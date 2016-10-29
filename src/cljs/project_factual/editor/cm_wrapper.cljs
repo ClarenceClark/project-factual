@@ -21,10 +21,9 @@
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
                clj-opts))))
 
-;(def typo-js (js/require "typo-js"))
-(def spellcheck (js/Typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
-(def word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
-(def number-regex #"[0-9]+")
+(defonce spellcheck (js/Typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
+(defonce word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
+(defonce number-regex #"[0-9]+")
 
 (defn advance-to-next-word-seperator [stream word seperators]
   "WARNING: SIDE EFFECTS, advances stream to the next seperator"

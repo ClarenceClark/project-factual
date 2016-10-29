@@ -1,11 +1,31 @@
 (ns project-factual.subs
   (:require [re-frame.core :as r]
-            [com.rpl.specter :as s]))
+            [com.rpl.specter :as s]
+            [reagent.ratom :as ratom]))
+
+(r/reg-sub
+  :items-map
+  (fn [db _]
+    (:items db)))
+
+(r/reg-sub
+  :active-group
+  (fn [db _]
+    ((:groups db) (:active-group-id db))))
 
 (r/reg-sub
   :active-item-group
-  (fn [db _]
-    (vals (:items db))))
+  (fn [query-v _]
+    [(r/subscribe [:items-map])
+     (r/subscribe [:active-group])])
+
+  (fn [[all-items active-group] _]
+    (let [group-type (:group.type active-group)]
+      ; If there is ever a need for more types of groups, this needs to be refactored into its own
+      ; group handling system with more documentation
+      (case group-type
+        :group.filter (filter (:group.filter active-group) (vals all-items))
+        :group.col (vals (select-keys all-items (:group.elements active-group)))))))
 
 (r/reg-sub
   :active-item-id
