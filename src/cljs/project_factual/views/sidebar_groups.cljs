@@ -18,4 +18,5 @@
       [:div {:class (str "sidebar" (when-not @active " sidebar-hidden"))}
        [:ul
         (for [group @groups]
+          ^{:key group}
           [sidebar-group-elem group active-group])]])))

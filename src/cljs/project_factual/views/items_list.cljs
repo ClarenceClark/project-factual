@@ -43,4 +43,5 @@
        [items-toolbar]
        [:ul {:class "items-list"}
         (for [item @items]
+          ^{:key item}
           [items-list-elem item active-item-id])]])))
