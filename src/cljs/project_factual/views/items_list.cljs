@@ -25,13 +25,13 @@
         (space-if-blank (second lines))]])))
 
 (defn items-toolbar []
-  [:div {:class "items-toolbar"}
-   [:div {:class "items-toolbar-icon hover-background"
+  [:div.toolbar
+   [:div {:class "toolbar-icon hover-background"
           :on-click #(r/dispatch [:set-sidebar-visibility true])}
     [:i.icon-menu]]
-   [:div {:class "items-toolbar-icon"}
+   [:div {:class "toolbar-icon"}
     [:i.icon-search]]
-   [:div {:class "items-toolbar-icon hover-background new-item"
+   [:div {:class "toolbar-icon icon-right hover-background"
           :on-click #(r/dispatch [:new-item :item.markdown])}
     [:i.icon-doc-new]]])
 

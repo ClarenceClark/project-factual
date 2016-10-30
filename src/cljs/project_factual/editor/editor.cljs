@@ -31,5 +31,12 @@
 
 (defn editor []
   [:div {:class "content"}
+   [:div.toolbar
+    [:div {:class "toolbar-icon icon-right hover-background icon-dot-3"
+           :on-click #(r/dispatch [:menu-extra-toggle])}]
+    [:div {:class "toolbar-icon icon-right hover-background icon-trash-empty"
+           :on-click #(r/dispatch [:move-active-item-to-trash])}]
+    [:div {:class "toolbar-icon icon-right hover-background icon-info-circled-alt"
+           :on-click #(r/dispatch [:display-active-item-info])}]]
    [:div.editor
     [codemirror-component]]])

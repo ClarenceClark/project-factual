@@ -18,8 +18,8 @@ html, body {
 
 .editor {
     position: absolute;
-    top: 10px;
-    bottom: 10px;
+    top: 46px;
+    bottom: 0;
     width: 100%;
 }
 
@@ -71,7 +71,7 @@ html, body {
     top: 0;
     bottom: 0;
     right: 0;
-    width: 300px;
+    width: 250px;
     margin: 0;
     font-size: 18px;
     transition: all 0.3s ease;
@@ -81,11 +81,11 @@ html, body {
 .sidebar ul {
     list-style-type: none;
     padding: 0 0 0 0;
-    margin: 20px 0 0 0;
+    margin: 16px 0 0 0;
 }
 
 .sidebar-elem {
-    padding: 7px 20px 7px 30px;
+    padding: 7px 20px 7px 20px;
 }
 
 .sidebar .sidebar-elem-active,
@@ -113,13 +113,15 @@ html, body {
     z-index: 2;
 }
 
-.items-toolbar {
+.toolbar {
     border-bottom: 1px solid #f0f0f0;
+    z-index: 3;
 }
 
-.items-toolbar-icon {
+.toolbar-icon {
     display: inline-block;
-    padding: 15px;
+    padding: 12px;
+    font-size: 18px;
 }
 
 .hover-background:hover {
@@ -127,6 +129,6 @@ html, body {
     cursor: pointer;
 }
 
-.items-toolbar .new-item {
+.toolbar .icon-right {
     float: right;
 }
