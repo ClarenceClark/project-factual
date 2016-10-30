@@ -43,12 +43,12 @@ html, body {
     border-bottom: 1px solid #f0f0f0;
     z-index: 3;
     height: 45px;
+    font-size: 18px;
 }
 
 .toolbar-icon {
     display: inline-block;
     padding: 12px;
-    font-size: 18px;
 }
 
 .hover-background:hover {
@@ -58,4 +58,17 @@ html, body {
 
 .toolbar .icon-right {
     float: right;
+}
+
+.groupbar {
+    display: inline-block;
+    padding: 15px 12px 15px 18px;
+    float: left;
+    font-size: 16px;
+}
+
+.groupbar .groupbar-elem {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
 }

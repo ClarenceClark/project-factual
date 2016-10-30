@@ -39,7 +39,7 @@
 (r/reg-sub
   :all-groups
   :<- [:groups-map]
-  (fn [[groups-map _] _]
+  (fn [groups-map _]
     (vals groups-map)))
 
 (r/reg-sub
@@ -47,9 +47,17 @@
   (fn [db _]
     ((:groups db) (:active-group-id db))))
 
-;;; ------
+(r/reg-sub
+  :all-normal-groups
+  :<- [:all-groups]
+  (fn [all-groups _]
+    (filter #(= :group.col
+                (:group.type %))
+            all-groups)))
+
+;;; ---------------------
 ;;; Active items & groups
-;;; ------
+;;; ---------------------
 
 (r/reg-sub
   :active-items
@@ -62,6 +70,15 @@
       (case group-type
         :group.filter (filter (:group.filter active-group) (vals all-items))
         :group.col (vals (select-keys all-items (:group.elements active-group)))))))
+
+(r/reg-sub
+  :active-groups
+  :<- [:active-item-id]
+  :<- [:all-normal-groups]
+  (fn [[active-item-id normal-groups] _]
+    (filter #(contains? (:group.elements %)
+                        active-item-id)
+            normal-groups)))
 
 ;;; ------
 ;;; OTHERS

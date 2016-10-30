@@ -29,9 +29,20 @@
      (fn [this]
        (r/dispatch [:destroy-editor]))}))
 
+(defn groupbar-elem [group]
+  [:div.groupbar-elem
+   (:group.name group)])
+
+(defn groupbar []
+  (let [groups (r/subscribe [:active-groups])]
+    [:div.groupbar
+     (for [group @groups]
+       [groupbar-elem group])]))
+
 (defn editor []
   [:div {:class "content"}
    [:div.toolbar
+    [groupbar]
     [:div {:class "toolbar-icon icon-right hover-background icon-dot-3"
            :on-click #(r/dispatch [:menu-extra-toggle])}]
     [:div {:class "toolbar-icon icon-right hover-background icon-trash-empty"

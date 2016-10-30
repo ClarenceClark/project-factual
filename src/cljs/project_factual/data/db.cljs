@@ -69,7 +69,7 @@
             2 {:group.id 2
                :group.name "Default"
                :group.type :group.col
-               :group.elements [1 2 3]}}
+               :group.elements #{1 2 3}}}
    :active-item-id 1
    :active-group-id 1
    :sidebar-active false

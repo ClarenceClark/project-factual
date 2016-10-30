@@ -1,9 +1,8 @@
 (ns project-factual.handler.handlers
-  (:require [re-frame.core :as r]
+  (:require [cljs.spec :as s]
+            [clojure.set :as set]
             [project-factual.data.db :as db]
-            [project-factual.editor.cm-wrapper :as editor]
-            [cljs.spec :as s]
-            [clojure.set :as set]))
+            [re-frame.core :as r]))
 
 (defn check-db-against-spec
   "Throws an exception if db does not match spec"
@@ -32,6 +31,14 @@
     (let [editor (:editor db)]
       {:db (assoc db :active-item-id id)
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
+
+(r/reg-event-db
+  :move-active-item-to-trash
+  [default-interceptors]
+  (fn [db]
+    (let [active-item-id (:active-item-id db)]
+      (assoc db :items
+                (dissoc (:items db) active-item-id)))))
 
 (r/reg-event-db
   :new-active-group

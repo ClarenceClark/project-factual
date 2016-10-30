@@ -10,7 +10,7 @@
    [:div {:class "group-name"}
     (:group.name group)]])
 
-(defn sidebar-groups []
+(defn sidebar []
   (let [active (r/subscribe [:sidebar-active])
         groups (r/subscribe [:all-groups])
         active-group (r/subscribe [:active-group-id])]

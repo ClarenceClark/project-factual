@@ -9,7 +9,7 @@
   (let [dimmed (r/subscribe [:screen-dim])]
     (fn []
       [:div {:class "main"}
-       [sidebar/sidebar-groups]
+       [sidebar/sidebar]
        [items-list/items-list]
        [markdown-editor/editor]
        [:div {:class (str "dim" (when-not @dimmed " hide"))
