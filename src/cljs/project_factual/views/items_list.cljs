@@ -36,7 +36,7 @@
     [:i.icon-doc-new]]])
 
 (defn items-list []
-  (let [items (r/subscribe [:active-item-group])
+  (let [items (r/subscribe [:active-items])
         active-item-id (r/subscribe [:active-item-id])]
     (fn []
       [:div {:class "items-list-container"}

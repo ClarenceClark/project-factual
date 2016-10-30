@@ -1,4 +1,4 @@
-(ns project-factual.views.sidebar-groups
+(ns project-factual.views.sidebar
   (:require [re-frame.core :as r]))
 
 (defn sidebar-group-elem [group active-group]
@@ -12,7 +12,7 @@
 
 (defn sidebar-groups []
   (let [active (r/subscribe [:sidebar-active])
-        groups (r/subscribe [:groups])
+        groups (r/subscribe [:all-groups])
         active-group (r/subscribe [:active-group-id])]
     (fn []
       [:div {:class (str "sidebar" (when-not @active " sidebar-hidden"))}
