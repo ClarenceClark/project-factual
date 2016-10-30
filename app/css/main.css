@@ -23,80 +23,6 @@ html, body {
     width: 100%;
 }
 
-.items-list-container {
-    float: left;
-    width: 360px;
-    height: 100%;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    border-right: 1px solid #f0f0f0;
-}
-
-.items-list-container ul {
-    list-style-type: none;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-}
-
-.items-list-container li .list-elem-title {
-    font-size:18px;
-    color: #333;
-    padding: 0 40px 0 0;
-}
-
-.items-list-container li .list-elem-summary {
-    font-size:16px;
-    color: #999;
-    padding:0 0 0 0;
-    margin:0 0 0 0;
-}
-
-.one-line-summary {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.items-list-elem { padding:12px 25px 12px 25px;  }
-
-.list-elem-active,
-.list-elem-active:hover {
-    background-color: #eef3f8;
-}
-
-.sidebar {
-    position: absolute;
-    background-color: #fff;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 250px;
-    margin: 0;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    z-index: 3;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0 0 0 0;
-    margin: 16px 0 0 0;
-}
-
-.sidebar-elem {
-    padding: 7px 20px 7px 20px;
-}
-
-.sidebar .sidebar-elem-active,
-.sidebar .sidebar-elem-active:hover {
-    background-color: #eef3f8;
-}
-
-.sidebar-hidden {
-    left: -300px;
-}
-
 .hide {
     visibility: hidden;
 }
@@ -116,6 +42,7 @@ html, body {
 .toolbar {
     border-bottom: 1px solid #f0f0f0;
     z-index: 3;
+    height: 45px;
 }
 
 .toolbar-icon {
