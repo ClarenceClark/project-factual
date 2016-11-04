@@ -16,11 +16,17 @@
     (:items db)))
 
 (r/reg-sub
+  :all-items
+  :<- [:items-map]
+  (fn [items-map _]
+    (vals items-map)))
+
+(r/reg-sub
   :active-item
-  :<- [:all-items]
+  :<- [:items-map]
   :<- [:active-item-id]
-  (fn [[all-items active-item-id] _]
-    (all-items active-item-id)))
+  (fn [[items-map active-item-id] _]
+    (items-map active-item-id)))
 
 ;;; ------
 ;;; GROUPS
@@ -51,7 +57,7 @@
   :all-normal-groups
   :<- [:all-groups]
   (fn [all-groups _]
-    (filter #(= :group.col
+    (filter #(= :group.collection
                 (:group.type %))
             all-groups)))
 
@@ -67,23 +73,23 @@
 (r/reg-sub
   :active-items
   :<- [:active-group]
-  :<- [:items-map]
-  (fn [[active-group all-items] _]
+  :<- [:all-items]
+  :<- [:active-group-id]
+  (fn [[active-group all-items active-group-id] _]
     (let [group-type (:group.type active-group)]
       ; If there is ever a need for more types of groups, this needs to be refactored into its own
       ; group handling system with more documentation
       (case group-type
-        :group.filter (filter (:group.filter active-group) (vals all-items))
-        :group.col (vals (select-keys all-items (:group.elements active-group)))))))
+        :group.filter (filter (:group.filter active-group) all-items)
+        :group.collection (filter #(contains? (:item.groups %) active-group-id) all-items)))))
 
 (r/reg-sub
   :active-groups
-  :<- [:active-item-id]
-  :<- [:all-normal-groups]
-  (fn [[active-item-id normal-groups] _]
-    (filter #(contains? (:group.elements %)
-                        active-item-id)
-            normal-groups)))
+  :<- [:active-item]
+  :<- [:groups-map]
+  (fn [[active-item groups-map] _]
+    (vals (select-keys groups-map
+                       (:item.groups active-item)))))
 
 ;;; ------
 ;;; OTHERS
