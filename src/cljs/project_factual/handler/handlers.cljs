@@ -106,3 +106,8 @@
   :repl-reset-items
   (fn [db _]
     (assoc db :items (:items db/testing-database))))
+
+(r/reg-event-db
+  :repl-reset-groups
+  (fn [db _]
+    (assoc db :groups (:groups db/testing-database))))

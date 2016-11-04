@@ -12,14 +12,18 @@
     z-index: 3;
 }
 
-.sidebar ul {
+.sidebar .special-elems {
+    margin: 10px 0 16px 0;
+}
+
+.sidebar .sidebar-groups {
     list-style-type: none;
-    padding: 0 0 0 0;
-    margin: 16px 0 0 0;
+    padding: 0;
+    margin: 0;
 }
 
 .sidebar-elem {
-    padding: 7px 20px 7px 20px;
+    padding: 7px 15px 7px 20px;
 }
 
 .sidebar .sidebar-elem-active,
@@ -29,4 +33,13 @@
 
 .sidebar-hidden {
     left: -300px;
+}
+
+.group-icon {
+    display: inline;
+    margin-right: 5px;
+}
+
+.group-name {
+    display: inline;
 }

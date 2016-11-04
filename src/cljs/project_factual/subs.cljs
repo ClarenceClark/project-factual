@@ -55,6 +55,11 @@
                 (:group.type %))
             all-groups)))
 
+(r/reg-sub
+  :group-all
+  (fn [all-groups _]
+    project-factual.data.db/group-all))
+
 ;;; ---------------------
 ;;; Active items & groups
 ;;; ---------------------

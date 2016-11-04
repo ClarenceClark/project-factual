@@ -25,6 +25,12 @@
 ;; MOCK DATA
 ;; ----------
 
+(def group-all {:group.id -1 ; TODO get rid of magical constant
+                :group.name "All items"
+                :group.type :group.filter
+                :group.filter (constantly true)
+                :group.icon "icon-docs"})
+
 (defn multiline-string [& strings]
   (clojure.string/join "\n" strings))
 
@@ -62,11 +68,8 @@
                                   "2. ...work too!\n"
                                   "3. \n\n## What about images?"
                                   "\n![Yes](http://i.imgur.com/sZlktY7.png)")}}
-   :groups {1 {:group.id 1
-               :group.name "All"
-               :group.type :group.filter
-               :group.filter (constantly true)}
-            2 {:group.id 2
+   :groups {-1 group-all ; TODO get rid of magical constant
+            1 {:group.id 1
                :group.name "Default"
                :group.type :group.col
                :group.elements #{1 2 3}}}
