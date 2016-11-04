@@ -31,7 +31,7 @@
     (if (and (not (nil? ch))
              (not (string/includes? seperators ch)))
       (do (.next stream)
-          (advance-to-next-word-seperator stream (str word ch) seperators))
+          (recur stream (str word ch) seperators))
       word)))
 
 (defn spellcheck-tokeniser [stream]

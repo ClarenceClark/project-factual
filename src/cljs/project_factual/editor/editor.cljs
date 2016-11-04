@@ -20,8 +20,6 @@
        (r/dispatch [:init-textarea
                     (reagent/dom-node this)
                     {}])
-       ; This will ALWAYS happen after cm in initialised since the event queue is FIFO
-       ; Let's hope it stays that way
        (r/dispatch [:set-editor-contents-bypass]))
 
      ; Destoy cm instance on unmount, or else it will cause a memory leak
@@ -30,13 +28,15 @@
        (r/dispatch [:destroy-editor]))}))
 
 (defn groupbar-elem [group]
-  [:div.groupbar-elem
+  [:div {:class "dropdown-container groupbar-elem hover-background"
+         :on-click #(r/dispatch [:click-tag group])}
    (:group.name group)])
 
 (defn groupbar []
   (let [groups (r/subscribe [:active-groups])]
     [:div.groupbar
      (for [group @groups]
+       ^{:key group}
        [groupbar-elem group])]))
 
 (defn editor []
