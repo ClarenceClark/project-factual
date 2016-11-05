@@ -29,7 +29,8 @@
 
 (defn groupbar-elem [group]
   [:div {:class "dropdown-container groupbar-elem hover-background"
-         :on-click #(r/dispatch [:click-tag group])}
+         :on-click #(r/dispatch [:click-tag group])
+         :on-context-menu #(r/dispatch [:remove-group-from-active group])}
    (:group.name group)])
 
 (defn groupbar []
