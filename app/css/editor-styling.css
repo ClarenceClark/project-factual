@@ -1,7 +1,7 @@
 /* Stolen (sorry, adapted) from SimpleMDE */
 
 .CodeMirror {
-    font-family: "Cormorant Garamond", serif;
+    font-family: inherit;
     height: 100%;
     font-size: 20px;
     padding: 0 15px 0 15px;
@@ -40,25 +40,25 @@
 
 .CodeMirror .CodeMirror-code .cm-header-1 {
     font-size: 200%;
-    line-height: 200%;
+    line-height: 100%;
     color: #000;
 }
 
 .CodeMirror .CodeMirror-code .cm-header-2 {
     font-size: 160%;
-    line-height: 160%;
+    line-height: 100%;
     color: #000;
 }
 
 .CodeMirror .CodeMirror-code .cm-header-3 {
     font-size: 125%;
-    line-height: 125%;
+    line-height: 100%;
     color: #000;
 }
 
 .CodeMirror .CodeMirror-code .cm-header-4 {
     font-size: 110%;
-    line-height: 110%;
+    line-height: 100%;
     color: #000;
 }
 

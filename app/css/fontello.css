@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.ttf?50005464') format('truetype'),
-       url('../font/fontello.svg?50005464#fontello') format('svg');
+  src: url('../font/fontello.ttf?50005464') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
