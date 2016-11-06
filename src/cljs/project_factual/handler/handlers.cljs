@@ -1,15 +1,17 @@
 (ns project-factual.handler.handlers
-  (:require [cljs.spec :as s]
+  (:require [cljs.spec :as spec]
             [clojure.set :as set]
             [project-factual.data.db :as db]
-            [re-frame.core :as r]))
+            [re-frame.core :as r]
+            [com.rpl.specter :as s])
+  (:require-macros [com.rpl.specter :as sm]))
 
 (defn check-db-against-spec
   "Throws an exception if db does not match spec"
   [spec db]
-  (when-not (s/valid? spec db)
+  (when-not (spec/valid? spec db)
     (throw (ex-info (str "Spec check for db failed; explanation: "
-                         (s/explain-str spec db))
+                         (spec/explain-str spec db))
                     {}))))
 
 (def spec-interceptor (r/after (partial check-db-against-spec :project-factual.data.db/db)))
@@ -76,6 +78,16 @@
                 :item.content ""}]
       {:db (assoc-in db [:items id] item)
        :dispatch [:new-active-item id]})))
+
+(r/reg-event-db
+  :new-col-group
+  [default-interceptors]
+  (fn [db [name]]
+    (let [id (min-unused-id (keys (:groups db)))
+          group {:group.id id
+                 :group.type :group.col
+                 :group.name name}]
+      (assoc-in db [:group id] group))))
 
 ;; ----------
 ;; REPL conveniences

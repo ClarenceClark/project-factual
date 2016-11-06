@@ -61,8 +61,10 @@ html, body {
 }
 
 .groupbar {
-    display: inline-block;
-    padding: 12px 12px 12px 18px;
+    display: flex;
+    height: 45px;
+    margin-left: 12px;
+    align-items: center;
     float: left;
     font-size: 15px;
 }
@@ -71,5 +73,39 @@ html, body {
     display: inline-block;
     float: left;
     padding: 3px 5px 3px 5px;
-    margin-right: 10px;
+    margin-right: 8px;
+    border: solid 1px #f0f0f0;
+    border-radius: 7px;
+}
+
+.icon-bar {
+    float: right;
+}
+
+#group-input {
+    width: 120px;
+    height: 16px;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.groupbar .new-group {
+    position: relative;
+}
+
+.groupbar .new-group .suggestions {
+    position: absolute;
+    left: 0;
+    max-width: 216px;
+    top: 20px;
+    z-index: 999;
+    background-color: #fff;
+    border: solid 1px #f0f0f0;
+    border-radius: 15px;
+}
+
+.suggestions .suggestion {
+    padding: 2px 15px 2px 15px;
 }

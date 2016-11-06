@@ -12,8 +12,7 @@
                  [cljsjs/nodejs-externs "1.0.4-1"]
                  [cljsjs/codemirror "5.11.0-2"]
                  [reagent "0.6.0"]
-                 [re-frame "0.8.0"]
-                 [com.rpl/specter "0.11.2"]]
+                 [re-frame "0.8.0"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
             [lein-ancient "0.6.8"]]

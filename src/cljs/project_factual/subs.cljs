@@ -1,5 +1,6 @@
 (ns project-factual.subs
-  (:require [re-frame.core :as r]))
+  (:require [re-frame.core :as r]
+            [clojure.string :as s]))
 
 ;;; -----
 ;;; ITEMS
@@ -66,6 +67,20 @@
   (fn [all-groups _]
     project-factual.data.db/group-all))
 
+;;; --------
+;;; Groupbar
+;;; --------
+
+(r/reg-sub
+  :groupbar-suggestions-search
+  (fn [db _]
+    (:groupbar-suggestions-search db)))
+
+(r/reg-sub
+  :groupbar-suggestions-active
+  (fn [db _]
+    (:groupbar-suggestions-active db)))
+
 ;;; ---------------------
 ;;; Active items & groups
 ;;; ---------------------
@@ -90,6 +105,13 @@
   (fn [[active-item groups-map] _]
     (vals (select-keys groups-map
                        (:item.groups active-item)))))
+
+(r/reg-sub
+  :groupbar-suggestions
+  :<- [:groupbar-suggestions-search]
+  :<- [:all-normal-groups]
+  (fn [[input groups] _]
+    (filter #(s/includes? (:group.name %) input) groups)))
 
 ;;; ------
 ;;; OTHERS

@@ -75,6 +75,8 @@
             1 {:group.id 1
                :group.name "Default"
                :group.type :group.collection}}
+   :groupbar-suggestions-active false
+   :groupbar-suggestions-search ""
    :active-item-id 1
    :active-group-id 1
    :sidebar-active false
