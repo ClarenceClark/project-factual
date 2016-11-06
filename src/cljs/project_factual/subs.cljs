@@ -1,6 +1,7 @@
 (ns project-factual.subs
   (:require [re-frame.core :as r]
-            [clojure.string :as s]))
+            [clojure.string :as s]
+            [clojure.set :as set]))
 
 ;;; -----
 ;;; ITEMS
@@ -110,8 +111,11 @@
   :groupbar-suggestions
   :<- [:groupbar-suggestions-search]
   :<- [:all-normal-groups]
-  (fn [[input groups] _]
-    (filter #(s/includes? (:group.name %) input) groups)))
+  :<- [:active-groups]
+  (fn [[input groups active-groups] _]
+    (set/difference (set (filter #(s/includes? (:group.name %) input)
+                                 groups))
+                    (set active-groups))))
 
 ;;; ------
 ;;; OTHERS
