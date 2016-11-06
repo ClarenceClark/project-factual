@@ -3,6 +3,8 @@ html, body {
     font-size: 20px;
     margin: 0;
     height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 .main {
