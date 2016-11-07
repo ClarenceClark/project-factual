@@ -31,12 +31,10 @@
        event
        handler))
 
-;;; Trailing Whitespace
-
-(def trailing-whitespace-overlay
+(def linebreak-overlay
   #js{"token" (fn [stream]
                 (if (.match stream #"^\s\s+$")
-                  "trailing-whitespace"
+                  "linebreak"
                   (do (.match stream #"^\s*\S*")
                       nil)))})
 
@@ -47,7 +45,7 @@
       "changes"
       #(r/dispatch [:save-editor-value]))
     (.addOverlay cm spellcheck/spellcheck-overlay)
-    (.addOverlay cm trailing-whitespace-overlay)))
+    (.addOverlay cm linebreak-overlay)))
 
 (defn new-editor
   "return a new codemirror editor"

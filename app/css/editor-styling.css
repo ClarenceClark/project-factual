@@ -94,7 +94,7 @@
     color: #000;
 }
 
-.CodeMirror .CodeMirror-code .cm-trailing-whitespace:last-child:after {
+.CodeMirror .CodeMirror-code .cm-linebreak:last-child::after {
     font-size: 12px;
     content: '↵';
 }
