@@ -9,12 +9,13 @@
 
 (defn new-group []
   (let [suggestions (r/subscribe [:groupbar-suggestions])
-        sug-active (r/subscribe [:groupbar-suggestions-active])]
+        sug-active (r/subscribe [:groupbar-suggestions-active])
+        search (r/subscribe [:groupbar-suggestions-search])]
     (fn new-group []
       [:div.new-group
        [:input#group-input {:on-change #(r/dispatch [:groupbar-search-change (.-value (.-target %))])
                             :on-blur #(r/dispatch [:groupbar-suggestions-active false])
-                            :on-focus #(r/dispatch [:groupbar-suggestions-active true])
+                            :on-focus #(do (r/dispatch [:groupbar-suggestions-active true]))
                             ; Sync because events gets recycled by react, and we must do
                             ; stuff with it before that happens. It only dispatches more events, so
                             ; the fact that it is out of order shouldn't matter, all other events
@@ -22,9 +23,12 @@
                             :on-key-down #(r/dispatch-sync [:groupbar-input %])}]
        [:div {:class (str "suggestions"
                           (when-not @sug-active " hide"))}
+        [:div {:class "suggestion hover-background"
+               :on-click #(r/dispatch [:create-and-add-group-to-active])}
+         (str "New group: \"" @search "\"")]
         (for [sug @suggestions]
           ^{:key sug}
-          [:div {:class "suggestion"
+          [:div {:class "suggestion hover-background"
                  :on-click #(r/dispatch [:add-group-to-active-item sug])}
            (:group.name sug)])]])))
 

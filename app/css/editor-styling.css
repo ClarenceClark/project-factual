@@ -92,3 +92,8 @@
 .CodeMirror .CodeMirror-code .cm-quote {
     color: #000;
 }
+
+.CodeMirror .CodeMirror-code .cm-trailing-whitespace:last-child:after {
+    font-size: 12px;
+    content: '↵';
+}

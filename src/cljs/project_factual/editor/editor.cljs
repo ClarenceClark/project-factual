@@ -2,11 +2,6 @@
   "Actual html hiccup view for the app, wrapper is in p/editor"
   (:require [re-frame.core :as r]
             [reagent.core :as reagent]
-            [cljsjs.codemirror]
-            [cljsjs.codemirror.addon.edit.continuelist]
-            [cljsjs.codemirror.addon.edit.closebrackets]
-            [cljsjs.codemirror.addon.edit.matchbrackets]
-            [cljsjs.codemirror.mode.markdown]
             [project-factual.views.toolbar :as toolbar]))
 
 (defn- codemirror-component []

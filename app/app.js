@@ -101,9 +101,9 @@ var menuTemplate = [fileMenu, editMenu, debugMenu, helpMenu];
 // NOTE: not all of the browserWindow options listed on the docs page work
 // on all operating systems
 const browserWindowOptions = {
-  height: 850,
+  height: 750,
   title: 'project-factual',
-  width: 1400,
+  width: 1200,
   icon: __dirname + '/img/logo_96x96.png'
 };
 

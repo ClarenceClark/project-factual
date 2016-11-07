@@ -1,7 +1,12 @@
 (ns project-factual.editor.cm-wrapper
   "Custom implementation of a markdown editor based on CodeMirror"
   (:require [re-frame.core :as r]
-            [clojure.string :as string]))
+            [cljsjs.codemirror]
+            [cljsjs.codemirror.addon.edit.continuelist]
+            [cljsjs.codemirror.addon.edit.closebrackets]
+            [cljsjs.codemirror.addon.edit.matchbrackets]
+            [cljsjs.codemirror.mode.markdown]
+            [project-factual.editor.spellcheck :as spellcheck]))
 
 (defn- init-codemirror
   "New codemirror object"
@@ -12,45 +17,28 @@
     (clj->js (merge
                {:autofocus true
                 :mode "markdown"
-                :matchBrackets true
-                :autoCloseBrackets true
+                :matchBrackets true ; From addon matchbrackets
+                :autoCloseBrackets true ; From addon closebrackets
                 :lineNumbers false
                 :lineWrapping true
-                :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList"
+                :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList" ; From addon continuelist
                             "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
                clj-opts))))
-
-(defonce spellcheck (js/Typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
-(defonce word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
-(defonce number-regex #"[0-9]+")
-
-(defn advance-to-next-word-seperator [stream word seperators]
-  "WARNING: SIDE EFFECTS, advances stream to the next seperator"
-  (let [ch (.peek stream)]
-    (if (and (not (nil? ch))
-             (not (string/includes? seperators ch)))
-      (do (.next stream)
-          (recur stream (str word ch) seperators))
-      word)))
-
-(defn spellcheck-tokeniser [stream]
-  (let [ch (.peek stream)]
-    (if (string/includes? word-seperators ch)
-      (do (.next stream)
-          nil)
-      (let [word (advance-to-next-word-seperator stream "" word-seperators)]
-        (if (or (.check spellcheck word)
-                (re-matches number-regex word)) ; Is a number
-          nil
-          "spell-error")))))
-
-(def spellcheck-overlay #js{"token" spellcheck-tokeniser})
 
 (defn- register-event-handler [cm event handler]
   (.on cm
        event
        handler))
+
+;;; Trailing Whitespace
+
+(def trailing-whitespace-overlay
+  #js{"token" (fn [stream]
+                (if (.match stream #"^\s\s+$")
+                  "trailing-whitespace"
+                  (do (.match stream #"^\s*\S*")
+                      nil)))})
 
 (defn register-all-event-handlers [cm]
   (do
@@ -58,7 +46,8 @@
       cm
       "changes"
       #(r/dispatch [:save-editor-value]))
-    (.addOverlay cm spellcheck-overlay)))
+    (.addOverlay cm spellcheck/spellcheck-overlay)
+    (.addOverlay cm trailing-whitespace-overlay)))
 
 (defn new-editor
   "return a new codemirror editor"

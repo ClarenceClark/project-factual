@@ -14,13 +14,20 @@
   :groupbar-search-change
   [default-interceptors]
   (fn [db [new-value]]
-    (assoc db :groupbar-suggestions-search new-value)))
+    (-> db
+      (assoc :groupbar-suggestions-search new-value)
+      (assoc :active-suggestions-index 0))))
 
-(r/reg-event-db
+(r/reg-event-fx
   :groupbar-suggestions-active
   [default-interceptors]
-  (fn [db [new]]
-    (assoc db :groupbar-suggestions-active new)))
+  (fn [{:keys [db]} [new]]
+    (let [ret {:db (assoc db :groupbar-suggestions-active new)}]
+      (if new
+        ret
+        ; Clear out cached value if unfocused
+        (merge ret {:dispatch [:groupbar-search-change ""]
+                    :set-input-field ""})))))
 
 (r/reg-event-fx
   :groupbar-input
@@ -78,3 +85,8 @@
   :stop-event-default
   (fn [event]
     (.preventDefault event)))
+
+(r/reg-fx
+  :set-input-field
+  (fn [new]
+    (set! (.-value (.getElementById js/document "group-input")) new)))

@@ -41,7 +41,7 @@
               :item.content "First line\nSecond line"}
            2 {:item.id 2
               :item.type :item.markdown
-              :item.groups #{1}
+              :item.groups #{1 2}
               :item.content (multiline-string "# Mary had a little lamb"
                                               " "
                                               "Mary had a little lamb  "
@@ -52,7 +52,7 @@
                                               "That was as white as snow")}
            3 {:item.id 3
               :item.type :item.markdown
-              :item.groups #{1}
+              :item.groups #{1 2}
               :item.content (str "# Intro\nGo ahead, play around with the editor! "
                                  "Be sure to check out **bold** and *italic* styling, "
                                  "or even [links](http://google.com). "
@@ -74,9 +74,13 @@
    :groups {-1 group-all ; TODO get rid of magical constant
             1 {:group.id 1
                :group.name "Default"
+               :group.type :group.collection}
+            2 {:group.id 2
+               :group.name "Number 2"
                :group.type :group.collection}}
    :groupbar-suggestions-active false
    :groupbar-suggestions-search ""
+   :active-suggestions-index 0
    :active-item-id 1
    :active-group-id 1
    :sidebar-active false
