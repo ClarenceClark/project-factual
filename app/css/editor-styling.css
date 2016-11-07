@@ -67,6 +67,7 @@
     border-radius: 3px;
     font-family: "Source Code Pro", monospace;
     font-size: 0.8em;
+    color: #000;
 }
 
 .CodeMirror .CodeMirror-code .cm-link {

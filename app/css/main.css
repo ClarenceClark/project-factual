@@ -42,15 +42,17 @@ html, body {
 }
 
 .toolbar {
+    display: flex;
+    align-items: center;
     border-bottom: 1px solid #f0f0f0;
     z-index: 3;
-    height: 45px;
+    height: auto;
     font-size: 18px;
 }
 
 .toolbar-icon {
     display: inline-block;
-    padding: 12px;
+    padding: 12px 12px 12px 12px;
 }
 
 .hover-background:hover {
@@ -59,7 +61,7 @@ html, body {
 }
 
 .toolbar .icon-right {
-    float: right;
+    margin-left: auto;
 }
 
 .groupbar {
@@ -68,7 +70,7 @@ html, body {
     margin-left: 12px;
     align-items: center;
     float: left;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .groupbar .groupbar-elem {
@@ -81,7 +83,7 @@ html, body {
 }
 
 .icon-bar {
-    float: right;
+    margin-left: auto;
 }
 
 #group-input {
@@ -98,9 +100,10 @@ html, body {
 }
 
 .groupbar .new-group .suggestions {
+    font-size: inherit;
     position: absolute;
     left: 0;
-    max-width: 216px;
+    width: 216px;
     top: 20px;
     z-index: 999;
     background-color: #fff;
