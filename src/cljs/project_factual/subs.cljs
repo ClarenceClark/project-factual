@@ -113,9 +113,11 @@
   :<- [:all-normal-groups]
   :<- [:active-groups]
   (fn [[input groups active-groups] _]
-    (set/difference (set (filter #(s/includes? (:group.name %) input)
-                                 groups))
-                    (set active-groups))))
+    (sort-by #(:group.name %)
+             (set/difference
+               (set (filter #(s/includes? (:group.name %) input)
+                             groups))
+               (set active-groups)))))
 
 ;;; ------
 ;;; OTHERS
