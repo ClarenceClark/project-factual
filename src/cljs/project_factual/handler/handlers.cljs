@@ -2,9 +2,7 @@
   (:require [cljs.spec :as spec]
             [clojure.set :as set]
             [project-factual.data.db :as db]
-            [re-frame.core :as r]
-            [com.rpl.specter :as s])
-  (:require-macros [com.rpl.specter :as sm]))
+            [re-frame.core :as r]))
 
 (defn check-db-against-spec
   "Throws an exception if db does not match spec"

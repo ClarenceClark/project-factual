@@ -18,6 +18,12 @@
       (assoc :groupbar-suggestions-search new-value)
       (assoc :active-suggestions-index 0))))
 
+(r/reg-event-db
+  :set-active-suggestions-index
+  [default-interceptors]
+  (fn [db [i]]
+    (assoc db :active-suggestions-index i)))
+
 (r/reg-event-fx
   :groupbar-suggestions-active
   [default-interceptors]
@@ -60,11 +66,12 @@
 
 (r/reg-event-db
   :add-group-to-active-item
-  (fn [db]
-    #_(update-in db
+  [default-interceptors]
+  (fn [db [group]]
+    (println "hello")
+    (update-in db
                [:items (:active-item-id db) :item.groups]
-               #(conj % (:group.id group)))
-    db))
+               #(conj % (:group.id group)))))
 
 (r/reg-event-db
   :prev-suggestion

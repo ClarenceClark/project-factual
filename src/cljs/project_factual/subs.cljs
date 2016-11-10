@@ -82,6 +82,11 @@
   (fn [db _]
     (:groupbar-suggestions-active db)))
 
+(r/reg-sub
+  :active-suggestions-index
+  (fn [db _]
+    (:active-suggestions-index db)))
+
 ;;; ---------------------
 ;;; Active items & groups
 ;;; ---------------------
@@ -104,8 +109,9 @@
   :<- [:active-item]
   :<- [:groups-map]
   (fn [[active-item groups-map] _]
-    (vals (select-keys groups-map
-                       (:item.groups active-item)))))
+    (sort-by #(:group.name %)
+      (vals (select-keys groups-map
+                         (:item.groups active-item))))))
 
 (r/reg-sub
   :groupbar-suggestions

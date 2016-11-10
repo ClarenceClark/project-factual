@@ -1,5 +1,6 @@
 (ns project-factual.views.toolbar
-  (:require [re-frame.core :as r]))
+  (:require [re-frame.core :as r]
+            [re-com.core :as re-com]))
 
 (defn groupbar-elem [group]
   [:div {:class "dropdown-container groupbar-elem hover-background"
@@ -7,30 +8,30 @@
          :on-context-menu #(r/dispatch [:remove-group-from-active group])}
    (:group.name group)])
 
+(defn suggestion [index group selected?]
+  [:div {:class (str "suggestion" (when selected? " selected"))
+         :on-mouse-enter #(r/dispatch [:set-active-suggestions-index index])
+         :on-click #(do (r/dispatch [:add-group-to-active-item group])
+                        (r/dispatch [:reset-suggestions]))}
+   (:group.name group)])
+
 (defn new-group []
-  (let [suggestions (r/subscribe [:groupbar-suggestions])
-        sug-active (r/subscribe [:groupbar-suggestions-active])
-        search (r/subscribe [:groupbar-suggestions-search])]
-    (fn new-group []
+  (let [active? (r/subscribe [:groupbar-suggestions-active])
+        suggestions (r/subscribe [:groupbar-suggestions])
+        active-index (r/subscribe [:active-suggestions-index])]
+    (fn []
       [:div.new-group
-       [:input#group-input {:on-change #(r/dispatch [:groupbar-search-change (.-value (.-target %))])
-                            :on-blur #(r/dispatch [:groupbar-suggestions-active false])
-                            :on-focus #(do (r/dispatch [:groupbar-suggestions-active true]))
-                            ; Sync because events gets recycled by react, and we must do
-                            ; stuff with it before that happens. It only dispatches more events, so
-                            ; the fact that it is out of order shouldn't matter, all other events
-                            ; in queue will be processed before the ones dispatched by this one
-                            :on-key-down #(r/dispatch-sync [:groupbar-input %])}]
-       [:div {:class (str "suggestions"
-                          (when-not @sug-active " hide"))}
-        [:div {:class "suggestion hover-background"
-               :on-click #(r/dispatch [:create-and-add-group-to-active])}
-         (str "New group: \"" @search "\"")]
-        (for [sug @suggestions]
-          ^{:key sug}
-          [:div {:class "suggestion hover-background"
-                 :on-click #(r/dispatch [:add-group-to-active-item sug])}
-           (:group.name sug)])]])))
+       [:input {:id "group-input"
+                :on-change #(r/dispatch-sync [:groupbar-search-change (.-value (.-target %))])
+                :on-focus #(r/dispatch [:groupbar-suggestions-active true])
+                :on-blur #(r/dispatch [:groupbar-suggestions-active false])
+                :on-key-down #(r/dispatch-sync [:groupbar-input %])}]
+       [:div {:class (str "suggestions-container" (when-not @active? " hide"))}
+        (doall
+          (for [[index group] (map vector (range) @suggestions)
+                :let [selected? (= index @active-index)]]
+            ^{:key index}
+            [suggestion index group selected?]))]])))
 
 (defn groupbar []
   (let [groups (r/subscribe [:active-groups])]

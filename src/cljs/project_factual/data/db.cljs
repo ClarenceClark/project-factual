@@ -77,6 +77,12 @@
                :group.type :group.collection}
             2 {:group.id 2
                :group.name "Number 2"
+               :group.type :group.collection}
+            3 {:group.id 3
+               :group.name "Number 3"
+               :group.type :group.collection}
+            4 {:group.id 4
+               :group.name "number 4"
                :group.type :group.collection}}
    :groupbar-suggestions-active false
    :groupbar-suggestions-search ""

@@ -29,6 +29,10 @@ html, body {
     display: none;
 }
 
+.active {
+    background-color: #eee;
+}
+
 .dim {
     background-color: rgba(0,0,0,0.4);
     position: absolute;
@@ -88,7 +92,7 @@ html, body {
 
 #group-input {
     width: 120px;
-    height: 16px;
+    height: 18px;
     border: none;
     outline: none;
     font-size: inherit;
@@ -99,7 +103,7 @@ html, body {
     position: relative;
 }
 
-.groupbar .new-group .suggestions {
+.groupbar .new-group .suggestions-container {
     font-size: inherit;
     position: absolute;
     left: 0;
@@ -111,6 +115,11 @@ html, body {
     border-radius: 15px;
 }
 
-.suggestions .suggestion {
+.suggestions-container .suggestion {
     padding: 2px 15px 2px 15px;
+}
+
+.suggestions-container .selected {
+    background-color: #eee;
+    border-radius: 15px;
 }
