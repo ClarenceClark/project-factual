@@ -18,22 +18,25 @@
       (assoc :groupbar-suggestions-search new-value)
       (assoc :active-suggestions-index 0))))
 
+(r/reg-event-fx
+  :reset-suggestions
+  [default-interceptors]
+  (fn [{:keys [db]} _]
+    {:db db
+     :dispatch [:groupbar-search-change ""]
+     :set-input-field ""}))
+
 (r/reg-event-db
   :set-active-suggestions-index
   [default-interceptors]
   (fn [db [i]]
     (assoc db :active-suggestions-index i)))
 
-(r/reg-event-fx
+(r/reg-event-db
   :groupbar-suggestions-active
   [default-interceptors]
-  (fn [{:keys [db]} [new]]
-    (let [ret {:db (assoc db :groupbar-suggestions-active new)}]
-      (if new
-        ret
-        ; Clear out cached value if unfocused
-        (merge ret {:dispatch [:groupbar-search-change ""]
-                    :set-input-field ""})))))
+  (fn [db [new]]
+    (assoc db :groupbar-suggestions-active new)))
 
 (r/reg-event-fx
   :groupbar-input

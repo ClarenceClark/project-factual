@@ -11,6 +11,7 @@
 (defn suggestion [index group selected?]
   [:div {:class (str "suggestion" (when selected? " selected"))
          :on-mouse-enter #(r/dispatch [:set-active-suggestions-index index])
+         ; FIXME: clicks unfocus the text box, so this code never gets executed
          :on-click #(do (r/dispatch [:add-group-to-active-item group])
                         (r/dispatch [:reset-suggestions]))}
    (:group.name group)])
@@ -24,7 +25,8 @@
        [:input {:id "group-input"
                 :on-change #(r/dispatch-sync [:groupbar-search-change (.-value (.-target %))])
                 :on-focus #(r/dispatch [:groupbar-suggestions-active true])
-                :on-blur #(r/dispatch [:groupbar-suggestions-active false])
+                :on-blur #(do (r/dispatch [:groupbar-suggestions-active false])
+                              (r/dispatch [:reset-suggestions]))
                 :on-key-down #(r/dispatch-sync [:groupbar-input %])}]
        [:div {:class (str "suggestions-container" (when-not @active? " hide"))}
         (doall
