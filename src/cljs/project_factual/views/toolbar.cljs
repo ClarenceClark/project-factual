@@ -4,8 +4,9 @@
 
 (defn groupbar-elem [group]
   [:div {:class "dropdown-container groupbar-elem hover-background"
-         :on-click #(r/dispatch [:click-tag group])
-         :on-context-menu #(r/dispatch [:remove-group-from-active group])}
+         :on-mouse-down #(r/dispatch [:click-tag group])
+         :on-context-menu #(do (r/dispatch [:remove-group-from-active group])
+                               (.preventDefault %))} 
    (:group.name group)])
 
 (defn suggestion [index group selected?]
