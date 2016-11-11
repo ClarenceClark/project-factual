@@ -136,12 +136,3 @@ To run a command, type `grunt <command>` in the terminal.
 | launch        | Launches the electron app                                                                 |
 | release       | Creates a Win/OSX/Linux executables                                                       |
 | outdated      | List all outdated clj/cljs/node/bower dependencies                                        |
-
-## Leiningen commands
-
-To run a command, type `lein <command>` in the terminal.
-
-| Command       | Description                                                                               |
-|---------------|-------------------------------------------------------------------------------------------|
-| cljfmt fix    | Auto-formats all clj/cljs code. See [cljfmt](https://github.com/weavejester/cljfmt)       |
-| kibit         | Statically analyse clj/cljs and give suggestions                                          |
