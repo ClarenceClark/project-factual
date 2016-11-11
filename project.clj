@@ -16,7 +16,8 @@
                  [re-com "1.0.0"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-ancient "0.6.8"]]
+            [lein-ancient "0.6.8"]
+            [lein-figwheel "0.5.8"]]
 
   :min-lein-version "2.5.3"
 
