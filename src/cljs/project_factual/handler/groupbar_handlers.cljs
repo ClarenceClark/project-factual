@@ -71,7 +71,6 @@
   :add-group-to-active-item
   [default-interceptors]
   (fn [db [group]]
-    (println "hello")
     (update-in db
                [:items (:active-item-id db) :item.groups]
                #(conj % (:group.id group)))))
