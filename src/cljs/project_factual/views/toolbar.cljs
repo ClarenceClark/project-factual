@@ -1,48 +1,34 @@
 (ns project-factual.views.toolbar
   (:require [re-frame.core :as r]
-            [re-com.core :as re-com]))
+            [project-factual.views.suggestions-box :as sug-box]
+            [clojure.set :as set]
+            [clojure.string :as string]))
 
 (defn groupbar-elem [group]
   [:div {:class "dropdown-container groupbar-elem hover-background"
-         :on-mouse-down #(r/dispatch [:click-tag group])
          :on-context-menu #(do (r/dispatch [:remove-group-from-active group])
-                               (.preventDefault %))} 
+                               (.preventDefault %))}
    (:group.name group)])
-
-(defn suggestion [index group selected?]
-  [:div {:class (str "suggestion" (when selected? " selected"))
-         :on-mouse-enter #(r/dispatch [:set-active-suggestions-index index])
-         ; FIXME: clicks unfocus the text box, so this code never gets executed
-         :on-click #(do (r/dispatch [:add-group-to-active-item group])
-                        (r/dispatch [:reset-suggestions]))}
-   (:group.name group)])
-
-(defn new-group []
-  (let [active? (r/subscribe [:groupbar-suggestions-active])
-        suggestions (r/subscribe [:groupbar-suggestions])
-        active-index (r/subscribe [:active-suggestions-index])]
-    (fn []
-      [:div.new-group
-       [:input {:id "group-input"
-                :on-change #(r/dispatch-sync [:groupbar-search-change (.-value (.-target %))])
-                :on-focus #(r/dispatch [:groupbar-suggestions-active true])
-                :on-blur #(do (r/dispatch [:groupbar-suggestions-active false])
-                              (r/dispatch [:reset-suggestions]))
-                :on-key-down #(r/dispatch-sync [:groupbar-input %])}]
-       [:div {:class (str "suggestions-container" (when-not @active? " hide"))}
-        (doall
-          (for [[index group] (map vector (range) @suggestions)
-                :let [selected? (= index @active-index)]]
-            ^{:key index}
-            [suggestion index group selected?]))]])))
 
 (defn groupbar []
-  (let [groups (r/subscribe [:active-groups])]
+  (let [groups (r/subscribe [:active-groups])
+        all-groups (r/subscribe [:all-normal-groups])]
     [:div.groupbar
      (for [group @groups]
        ^{:key group}
        [groupbar-elem group])
-     [new-group]]))
+     [sug-box/suggestions-box
+      (fn data-source [search]
+        (sort-by #(:group.name %)
+                 (set/difference
+                   (set (filter #(string/includes? (:group.name %) search)
+                                @all-groups))
+                   (set @groups))))
+      ; Not-so-temporary workaround: since the component has no way of knowing
+      ; that it should fetch new suggestions, we make sure that groups change
+      ; before it fetches new components for the on-change operation
+      #(r/dispatch-sync [:add-group-to-active-item %])
+      #(:group.name %)]]))
 
 (defn toolbar []
   [:div.toolbar

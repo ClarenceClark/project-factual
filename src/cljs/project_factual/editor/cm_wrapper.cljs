@@ -32,11 +32,12 @@
        handler))
 
 (def linebreak-overlay
-  #js{"token" (fn [stream]
-                (if (.match stream #"^\s\s+$")
-                  "linebreak"
-                  (do (.match stream #"^\s*\S*")
-                      nil)))})
+  #js{"token"
+      (fn [stream]
+        (if (.match stream #"^\s\s+$")
+          "linebreak"
+          (do (.match stream #"^\s*\S*")
+              nil)))})
 
 (defn register-all-event-handlers [cm]
   (do

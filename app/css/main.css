@@ -90,7 +90,11 @@ html, body {
     margin-left: auto;
 }
 
-#group-input {
+.groupbar .suggestions-box {
+    position: relative;
+}
+
+.suggestions-box input.suggestion-box-input {
     width: 120px;
     height: 18px;
     border: none;
@@ -99,11 +103,7 @@ html, body {
     font-family: inherit;
 }
 
-.groupbar .new-group {
-    position: relative;
-}
-
-.groupbar .new-group .suggestions-container {
+.groupbar .suggestions-box .suggestions-container {
     font-size: inherit;
     position: absolute;
     left: 0;
@@ -113,13 +113,14 @@ html, body {
     background-color: #fff;
     border: solid 1px #f0f0f0;
     border-radius: 15px;
+    margin-left: -15px;
 }
 
 .suggestions-container .suggestion {
     padding: 2px 15px 2px 15px;
 }
 
-.suggestions-container .selected {
+.suggestions-container .suggestion-selected {
     background-color: #eee;
     border-radius: 15px;
 }
