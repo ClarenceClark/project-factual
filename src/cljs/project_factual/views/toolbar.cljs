@@ -28,7 +28,8 @@
       ; that it should fetch new suggestions, we make sure that groups change
       ; before it fetches new components for the on-change operation
       #(r/dispatch-sync [:add-group-to-active-item %])
-      #(:group.name %)]]))
+      #(:group.name %)
+      :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar []
   [:div.toolbar

@@ -39,6 +39,12 @@
      :set-editor-value [(:editor db)
                         (get-in db [:items (:active-item-id db) :item.content])]}))
 
+(r/reg-event-fx
+  :focus-editor
+  (fn [{:keys [db]} _]
+    {:db db
+     :focus-cm (:editor db)}))
+
 ;; ------------
 ;; Side-effects
 ;; ------------
@@ -57,3 +63,8 @@
   :set-editor-value
   (fn [[cm new-value]]
     (editor/set-value cm new-value)))
+
+(r/reg-fx
+  :focus-cm
+  (fn [cm]
+    (.focus cm)))

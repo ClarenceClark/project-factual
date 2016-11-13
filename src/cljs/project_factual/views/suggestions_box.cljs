@@ -43,24 +43,29 @@
     (swap! state-atom get-new-suggestions)))
 
 (defn- input-key-down! [state-atom event]
-  (condp = (.-which event)
-    goog.events.KeyCodes.UP (swap! state-atom modify-selection-index-by dec)
-    goog.events.KeyCodes.DOWN (swap! state-atom modify-selection-index-by inc)
-    goog.events.KeyCodes.ENTER (choose-suggestion! state-atom)
-    goog.events.KeyCodes.TAB (do (choose-suggestion! state-atom)
-                                 ; Don't lose focus
-                                 (.preventDefault event))
-    nil))
+  (let [{:keys [on-blur]} @state-atom]
+    (condp = (.-which event)
+      goog.events.KeyCodes.UP (swap! state-atom modify-selection-index-by dec)
+      goog.events.KeyCodes.DOWN (swap! state-atom modify-selection-index-by inc)
+      goog.events.KeyCodes.ENTER (choose-suggestion! state-atom)
+      goog.events.KeyCodes.TAB (do (choose-suggestion! state-atom)
+                                   ; Don't lose focus
+                                   (.preventDefault event))
+      goog.events.KeyCodes.ESC (do (.blur (.-currentTarget event))
+                                   (on-blur))
+      nil)))
 
-(defn suggestions-box [data-source on-change render-fn]
+(defn suggestions-box [data-source on-change render-fn & rest]
   "Input field with suggestions; based loosely on re-com's typeahead"
-  (let [state-atom (reagent/atom {:show-suggestions? false
+  (let [{:keys [on-blur]} rest
+        state-atom (reagent/atom {:show-suggestions? false
                                   :search ""
                                   :suggestions (data-source "")
                                   :active-suggestion-index 0
                                   :on-change on-change
                                   :data-source data-source
-                                  :input-dom nil})]
+                                  :input-dom nil
+                                  :on-blur (or on-blur (constantly nil))})]
     (reagent/create-class
       {:component-did-mount
        (fn [this]
