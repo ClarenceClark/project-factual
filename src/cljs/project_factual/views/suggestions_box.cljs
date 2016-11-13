@@ -89,7 +89,9 @@
                                      (swap! state-atom update-internal-input-state (.-value input-dom))
                                      (swap! state-atom get-new-suggestions))}]
             [:div {:class (str "suggestions-container"
-                               (when-not (or show-suggestions? (= 0 (count suggestions))) " hide"))}
+                               (when (or (not show-suggestions?)
+                                         (= 0 (count suggestions)))
+                                 " hide"))}
              (for [[index suggestion] (map vector (range) suggestions)
                    :let [selected? (= index active-suggestion-index)]]
                ^{:key index}
