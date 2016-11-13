@@ -37,10 +37,13 @@
 
 (defn- choose-suggestion! [state-atom]
   (let [{:keys [on-change suggestions active-suggestion-index]} @state-atom
-        chosen (nth suggestions active-suggestion-index)]
-    (on-change chosen)
-    (set-suggestion! state-atom "")
-    (swap! state-atom get-new-suggestions)))
+        sug-count (count suggestions)
+        chosen (when-not (= sug-count 0)
+                 (nth suggestions active-suggestion-index))]
+    (if chosen
+      (do (on-change chosen)
+          (set-suggestion! state-atom "")
+          (swap! state-atom get-new-suggestions)))))
 
 (defn- input-key-down! [state-atom event]
   (let [{:keys [on-blur]} @state-atom]
