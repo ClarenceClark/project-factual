@@ -3,7 +3,7 @@
 
 (defn sidebar-group-elem-base [group active-group icon]
   [:div {:class (str "sidebar-elem hover-background"
-                    (when (= @active-group (:group.id group)) " sidebar-elem-active"))
+                    (when (= @active-group (:group.id group)) " selected"))
          :on-click #(do
                      (r/dispatch [:new-active-group (:group.id group)])
                      (r/dispatch [:set-sidebar-visibility false]))}

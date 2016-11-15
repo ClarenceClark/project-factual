@@ -8,7 +8,7 @@
 (defn main-page []
   (let [dimmed (r/subscribe [:screen-dim])]
     (fn []
-      [:div {:class "main"}
+      [:div {:class "main theme-dark"}
        [sidebar/sidebar]
        [items-list/items-list]
        [markdown-editor/editor]

@@ -1,0 +1,32 @@
+@import "variables";
+
+.items-list-container {
+  float: left;
+  width: 360px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  .items-list-elem {
+    padding:12px 25px 12px 25px;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      .list-elem-title {
+        font-size: $font-size;
+        padding-right: 40px;
+      }
+
+      .list-elem-summary {
+        font-size: $font-size-small;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

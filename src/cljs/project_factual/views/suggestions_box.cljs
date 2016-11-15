@@ -95,7 +95,7 @@
              (for [[index suggestion] (map vector (range) suggestions)
                    :let [selected? (= index active-suggestion-index)]]
                ^{:key index}
-               [:div {:class (str "suggestion" (when selected? " suggestion-selected"))
+               [:div {:class (str "suggestion" (when selected? " active"))
                       ; We don't want mouse clicks to unfocus the text box
                       :on-mouse-down #(.preventDefault %)
                       :on-click #(choose-suggestion! state-atom)

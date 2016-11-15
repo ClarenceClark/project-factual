@@ -21,7 +21,8 @@
       (fn data-source [search]
         (sort-by #(:group.name %)
                  (set/difference
-                   (set (filter #(string/includes? (:group.name %) search)
+                   (set (filter #(string/includes? (string/lower-case (:group.name %))
+                                                   (string/lower-case search))
                                 @all-groups))
                    (set @groups))))
       ; Not-so-temporary workaround: since the component has no way of knowing
@@ -32,7 +33,7 @@
       :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar []
-  [:div.toolbar
+  [:div {:class "toolbar border-bottom"}
    [groupbar]
    [:div.icon-bar
     [:div {:class "toolbar-icon hover-background icon-info-circled-alt"

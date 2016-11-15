@@ -31,7 +31,7 @@
 
   :clean-targets ^{:protect false} [:target-path "out" "app/js/p"]
 
-  :figwheel {:css-dirs ["app/css"]}
+  :figwheel {:css-dirs ["app"]}
 
   :profiles
   {:dev

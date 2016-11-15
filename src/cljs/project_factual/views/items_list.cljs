@@ -17,7 +17,7 @@
                         (str/split-lines (:item.content item)))
           id (:item.id item)]
       [:li {:class    (str "items-list-elem hover-background"
-                           (when (= id @active-item-id) " list-elem-active"))
+                           (when (= id @active-item-id) " active"))
             :on-click #(r/dispatch [:new-active-item id])}
        [:div {:class "list-elem-title one-line-summary"}
         (space-if-blank (first lines))]
@@ -25,7 +25,7 @@
         (space-if-blank (second lines))]])))
 
 (defn items-toolbar []
-  [:div.toolbar
+  [:div.toolbar.border-bottom
    [:div {:class "toolbar-icon hover-background"
           :on-click #(r/dispatch [:set-sidebar-visibility true])}
     [:i.icon-menu]]
@@ -39,7 +39,7 @@
   (let [items (r/subscribe [:active-items])
         active-item-id (r/subscribe [:active-item-id])]
     (fn []
-      [:div {:class "items-list-container"}
+      [:div {:class "items-list-container border-right"}
        [items-toolbar]
        [:ul {:class "items-list"}
         (for [item @items]

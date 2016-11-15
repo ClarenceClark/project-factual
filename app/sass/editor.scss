@@ -1,0 +1,77 @@
+@import "variables";
+
+.editor {
+  position: absolute;
+  height: 100%;
+  left: $items-list-width + 1;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: inherit;
+
+  .icon-bar {
+    margin-left: auto;
+  }
+
+  .groupbar {
+    display: flex;
+    height: 45px;
+    margin-left: 12px;
+    align-items: center;
+    float: left;
+    font-size: inherit;
+    background-color: inherit;
+
+    .groupbar-elem {
+      display: inline-block;
+      float: left;
+      padding: 3px 5px 3px 5px;
+      margin-right: 8px;
+      border: solid 1px #f0f0f0;
+      border-radius: $border-radius;
+      font-size: $font-size-small;
+    }
+
+    .suggestions-box {
+      position: relative;
+      background-color: inherit;
+
+      input {
+        width: 120px;
+        height: 18px;
+        border: none;
+        outline: none;
+        font-size: inherit;
+        font-family: inherit;
+        background-color: inherit;
+        color: inherit;
+      }
+
+      .suggestions-container {
+        font-size: inherit;
+        position: absolute;
+        left: 0;
+        width: 216px;
+        top: 20px;
+        z-index: $base-z + 10000;
+        background-color: inherit;
+        border: solid 1px #f0f0f0;
+        border-radius: $border-radius;
+        margin-left: -15px;
+
+        .suggestion {
+          padding: 2px 15px 2px 15px;
+          border-radius: inherit;
+        }
+      }
+    }
+  }
+
+  .item-display {
+    position: absolute;
+    top: $toolbar-height + 10px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
+}

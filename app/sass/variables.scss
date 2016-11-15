@@ -1,0 +1,52 @@
+// Stolen from Simplenote
+
+// Blues
+$blue: #4895d9;
+$blue-lightest: lighten($blue, 33%);
+$blue-light: lighten($blue, 20%);
+$blue-active-highlight: lighten($blue, 10%);
+
+// Greys
+$grey: #899199;
+$grey-lighter: lighten($grey, 28%);
+$grey-lightest: lighten($grey-lighter, 10%);
+$grey-darker: darken($grey, 28%);
+$grey-darkest: darken($grey-darker, 10%);
+
+// Secondary
+$yellow: #f0b849;
+$red: #d94f4f;
+$green: #4ab866;
+$white: #fff;
+
+// Text
+$font-size-large: 21px;
+$font-size: 18px;
+$font-size-small: 15px;
+$normal: 400;
+$bold: 600;
+$light: 300;
+
+$serif-font: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
+$sans-serif-font: "Open Sans", "Ubuntu", sans-serif;
+$monospace-font: "Source Code Pro", monospace;
+
+$anim-transition: all 200ms ease-in-out;
+$anim-fast: all .1s ease-in-out;
+$anim: all .2s ease-in-out;
+
+$fade-alpha: 0.25;
+
+$border-radius: 8px;
+
+// Global Measurements
+$items-list-width: 360px;
+$toolbar-height: 46px;
+
+// z-index values
+$z-index-dialogs: 1000;
+$base-z: 1;
+
+// Viewport widths for media queries
+$single-column: 750px;
+$medium: 900px;

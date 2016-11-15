@@ -24,7 +24,7 @@
        (r/dispatch [:destroy-editor]))}))
 
 (defn editor []
-  [:div {:class "content"}
+  [:div {:class "editor"}
    [toolbar/toolbar]
-   [:div.editor
+   [:div.item-display
     [codemirror-component]]])

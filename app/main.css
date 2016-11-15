@@ -1,0 +1,238 @@
+@charset "UTF-8";
+@import url(sass/fontello.css);
+@import url(sass/codemirror.css);
+.sidebar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  transition: all 0.3s ease;
+  z-index: 999;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  background-color: inherit; }
+  .sidebar .special-elems {
+    margin: 10px 0 16px 0; }
+    .sidebar .special-elems .group-icon {
+      display: inline; }
+  .sidebar .sidebar-groups {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+  .sidebar .group-name {
+    display: inline; }
+  .sidebar .sidebar-elem {
+    padding: 6px 14px 0 24px; }
+
+.sidebar.sidebar-hidden {
+  left: -250px; }
+
+.items-list-container {
+  float: left;
+  width: 360px;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+  .items-list-container .items-list-elem {
+    padding: 12px 25px 12px 25px; }
+  .items-list-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    .items-list-container ul li .list-elem-title {
+      font-size: 18px;
+      padding-right: 40px; }
+    .items-list-container ul li .list-elem-summary {
+      font-size: 15px;
+      padding: 0;
+      margin: 0; }
+
+.editor {
+  position: absolute;
+  height: 100%;
+  left: 361px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: inherit; }
+  .editor .icon-bar {
+    margin-left: auto; }
+  .editor .groupbar {
+    display: flex;
+    height: 45px;
+    margin-left: 12px;
+    align-items: center;
+    float: left;
+    font-size: inherit;
+    background-color: inherit; }
+    .editor .groupbar .groupbar-elem {
+      display: inline-block;
+      float: left;
+      padding: 3px 5px 3px 5px;
+      margin-right: 8px;
+      border: solid 1px #f0f0f0;
+      border-radius: 8px;
+      font-size: 15px; }
+    .editor .groupbar .suggestions-box {
+      position: relative;
+      background-color: inherit; }
+      .editor .groupbar .suggestions-box input {
+        width: 120px;
+        height: 18px;
+        border: none;
+        outline: none;
+        font-size: inherit;
+        font-family: inherit;
+        background-color: inherit;
+        color: inherit; }
+      .editor .groupbar .suggestions-box .suggestions-container {
+        font-size: inherit;
+        position: absolute;
+        left: 0;
+        width: 216px;
+        top: 20px;
+        z-index: 10001;
+        background-color: inherit;
+        border: solid 1px #f0f0f0;
+        border-radius: 8px;
+        margin-left: -15px; }
+        .editor .groupbar .suggestions-box .suggestions-container .suggestion {
+          padding: 2px 15px 2px 15px;
+          border-radius: inherit; }
+  .editor .item-display {
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    right: 0;
+    left: 0; }
+
+/* Stolen (sorry, adapted) from SimpleMDE */
+.CodeMirror {
+  font-family: inherit;
+  height: 100%;
+  font-size: 18px;
+  padding: 0 15px 0 15px;
+  color: inherit;
+  background-color: inherit; }
+  .CodeMirror .CodeMirror-selected {
+    background: #d9d9d9;
+    color: #2d3034; }
+  .CodeMirror .CodeMirror-lines {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto; }
+  .CodeMirror .CodeMirror-code .cm-variable-2, .CodeMirror .CodeMirror-code .cm-variable-3 {
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-quote {
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-strikethrough {
+    text-decoration: line-through; }
+  .CodeMirror .CodeMirror-code .cm-tag {
+    color: #62a35c; }
+  .CodeMirror .CodeMirror-code .cm-attribute {
+    color: #795da3; }
+  .CodeMirror .CodeMirror-code .cm-string {
+    color: #183691; }
+  .CodeMirror .CodeMirror-code .cm-link {
+    color: #7f8c8d; }
+  .CodeMirror .CodeMirror-code .cm-url {
+    color: #aab2b3; }
+  .CodeMirror .CodeMirror-code .cm-header-1 {
+    font-size: 200%;
+    line-height: 100%;
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-header-2 {
+    font-size: 160%;
+    line-height: 100%;
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-header-3 {
+    font-size: 125%;
+    line-height: 100%;
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-header-4 {
+    font-size: 110%;
+    line-height: 100%;
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-comment {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    font-family: "Source Code Pro", monospace;
+    font-size: 0.8em;
+    color: inherit; }
+  .CodeMirror .CodeMirror-code .cm-linebreak:last-child::after {
+    font-size: 12px;
+    content: '↵'; }
+  .CodeMirror .CodeMirror-code .CodeMirror-matchingbracket {
+    background: rgba(0, 0, 0, 0.05); }
+
+.CodeMirror .CodeMirror-placeholder {
+  opacity: .5; }
+
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+  background: rgba(255, 0, 0, 0.15); }
+
+.theme-light {
+  background-color: #fff;
+  color: #2d3034; }
+  .theme-light .active {
+    background-color: #f1f2f3; }
+  .theme-light .hover-background:hover {
+    background-color: #f1f2f3; }
+  .theme-light .border-right {
+    border-right: 1px solid #d6d8db; }
+  .theme-light .border-bottom {
+    border-bottom: 1px solid #d6d8db; }
+
+.theme-dark {
+  background-color: #444a4f;
+  color: #d6d8db; }
+  .theme-dark .active {
+    background-color: #899199; }
+  .theme-dark .hover-background:hover {
+    background-color: #899199; }
+  .theme-dark .border-right {
+    border-right: 1px solid #d6d8db; }
+  .theme-dark .border-bottom {
+    border-bottom: 1px solid #d6d8db; }
+  .theme-dark .CodeMirror-cursor {
+    border-left: 1px solid #d6d8db; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+.main {
+  z-index: 1;
+  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+  height: 100%; }
+
+.hide {
+  display: none; }
+
+.icon-right {
+  margin-left: auto; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  background-color: inherit; }
+  .toolbar .toolbar-icon {
+    display: inline-block;
+    padding: 12px; }
+
+.hover-background:hover {
+  cursor: pointer; }
+
+.one-line-summary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+/*# sourceMappingURL=main.css.map */

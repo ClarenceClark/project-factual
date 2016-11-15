@@ -1,0 +1,19 @@
+// A high-contrast Jony Ive theme that leaves you blind
+
+@import "variables";
+
+.theme-light {
+  background-color: $white;
+  color: $grey-darkest;
+
+  .active {
+    background-color: $grey-lightest;
+  }
+
+  .hover-background:hover {
+    background-color: $grey-lightest;
+  }
+
+  .border-right { border-right: 1px solid $grey-lighter; }
+  .border-bottom { border-bottom: 1px solid $grey-lighter; }
+}

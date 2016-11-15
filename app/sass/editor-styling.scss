@@ -1,0 +1,81 @@
+/* Stolen (sorry, adapted) from SimpleMDE */
+
+@import "variables";
+
+.CodeMirror {
+  font-family: inherit;
+  height: 100%;
+  font-size: $font-size;
+  padding: 0 15px 0 15px;
+  color: inherit;
+  background-color: inherit;
+
+  .CodeMirror-selected {
+    background: #d9d9d9;
+    color: $grey-darkest;
+  }
+
+  .CodeMirror-lines {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .CodeMirror-code {
+    .cm-variable-2, .cm-variable-3 { color: inherit }
+    .cm-quote { color: inherit; }
+    .cm-strikethrough { text-decoration: line-through; }
+    .cm-tag { color: #62a35c }
+    .cm-attribute { color: #795da3; }
+    .cm-string { color: #183691; }
+    .cm-link { color: #7f8c8d; }
+    .cm-url { color: #aab2b3; }
+
+    .cm-header-1 {
+      font-size: 200%;
+      line-height: 100%;
+      color: inherit;
+    }
+
+    .cm-header-2 {
+      font-size: 160%;
+      line-height: 100%;
+      color: inherit;
+    }
+
+    .cm-header-3 {
+      font-size: 125%;
+      line-height: 100%;
+      color: inherit;
+    }
+
+    .cm-header-4 {
+      font-size: 110%;
+      line-height: 100%;
+      color: inherit;
+    }
+
+    .cm-comment {
+      background: rgba(0, 0, 0, .05);
+      border-radius: 3px;
+      font-family: "Source Code Pro", monospace;
+      font-size: 0.8em;
+      color: inherit;
+    }
+
+    // Custom modes
+
+    .cm-linebreak:last-child::after {
+      font-size: 12px;
+      content: '↵';
+    }
+
+    .CodeMirror-matchingbracket { background: rgba(0,0,0,0.05); }
+  }
+}
+
+.CodeMirror .CodeMirror-placeholder { opacity: .5; }
+
+.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+  background: rgba(255,0,0,.15)
+}
