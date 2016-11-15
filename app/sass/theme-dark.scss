@@ -1,0 +1,23 @@
+// A low-contrast grey mode for comfort to the eyes
+
+@import "variables";
+
+.theme-dark {
+  background-color: $grey-darker;
+  color: $grey-lighter;
+
+  .active {
+    background-color: $grey;
+  }
+
+  .hover-background:hover {
+    background-color: $grey;
+  }
+
+  .border-right { border-right: 1px solid $grey-lighter; }
+  .border-bottom { border-bottom: 1px solid $grey-lighter; }
+
+  .CodeMirror-cursor {
+    border-left: 1px solid $grey-lighter;
+  }
+}
