@@ -40,12 +40,14 @@ $fade-alpha: 0.25;
 $border-radius: 8px;
 
 // Global Measurements
+$sidebar-width: 300px;
 $items-list-width: 360px;
 $toolbar-height: 46px;
 
 // z-index values
 $z-index-dialogs: 1000;
 $base-z: 1;
+$z-dim: $base-z + 1;
 
 // Viewport widths for media queries
 $single-column: 750px;
