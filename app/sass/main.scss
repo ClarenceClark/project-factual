@@ -25,11 +25,19 @@ html, body {
   padding: 0;
 }
 
+@mixin user-select($select) {
+  // Should be removed when electron gets updated to v54
+  // where user-selected is supported without prefix
+  -webkit-user-select: $select;
+  user-select: $select;
+}
+
 .main {
   z-index: $base-z;
   font-size: $font-size;
   font-family: "Cormorant Garamond", serif;
   height: 100%;
+  @include user-select(none);
 }
 
 .hide { display: none }
