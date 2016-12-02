@@ -70,10 +70,9 @@
     .editor .groupbar .groupbar-elem {
       display: inline-block;
       float: left;
-      padding: 3px 5px 3px 5px;
+      padding: 4px 5px 4px 5px;
       margin-right: 8px;
-      border: solid 1px #f0f0f0;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 15px; }
     .editor .groupbar .suggestions-box {
       position: relative;
@@ -97,7 +96,7 @@
         z-index: 10001;
         background-color: inherit;
         border: solid 1px #f0f0f0;
-        border-radius: 8px;
+        border-radius: 6px;
         margin-left: -15px; }
         .editor .groupbar .suggestions-box .suggestions-container .suggestion {
           padding: 2px 15px 2px 15px;
