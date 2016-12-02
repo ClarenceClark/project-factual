@@ -33,12 +33,17 @@
       :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar []
-  [:div {:class "toolbar border-bottom"}
-   [groupbar]
-   [:div.icon-bar
-    [:div {:class "toolbar-icon hover-background icon-info-circled-alt"
-           :on-click #(r/dispatch [:display-active-item-info])}]
-    [:div {:class "toolbar-icon hover-background icon-trash-empty"
-           :on-click #(r/dispatch [:move-active-item-to-trash])}]
-    [:div {:class "toolbar-icon hover-background icon-dot-3"
-           :on-click #(r/dispatch [:menu-extra-toggle])}]]])
+  (let [preview-status (r/subscribe [:editor-mdpreview-status])]
+    (fn []
+      [:div {:class "toolbar border-bottom"}
+       [groupbar]
+       [:div.icon-bar
+        [:div {:class "toolbar-icon hover-background icon-info-circled-alt"
+               :on-click #(r/dispatch [:display-active-item-info])}]
+        [:div {:class (str "toolbar-icon hover-background "
+                           (if @preview-status "icon-eye" "icon-eye-off"))
+               :on-click #(r/dispatch [:toggle-editor-mdpreview])}]
+        [:div {:class "toolbar-icon hover-background icon-trash-empty"
+               :on-click #(r/dispatch [:move-active-item-to-trash])}]
+        [:div {:class "toolbar-icon hover-background icon-dot-3"
+               :on-click #(r/dispatch [:menu-extra-toggle])}]]])))

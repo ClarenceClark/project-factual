@@ -95,6 +95,13 @@
                [:items (:active-item-id db) :item.groups]
                #(conj % (:group.id group)))))
 
+(r/reg-event-db
+  :toggle-editor-mdpreview
+  [default-interceptors]
+  (fn [db]
+    (assoc db :editor-mdpreview-status
+              (not (:editor-mdpreview-status db)))))
+
 ;; ----------
 ;; REPL conveniences
 ;; ----------
