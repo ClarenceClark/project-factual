@@ -87,6 +87,14 @@
                  :group.name name}]
       (assoc-in db [:group id] group))))
 
+(r/reg-event-db
+  :add-group-to-active-item
+  [default-interceptors]
+  (fn [db [group]]
+    (update-in db
+               [:items (:active-item-id db) :item.groups]
+               #(conj % (:group.id group)))))
+
 ;; ----------
 ;; REPL conveniences
 ;; ----------
