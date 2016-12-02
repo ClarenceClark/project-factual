@@ -3,19 +3,25 @@
             [clojure.string :as s]
             [clojure.set :as set]))
 
+(defn reg-keyword-diff-sub [key1 key2]
+  "Same as `reg-keyword-sub`, except that key1 is the sub name and key2
+   is the name of the db field"
+  (r/reg-sub
+    key1
+    (fn [db _]
+      (key2 db))))
+
+(defn reg-keyword-sub [key]
+  "For the subscriptions that are a field in the database with the
+   same name as the sub"
+  (reg-keyword-diff-sub key key))
+
 ;;; -----
 ;;; ITEMS
 ;;; -----
 
-(r/reg-sub
-  :active-item-id
-  (fn [db _]
-    (:active-item-id db)))
-
-(r/reg-sub
-  :items-map
-  (fn [db _]
-    (:items db)))
+(reg-keyword-sub :active-item-id)
+(reg-keyword-diff-sub :items-map :items)
 
 (r/reg-sub
   :all-items
@@ -34,15 +40,8 @@
 ;;; GROUPS
 ;;; ------
 
-(r/reg-sub
-  :groups-map
-  (fn [db _]
-    (:groups db)))
-
-(r/reg-sub
-  :active-group-id
-  (fn [db _]
-    (:active-group-id db)))
+(reg-keyword-sub :active-group-id)
+(reg-keyword-diff-sub :groups-map :groups)
 
 (r/reg-sub
   :all-groups
@@ -72,20 +71,9 @@
 ;;; Groupbar
 ;;; --------
 
-(r/reg-sub
-  :groupbar-suggestions-search
-  (fn [db _]
-    (:groupbar-suggestions-search db)))
-
-(r/reg-sub
-  :groupbar-suggestions-active
-  (fn [db _]
-    (:groupbar-suggestions-active db)))
-
-(r/reg-sub
-  :active-suggestions-index
-  (fn [db _]
-    (:active-suggestions-index db)))
+(reg-keyword-sub :groupbar-suggestions-search)
+(reg-keyword-sub :groupbar-suggestions-active)
+(reg-keyword-sub :active-suggestions-index)
 
 ;;; ---------------------
 ;;; Active items & groups
@@ -129,10 +117,8 @@
 ;;; OTHERS
 ;;; ------
 
-(r/reg-sub
-  :sidebar-active
-  (fn [db _]
-    (:sidebar-active db)))
+(reg-keyword-sub :sidebar-active)
+(reg-keyword-sub :editor-mdpreview-status)
 
 (r/reg-sub
   :screen-dim
