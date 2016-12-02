@@ -48,14 +48,19 @@
 (defn- input-key-down! [state-atom event]
   (let [{:keys [on-blur]} @state-atom]
     (condp = (.-which event)
-      goog.events.KeyCodes.UP (swap! state-atom modify-selection-index-by dec)
-      goog.events.KeyCodes.DOWN (swap! state-atom modify-selection-index-by inc)
-      goog.events.KeyCodes.ENTER (choose-suggestion! state-atom)
-      goog.events.KeyCodes.TAB (do (choose-suggestion! state-atom)
-                                   ; Don't lose focus
-                                   (.preventDefault event))
-      goog.events.KeyCodes.ESC (do (.blur (.-currentTarget event))
-                                   (on-blur))
+      ; UP
+      38 (swap! state-atom modify-selection-index-by dec)
+      ; DOWN
+      40 (swap! state-atom modify-selection-index-by inc)
+      ; ENTER
+      13 (choose-suggestion! state-atom)
+      ; TAB
+      9 (do (choose-suggestion! state-atom)
+            ; Don't lose focus
+            (.preventDefault event))
+      ; ESCAPE
+      27 (do (.blur (.-currentTarget event))
+             (on-blur))
       nil)))
 
 (defn suggestions-box [data-source on-change render-fn & rest]
