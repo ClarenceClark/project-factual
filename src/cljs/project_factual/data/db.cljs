@@ -18,8 +18,13 @@
 (s/def ::active-item-id int?)
 (s/def ::active-group-id int?)
 (s/def ::sidebar-active boolean?)
+(s/def ::editor-mdpreview-status boolean?)
 
-(s/def ::db (s/keys :req-un [::items ::groups ::active-item-id ::active-group-id ::editor]))
+(s/def ::db (s/keys :req-un [::items ::groups
+                             ::active-item-id ::active-group-id
+                             ::sidebar-active
+                             ::editor-mdpreview-status
+                             ::editor]))
 
 ;; ----------
 ;; MOCK DATA
@@ -84,10 +89,8 @@
             4 {:group.id 4
                :group.name "number 4"
                :group.type :group.collection}}
-   :groupbar-suggestions-active false
-   :groupbar-suggestions-search ""
-   :active-suggestions-index 0
    :active-item-id 1
-   :active-group-id 1
+   :active-group-id -1
    :sidebar-active false
+   :editor-mdpreview-status false
    :editor nil})
