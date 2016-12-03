@@ -127,16 +127,10 @@
     color: inherit; }
   .CodeMirror .CodeMirror-code .cm-strikethrough {
     text-decoration: line-through; }
-  .CodeMirror .CodeMirror-code .cm-tag {
-    color: #62a35c; }
-  .CodeMirror .CodeMirror-code .cm-attribute {
-    color: #795da3; }
-  .CodeMirror .CodeMirror-code .cm-string {
-    color: #183691; }
-  .CodeMirror .CodeMirror-code .cm-link {
-    color: #7f8c8d; }
+  .CodeMirror .CodeMirror-code .cm-tag, .CodeMirror .CodeMirror-code .cm-link {
+    color: #757575; }
   .CodeMirror .CodeMirror-code .cm-url {
-    color: #aab2b3; }
+    color: darkgray; }
   .CodeMirror .CodeMirror-code .cm-header-1 {
     font-size: 200%;
     line-height: 100%;
@@ -178,6 +172,8 @@
     background-color: #bdbdbd; }
   .theme-light .hover-background:hover {
     background-color: #bdbdbd; }
+  .theme-light .list-elem-summary {
+    color: #757575; }
   .theme-light .border-right {
     border-right: 1px solid #bdbdbd; }
   .theme-light .border-bottom {
@@ -229,7 +225,8 @@ html, body {
   .toolbar .toolbar-icon {
     font-size: 16px;
     display: inline-block;
-    padding: 11px 10px; }
+    padding: 8px;
+    border-radius: 6px; }
 
 .hover-background:hover {
   cursor: pointer; }

@@ -20,11 +20,8 @@
     .cm-variable-2, .cm-variable-3 { color: inherit }
     .cm-quote { color: inherit; }
     .cm-strikethrough { text-decoration: line-through; }
-    .cm-tag { color: #62a35c }
-    .cm-attribute { color: #795da3; }
-    .cm-string { color: #183691; }
-    .cm-link { color: #7f8c8d; }
-    .cm-url { color: #aab2b3; }
+    .cm-tag, .cm-link { color: $grey-500 }
+    .cm-url { color: darken($grey-400, 8%) }
 
     .cm-header-1 {
       font-size: 200%;
@@ -53,7 +50,7 @@
     .cm-comment {
       background: rgba(0, 0, 0, .05);
       border-radius: 3px;
-      font-family: "Source Code Pro", monospace;
+      font-family: $monospace-font;
       font-size: 0.8em;
       color: inherit;
     }
