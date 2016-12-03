@@ -15,7 +15,7 @@
 
   .groupbar {
     display: flex;
-    height: 45px;
+    height: $toolbar-height;
     margin-left: 12px;
     align-items: center;
     float: left;
@@ -52,16 +52,17 @@
         position: absolute;
         left: 0;
         width: 216px;
-        top: 20px;
-        z-index: $base-z + 10000;
+        top: 24px;
+        z-index: $z-index-dialogs;
         background-color: inherit;
         border: solid 1px #f0f0f0;
         border-radius: $border-radius;
         margin-left: -15px;
+        padding: 5px 0;
+        box-shadow: 6px 6px 10px rgba(0, 0, 0, $dim-alpha / 2);
 
         .suggestion {
-          padding: 2px 15px 2px 15px;
-          border-radius: inherit;
+          padding: 2px 10px 2px 10px;
         }
       }
     }

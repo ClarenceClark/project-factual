@@ -3,20 +3,20 @@
 @import "variables";
 
 .theme-dark {
-  background-color: $grey-darker;
-  color: $grey-lighter;
+  background-color: $grey-800;
+  color: $grey-300;
 
   .active {
-    background-color: $grey;
+    background-color: $grey-700;
   }
 
   .hover-background:hover {
-    background-color: $grey;
+    background-color: $grey-700;
   }
 
-  .border-right { border-right: 1px solid $grey-lighter; }
-  .border-bottom { border-bottom: 1px solid $grey-lighter; }
+  .border-right { border-right: 1px solid $grey-500; }
+  .border-bottom { border-bottom: 1px solid $grey-500; }
 
-  .CodeMirror-cursor { border-left: 1px solid $grey-lighter; }
-  .CodeMirror-selected { background: $grey; }
+  .CodeMirror-cursor { border-left: 1px solid $grey-500; }
+  .CodeMirror-selected { background: $grey-700; }
 }

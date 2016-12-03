@@ -61,7 +61,7 @@
     margin-left: auto; }
   .editor .groupbar {
     display: flex;
-    height: 45px;
+    height: 42px;
     margin-left: 12px;
     align-items: center;
     float: left;
@@ -92,18 +92,19 @@
         position: absolute;
         left: 0;
         width: 216px;
-        top: 20px;
-        z-index: 10001;
+        top: 24px;
+        z-index: 1000;
         background-color: inherit;
         border: solid 1px #f0f0f0;
         border-radius: 6px;
-        margin-left: -15px; }
+        margin-left: -15px;
+        padding: 5px 0;
+        box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.25); }
         .editor .groupbar .suggestions-box .suggestions-container .suggestion {
-          padding: 2px 15px 2px 15px;
-          border-radius: inherit; }
+          padding: 2px 10px 2px 10px; }
   .editor .item-display {
     position: absolute;
-    top: 56px;
+    top: 52px;
     bottom: 0;
     right: 0;
     left: 0; }
@@ -116,8 +117,6 @@
   padding: 0 15px 0 15px;
   color: inherit;
   background-color: inherit; }
-  .CodeMirror .CodeMirror-selected {
-    background: #d6d8db; }
   .CodeMirror .CodeMirror-lines {
     max-width: 700px;
     margin-left: auto;
@@ -173,32 +172,34 @@
   background: rgba(255, 0, 0, 0.15); }
 
 .theme-light {
-  background-color: #fff;
-  color: #2d3034; }
+  background-color: #e0e0e0;
+  color: #424242; }
   .theme-light .active {
-    background-color: #f1f2f3; }
+    background-color: #bdbdbd; }
   .theme-light .hover-background:hover {
-    background-color: #f1f2f3; }
+    background-color: #bdbdbd; }
   .theme-light .border-right {
-    border-right: 1px solid #d6d8db; }
+    border-right: 1px solid #bdbdbd; }
   .theme-light .border-bottom {
-    border-bottom: 1px solid #d6d8db; }
+    border-bottom: 1px solid #bdbdbd; }
+  .theme-light .CodeMirror-selected {
+    background: #bdbdbd; }
 
 .theme-dark {
-  background-color: #444a4f;
-  color: #d6d8db; }
+  background-color: #424242;
+  color: #e0e0e0; }
   .theme-dark .active {
-    background-color: #899199; }
+    background-color: #616161; }
   .theme-dark .hover-background:hover {
-    background-color: #899199; }
+    background-color: #616161; }
   .theme-dark .border-right {
-    border-right: 1px solid #d6d8db; }
+    border-right: 1px solid #757575; }
   .theme-dark .border-bottom {
-    border-bottom: 1px solid #d6d8db; }
+    border-bottom: 1px solid #757575; }
   .theme-dark .CodeMirror-cursor {
-    border-left: 1px solid #d6d8db; }
+    border-left: 1px solid #757575; }
   .theme-dark .CodeMirror-selected {
-    background: #899199; }
+    background: #616161; }
 
 html, body {
   width: 100%;
@@ -209,7 +210,7 @@ html, body {
 .main {
   z-index: 1;
   font-size: 18px;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
   height: 100%;
   -webkit-user-select: none;
   user-select: none; }
@@ -223,11 +224,12 @@ html, body {
 .toolbar {
   display: flex;
   align-items: center;
-  height: 46px;
+  height: 42px;
   background-color: inherit; }
   .toolbar .toolbar-icon {
+    font-size: 16px;
     display: inline-block;
-    padding: 12px; }
+    padding: 11px 10px; }
 
 .hover-background:hover {
   cursor: pointer; }

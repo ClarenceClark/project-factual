@@ -3,17 +3,19 @@
 @import "variables";
 
 .theme-light {
-  background-color: $white;
-  color: $grey-darkest;
+  background-color: $grey-300;
+  color: $grey-800;
 
   .active {
-    background-color: $grey-lightest;
+    background-color: $grey-400;
   }
 
   .hover-background:hover {
-    background-color: $grey-lightest;
+    background-color: $grey-400;
   }
 
-  .border-right { border-right: 1px solid $grey-lighter; }
-  .border-bottom { border-bottom: 1px solid $grey-lighter; }
+  .border-right { border-right: 1px solid $grey-400; }
+  .border-bottom { border-bottom: 1px solid $grey-400; }
+
+  .CodeMirror-selected { background: $grey-400; }
 }

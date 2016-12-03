@@ -1,23 +1,38 @@
 // Stolen from Simplenote
 
-// Blues
-$blue: #4895d9;
-$blue-lightest: lighten($blue, 33%);
-$blue-light: lighten($blue, 20%);
-$blue-active-highlight: lighten($blue, 10%);
+// =======
+// COLOURS
+// =======
 
-// Greys
-$grey: #899199;
-$grey-lighter: lighten($grey, 28%);
-$grey-lightest: lighten($grey-lighter, 10%);
-$grey-darker: darken($grey, 28%);
-$grey-darkest: darken($grey-darker, 10%);
+// Stolen from Google's Material Design Style Guides
+// Primary colour: grey
+$grey-100: #e5e5e5;
+$grey-200: #eeeeee;
+$grey-300: #e0e0e0;
+$grey-400: #bdbdbd;
+$grey-500: #757575;
+$grey-600: #9e9e9e;
+$grey-700: #616161;
+$grey-800: #424242;
+$grey-900: #212121;
 
-// Secondary
-$yellow: #f0b849;
-$red: #d94f4f;
-$green: #4ab866;
-$white: #fff;
+// Secondary colour: blue
+$blue-lightest: #64B5F6;
+$blue-lighter: #42A5F5;
+$blue: #2196f3;
+
+// =====
+// SIZES
+// =====
+
+// Icons
+$icon-size: 16px;
+$icon-padding: 11px 10px;
+
+// Global Measurements
+$sidebar-width: 300px;
+$items-list-width: 360px;
+$toolbar-height: 42px;
 
 // Text
 $font-size-large: 21px;
@@ -35,14 +50,10 @@ $anim-transition: all 200ms ease-in-out;
 $anim-fast: all .1s ease-in-out;
 $anim: all .2s ease-in-out;
 
+$dim-alpha: 0.5;
 $fade-alpha: 0.25;
 
 $border-radius: 6px;
-
-// Global Measurements
-$sidebar-width: 300px;
-$items-list-width: 360px;
-$toolbar-height: 46px;
 
 // z-index values
 $z-index-dialogs: 1000;
