@@ -41,7 +41,7 @@
         [:div {:class "toolbar-icon hover-background icon-info-circled-alt"
                :on-click #(r/dispatch [:display-active-item-info])}]
         [:div {:class (str "toolbar-icon hover-background "
-                           (if @preview-status "icon-eye" "icon-eye-off"))
+                           (if @preview-status "icon-eye-off" "icon-eye"))
                :on-click #(r/dispatch [:toggle-editor-mdpreview])}]
         [:div {:class "toolbar-icon hover-background icon-trash-empty"
                :on-click #(r/dispatch [:move-active-item-to-trash])}]
