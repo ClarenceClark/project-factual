@@ -53,6 +53,7 @@ html, body {
   align-items: center;
   height: $toolbar-height;
   background-color: inherit;
+  margin: 0 3px;
 
   .toolbar-icon {
     font-size: $icon-size;
