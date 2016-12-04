@@ -25,8 +25,7 @@
        (r/dispatch [:destroy-editor]))}))
 
 (defn editor []
-  (let [preview? (r/subscribe [:editor-mdpreview-status])
-        rendered-md (r/subscribe [:rendered-md])]
+  (let [preview? (r/subscribe [:editor-mdpreview-status])]
     (fn []
       [:div {:class "editor"}
        [toolbar/toolbar]
