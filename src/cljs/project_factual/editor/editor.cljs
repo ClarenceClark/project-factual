@@ -2,7 +2,8 @@
   "Actual html hiccup view for the app, wrapper is in p/editor"
   (:require [re-frame.core :as r]
             [reagent.core :as reagent]
-            [project-factual.views.toolbar :as toolbar]))
+            [project-factual.views.toolbar :as toolbar]
+            [project-factual.editor.md-preview :as md-preview]))
 
 (defn- codemirror-component []
   (reagent/create-class
@@ -24,7 +25,11 @@
        (r/dispatch [:destroy-editor]))}))
 
 (defn editor []
-  [:div {:class "editor"}
-   [toolbar/toolbar]
-   [:div.item-display
-    [codemirror-component]]])
+  (let [preview? (r/subscribe [:editor-mdpreview-status])
+        rendered-md (r/subscribe [:rendered-md])]
+    (fn []
+      [:div {:class "editor"}
+       [toolbar/toolbar]
+       [:div {:class (str "item-display" (when @preview? " hide"))}
+        [codemirror-component]]
+       [md-preview/md-preview]])))

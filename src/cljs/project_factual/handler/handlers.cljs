@@ -98,9 +98,10 @@
 (r/reg-event-db
   :toggle-editor-mdpreview
   [default-interceptors]
-  (fn [db]
+  (fn toggle-editor-mdpreview
+    [{:keys [editor-mdpreview-status] :as db}]
     (assoc db :editor-mdpreview-status
-              (not (:editor-mdpreview-status db)))))
+              (not editor-mdpreview-status))))
 
 ;; ----------
 ;; REPL conveniences
