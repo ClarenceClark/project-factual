@@ -75,4 +75,15 @@
     right: 0;
     left: 0;
   }
+
+  .md-preview {
+    overflow: scroll;
+    @extend .item-display;
+
+    .md-preview-text-container {
+      max-width: $editor-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }

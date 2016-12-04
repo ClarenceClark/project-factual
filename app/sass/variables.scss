@@ -33,6 +33,7 @@ $icon-padding: $icon-size / 2;
 $sidebar-width: 300px;
 $items-list-width: 360px;
 $toolbar-height: 42px;
+$editor-width: 720px;
 
 // Text
 $font-size-large: 21px;
@@ -46,6 +47,7 @@ $serif-font: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
 $sans-serif-font: "Open Sans", "Ubuntu", sans-serif;
 $monospace-font: "Source Code Pro", monospace;
 
+// Animations
 $anim-transition: all 200ms ease-in-out;
 $anim-fast: all .1s ease-in-out;
 $anim: all .2s ease-in-out;

@@ -15,10 +15,11 @@
         active? (r/subscribe [:editor-mdpreview-status])
         renderer (new-mdrenderer)]
     (fn []
-      [:div
-       {:class (str "md-preview" (when-not @active? " hide"))
-        :dangerouslySetInnerHTML
-        {:__html
-         (if @active?
-           (.render renderer (:item.content @active-item))
-           "<strong> You should NOT be seeing this </strong>")}}])))
+      [:div {:class (str "md-preview" (when-not @active? " hide"))}
+       [:div
+        {:class "md-preview-text-container"
+         :dangerouslySetInnerHTML
+         {:__html
+          (if @active?
+            (.render renderer (:item.content @active-item))
+            "<strong> You should NOT be seeing this </strong>")}}]])))
