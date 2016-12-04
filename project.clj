@@ -43,7 +43,8 @@
                                :figwheel {:on-jsload "project-factual.core/mount-root"}}}}
     :source-paths ["env/dev/cljs"]
     :dependencies [[figwheel-sidecar "0.5.7"]
-                   [binaryage/devtools "0.8.2"]]
+                   [binaryage/devtools "0.8.2"]
+                   [re-frisk "0.3.1"]]
 
     :production
     {:cljsbuild {:builds {:app {:compiler {:optimizations :advanced
