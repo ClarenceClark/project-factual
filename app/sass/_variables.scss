@@ -65,3 +65,23 @@ $z-dim: $base-z + 1;
 // Viewport widths for media queries
 $single-column: 750px;
 $medium: 900px;
+
+// =========
+// CONSTANTS
+// =========
+
+.inherit {
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
+}
+
+.hor-centre {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-mp {
+  margin: 0;
+  padding: 0;
+}

@@ -1,31 +1,29 @@
 @import "variables";
 
 .editor {
+  @extend .inherit;
   position: absolute;
-  height: 100%;
   left: $items-list-width + 1;
   right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: inherit;
+  top: 0; bottom: 0;
+  height: 100%;
 
   .icon-bar {
     margin-left: auto;
   }
 
   .groupbar {
+    @extend .inherit;
     display: flex;
     height: $toolbar-height;
-    margin-left: 12px;
+    margin-left: 8px;
     align-items: center;
     float: left;
-    font-size: inherit;
-    background-color: inherit;
 
     .groupbar-elem {
       display: inline-block;
       float: left;
-      padding: 4px 5px 4px 5px;
+      padding: 4px 5px;
       margin-right: 8px;
       border-radius: $border-radius;
       font-size: $font-size-small;
@@ -37,32 +35,33 @@
       font-size: $font-size-small;
 
       input {
+        @extend .inherit;
+
         width: 120px;
         height: 18px;
         border: none;
         outline: none;
-        font-size: inherit;
         font-family: inherit;
-        background-color: inherit;
         color: inherit;
       }
 
       .suggestions-container {
-        font-size: inherit;
+        @extend .inherit;
+        $left-padding: 10px;
+
         position: absolute;
         left: 0;
         width: 216px;
-        top: 24px;
+        top: $toolbar-height * 9/16;
         z-index: $z-index-dialogs;
-        background-color: inherit;
         border: solid 1px #f0f0f0;
         border-radius: $border-radius;
-        margin-left: -15px;
+        margin-left: -$left-padding;
         padding: 5px 0;
         box-shadow: 6px 6px 10px rgba(0, 0, 0, $dim-alpha / 2);
 
         .suggestion {
-          padding: 2px 10px 2px 10px;
+          padding: 2px $left-padding;
         }
       }
     }
@@ -82,8 +81,7 @@
 
     .md-preview-text-container {
       max-width: $editor-width;
-      margin-left: auto;
-      margin-right: auto;
+      @extend .hor-centre;
     }
   }
 }
