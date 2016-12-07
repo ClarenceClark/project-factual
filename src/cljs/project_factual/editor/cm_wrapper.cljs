@@ -5,6 +5,7 @@
             [cljsjs.codemirror.addon.edit.continuelist]
             [cljsjs.codemirror.addon.edit.closebrackets]
             [cljsjs.codemirror.addon.edit.matchbrackets]
+            [cljsjs.codemirror.addon.scroll.scrollpastend]
             [cljsjs.codemirror.mode.markdown]
             [project-factual.editor.spellcheck :as spellcheck]))
 
@@ -21,6 +22,7 @@
                 :autoCloseBrackets true ; From addon closebrackets
                 :lineNumbers false
                 :lineWrapping true
+                :scrollPastEnd true
                 :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList" ; From addon continuelist
                             "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
