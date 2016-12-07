@@ -14,6 +14,14 @@
     background-color: $grey-700;
   }
 
+  .mid-pane {
+    border-right: 1px solid $grey-500;
+
+    .list-elem-summary {
+      color: $grey-400;
+    }
+  }
+
   .border-right { border-right: 1px solid $grey-500; }
   .border-bottom { border-bottom: 1px solid $grey-500; }
 

@@ -1,10 +1,10 @@
 @import "variables";
 
-.items-list-container {
-  @extend .no-mp;
+.pane-mid {
   float: left;
   width: $items-list-width;
   height: 100%;
+  border-right: 1px solid $grey-400;
 
   .items-list-elem {
     padding:12px 25px 12px 25px;
@@ -12,7 +12,6 @@
 
   ul {
     list-style-type: none;
-    @extend .no-mp;
 
     li {
       .list-elem-title {
@@ -22,7 +21,6 @@
 
       .list-elem-summary {
         font-size: $font-size-small;
-        @extend .no-mp;
       }
     }
   }

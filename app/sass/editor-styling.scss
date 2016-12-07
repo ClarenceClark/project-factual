@@ -3,6 +3,9 @@
 @import "variables";
 
 .CodeMirror {
+  margin: auto;
+  flex: 1 0 auto;
+
   font-family: inherit;
   height: 100%;
   font-size: $font-size;

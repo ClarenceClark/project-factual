@@ -3,8 +3,6 @@
 $sidebar-width: 250px;
 
 .sidebar {
-  @extend .no-mp, .inherit;
-
   position: absolute;
   left: 0; top: 0; bottom: 0;
 
@@ -21,7 +19,6 @@ $sidebar-width: 250px;
   }
 
   .sidebar-groups {
-    @extend .no-mp;
     list-style-type: none;
   }
 

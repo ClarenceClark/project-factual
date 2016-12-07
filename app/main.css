@@ -1,16 +1,16 @@
 @charset "UTF-8";
 @import url(sass/fontello.css);
 @import url(sass/codemirror.css);
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
@@ -36,80 +36,79 @@
 .sidebar.sidebar-hidden {
   left: -250px; }
 
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
-.items-list-container {
+.pane-mid {
   float: left;
   width: 360px;
-  height: 100%; }
-  .items-list-container .items-list-elem {
+  height: 100%;
+  border-right: 1px solid #bdbdbd; }
+  .pane-mid .items-list-elem {
     padding: 12px 25px 12px 25px; }
-  .items-list-container ul {
+  .pane-mid ul {
     list-style-type: none; }
-    .items-list-container ul li .list-elem-title {
+    .pane-mid ul li .list-elem-title {
       font-size: 18px;
       padding-right: 40px; }
-    .items-list-container ul li .list-elem-summary {
+    .pane-mid ul li .list-elem-summary {
       font-size: 15px; }
 
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
-.editor {
-  position: absolute;
-  left: 361px;
-  right: 0;
-  top: 0;
-  bottom: 0;
+.pane-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
   height: 100%; }
-  .editor .icon-bar {
+  .pane-right .icon-bar {
     margin-left: auto; }
-  .editor .groupbar {
+  .pane-right .groupbar {
     display: flex;
     height: 42px;
     margin-left: 8px;
     align-items: center;
     float: left; }
-    .editor .groupbar .groupbar-elem {
+    .pane-right .groupbar .groupbar-elem {
       display: inline-block;
       float: left;
       padding: 4px 5px;
       margin-right: 8px;
       border-radius: 6px;
       font-size: 15px; }
-    .editor .groupbar .suggestions-box {
+    .pane-right .groupbar .suggestions-box {
       position: relative;
       background-color: inherit;
       font-size: 15px; }
-      .editor .groupbar .suggestions-box input {
+      .pane-right .groupbar .suggestions-box input {
         width: 120px;
         height: 18px;
         border: none;
         outline: none;
         font-family: inherit;
         color: inherit; }
-      .editor .groupbar .suggestions-box .suggestions-container {
+      .pane-right .groupbar .suggestions-box .suggestions-container {
         position: absolute;
         left: 0;
         width: 216px;
@@ -120,34 +119,35 @@
         margin-left: -10px;
         padding: 5px 0;
         box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.25); }
-        .editor .groupbar .suggestions-box .suggestions-container .suggestion {
+        .pane-right .groupbar .suggestions-box .suggestions-container .suggestion {
           padding: 2px 10px; }
-  .editor .item-display, .editor .md-preview {
-    position: absolute;
-    top: 52px;
-    bottom: 0;
-    right: 0;
-    left: 0; }
-  .editor .md-preview {
+  .pane-right .cm-container {
+    display: flex;
+    margin-top: 10px;
+    flex: 1 0 0;
+    position: relative; }
+  .pane-right .md-preview {
     overflow: scroll; }
-    .editor .md-preview .md-preview-text-container {
+    .pane-right .md-preview .md-preview-text-container {
       max-width: 720px; }
 
 /* Stolen (sorry, adapted) from SimpleMDE */
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
 .CodeMirror {
+  margin: auto;
+  flex: 1 0 auto;
   font-family: inherit;
   height: 100%;
   font-size: 18px;
@@ -200,29 +200,29 @@
 .CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
   background: rgba(255, 0, 0, 0.15); }
 
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
@@ -233,8 +233,10 @@
     background-color: #bdbdbd; }
   .theme-light .hover-background:hover {
     background-color: #bdbdbd; }
-  .theme-light .list-elem-summary {
-    color: #757575; }
+  .theme-light .mid-pane {
+    border-right: 1px solid #bdbdbd; }
+    .theme-light .mid-pane .list-elem-summary {
+      color: #757575; }
   .theme-light .border-right {
     border-right: 1px solid #bdbdbd; }
   .theme-light .border-bottom {
@@ -242,16 +244,16 @@
   .theme-light .CodeMirror-selected {
     background: #bdbdbd; }
 
-.inherit, .sidebar, .editor, .editor .groupbar, .editor .groupbar .suggestions-box input, .editor .groupbar .suggestions-box .suggestions-container {
+.inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
 
-.hor-centre, .editor .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
+.hor-centre, .pane-right .md-preview .md-preview-text-container, .CodeMirror .CodeMirror-lines {
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp, .sidebar, .sidebar .sidebar-groups, .items-list-container, .items-list-container ul, .items-list-container ul li .list-elem-summary {
+.no-mp {
   margin: 0;
   padding: 0; }
 
@@ -262,6 +264,10 @@
     background-color: #616161; }
   .theme-dark .hover-background:hover {
     background-color: #616161; }
+  .theme-dark .mid-pane {
+    border-right: 1px solid #757575; }
+    .theme-dark .mid-pane .list-elem-summary {
+      color: #bdbdbd; }
   .theme-dark .border-right {
     border-right: 1px solid #757575; }
   .theme-dark .border-bottom {
@@ -276,6 +282,13 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0; }
+
+div, ul, li {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit; }
 
 .main {
   z-index: 1;

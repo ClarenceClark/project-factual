@@ -1,11 +1,9 @@
 @import "variables";
 
-.editor {
-  @extend .inherit;
-  position: absolute;
-  left: $items-list-width + 1;
-  right: 0;
-  top: 0; bottom: 0;
+.pane-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
   height: 100%;
 
   .icon-bar {
@@ -13,7 +11,6 @@
   }
 
   .groupbar {
-    @extend .inherit;
     display: flex;
     height: $toolbar-height;
     margin-left: 8px;
@@ -46,7 +43,6 @@
       }
 
       .suggestions-container {
-        @extend .inherit;
         $left-padding: 10px;
 
         position: absolute;
@@ -67,17 +63,15 @@
     }
   }
 
-  .item-display {
-    position: absolute;
-    top: $toolbar-height + 10px;
-    bottom: 0;
-    right: 0;
-    left: 0;
+  .cm-container {
+    display: flex;
+    margin-top: 10px;
+    flex: 1 0 0;
+    position: relative;
   }
 
   .md-preview {
     overflow: scroll;
-    @extend .item-display;
 
     .md-preview-text-container {
       max-width: $editor-width;

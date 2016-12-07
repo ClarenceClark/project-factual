@@ -25,7 +25,7 @@
     (merge db/testing-database db)))
 
 (r/reg-event-fx
-  :new-active-item
+  :item.switch-to
   [default-interceptors]
   (fn [{:keys [db]} [id]]
     (let [editor (:editor db)]
@@ -47,7 +47,7 @@
     (assoc db :active-group-id id)))
 
 (r/reg-event-db
-  :set-sidebar-visibility
+  :sidebar.set-visibility
   [default-interceptors]
   (fn [db [visibility]]
     (assoc db :sidebar-active visibility)))
@@ -67,7 +67,7 @@
                          col)))
 
 (r/reg-event-fx
-  :new-item
+  :item.new
   [default-interceptors]
   (fn [{:keys [db]} [type]]
     (let [id (min-unused-id (keys (:items db)))
@@ -75,7 +75,7 @@
                 :item.type type
                 :item.content ""}]
       {:db (assoc-in db [:items id] item)
-       :dispatch [:new-active-item id]})))
+       :dispatch [:item.switch-to id]})))
 
 (r/reg-event-db
   :new-col-group
@@ -102,6 +102,12 @@
     [{:keys [editor-mdpreview-status] :as db}]
     (assoc db :editor-mdpreview-status
               (not editor-mdpreview-status))))
+
+(r/reg-event-db
+  :todo
+  [default-interceptors]
+  (fn todo []
+    (println "TODO")))
 
 ;; ----------
 ;; REPL conveniences

@@ -6,7 +6,7 @@
 
 // Views
 @import "sidebar";
-@import "items-list";
+@import "pane-mid";
 @import "editor";
 
 @import "editor-styling";
@@ -23,6 +23,14 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+div, ul, li {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  background-color: inherit;
+  color: inherit;
 }
 
 @mixin user-select($select) {
