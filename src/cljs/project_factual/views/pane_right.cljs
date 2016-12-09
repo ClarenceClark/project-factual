@@ -2,7 +2,6 @@
   "Actual html hiccup view for the app, wrapper is in p/editor"
   (:require [re-frame.core :as r]
             [reagent.core :as reagent]
-            [project-factual.views.toolbar :as toolbar]
             [project-factual.editor.md-preview :as md-preview]
             [project-factual.views.misc-views :as misc]
             [clojure.string :as string]
@@ -57,7 +56,7 @@
       :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar-editor []
-  (let [preview-status (r/subscribe [:editor.mdpreview-status])]
+  (let [preview-status (r/subscribe [:editor-mdpreview-status])]
     (fn []
       [:div {:class "toolbar toolbar-editor border-bottom"}
        [groupbar]
@@ -69,7 +68,7 @@
         [misc/toolbar-button "icon-dot-3" [:todo]]]])))
 
 (defn pane-right []
-  (let [preview? (r/subscribe [:editor.mdpreview-status])]
+  (let [preview? (r/subscribe [:editor-mdpreview-status])]
     (fn []
       [:div {:class "pane-right"}
        [toolbar-editor]

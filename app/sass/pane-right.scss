@@ -68,10 +68,12 @@
     margin-top: 10px;
     flex: 1 0 0;
     position: relative;
+    overflow: hidden;
   }
 
   .md-preview {
     overflow: scroll;
+    padding: 10px 20px;
 
     .md-preview-text-container {
       max-width: $editor-width;

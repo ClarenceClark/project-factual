@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url(sass/fontello.css);
 @import url(sass/codemirror.css);
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -10,7 +10,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -36,7 +36,7 @@
 .sidebar.sidebar-hidden {
   left: -250px; }
 
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -45,7 +45,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -54,17 +54,17 @@
   width: 360px;
   height: 100%;
   border-right: 1px solid #bdbdbd; }
-  .pane-mid .items-list-elem {
-    padding: 12px 25px 12px 25px; }
-  .pane-mid ul {
+  .pane-mid .items-list {
     list-style-type: none; }
-    .pane-mid ul li .list-elem-title {
-      font-size: 18px;
-      padding-right: 40px; }
-    .pane-mid ul li .list-elem-summary {
-      font-size: 15px; }
+    .pane-mid .items-list .items-list-elem {
+      padding: 12px 25px; }
+      .pane-mid .items-list .items-list-elem .list-elem-title {
+        font-size: 18px;
+        padding-right: 40px; }
+      .pane-mid .items-list .items-list-elem .list-elem-summary {
+        font-size: 15px; }
 
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -73,7 +73,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -125,14 +125,16 @@
     display: flex;
     margin-top: 10px;
     flex: 1 0 0;
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
   .pane-right .md-preview {
-    overflow: scroll; }
+    overflow: scroll;
+    padding: 10px 20px; }
     .pane-right .md-preview .md-preview-text-container {
       max-width: 720px; }
 
 /* Stolen (sorry, adapted) from SimpleMDE */
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -141,7 +143,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -150,6 +152,7 @@
   flex: 1 0 auto;
   font-family: inherit;
   height: 100%;
+  width: 90%;
   font-size: 18px;
   padding: 0 15px 0 15px;
   color: inherit;
@@ -200,7 +203,7 @@
 .CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
   background: rgba(255, 0, 0, 0.15); }
 
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -209,11 +212,11 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -222,7 +225,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -244,7 +247,7 @@
   .theme-light .CodeMirror-selected {
     background: #bdbdbd; }
 
-.inherit, .pane-right .groupbar .suggestions-box input {
+.inherit, .sidebar, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;
   background-color: inherit;
   color: inherit; }
@@ -253,7 +256,7 @@
   margin-left: auto;
   margin-right: auto; }
 
-.no-mp {
+.no-mp, .sidebar, .sidebar .sidebar-groups {
   margin: 0;
   padding: 0; }
 
@@ -283,7 +286,7 @@ html, body {
   margin: 0;
   padding: 0; }
 
-div, ul, li {
+div {
   margin: 0;
   padding: 0;
   font-size: inherit;
@@ -299,7 +302,7 @@ div, ul, li {
   user-select: none; }
 
 .hide {
-  display: none; }
+  display: none !important; }
 
 .icon-right {
   margin-left: auto; }
@@ -327,6 +330,10 @@ div, ul, li {
 .dim {
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   z-index: 2; }

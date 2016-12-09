@@ -18,12 +18,12 @@
 (s/def ::active-item-id int?)
 (s/def ::active-group-id int?)
 (s/def ::sidebar-active boolean?)
-(s/def ::editor.mdpreview-status boolean?)
+(s/def ::editor-mdpreview-status boolean?)
 
 (s/def ::db (s/keys :req-un [::items ::groups
                              ::active-item-id ::active-group-id
                              ::sidebar-active
-                             ;::editor.mdpreview-status
+                             ::editor-mdpreview-status
                              ::editor]))
 
 ;; ----------

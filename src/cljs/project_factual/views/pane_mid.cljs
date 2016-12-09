@@ -17,16 +17,16 @@
     (let [lines (filter #(not (str/blank? %)) ; We don't want to preview blank lines
                         (str/split-lines (:item.content item)))
           id (:item.id item)]
-      [:li {:class (str "items-list-elem hover-background"
-                        (when (= id active-item-id) " active"))
-            :on-click #(r/dispatch [:item.switch-to id])}
+      [:div {:class (str "items-list-elem hover-background"
+                         (when (= id active-item-id) " active"))
+             :on-click #(r/dispatch [:item.switch-to id])}
        [:div {:class "list-elem-title one-line-summary"}
         (space-if-blank (first lines))]
        [:div {:class "list-elem-summary one-line-summary"}
         (space-if-blank (second lines))]])))
 
 (defn items-list [items active-item-id]
-  [:ul {:class "items-list"}
+  [:div {:class "items-list"}
    (for [item items]
      ^{:key item}
      [items-list-elem item active-item-id])])

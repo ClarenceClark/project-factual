@@ -12,7 +12,7 @@
 
 (defn md-preview []
   (let [active-item (r/subscribe [:active-item])
-        active? (r/subscribe [:editor.mdpreview-status])
+        active? (r/subscribe [:editor-mdpreview-status])
         renderer (new-mdrenderer)]
     (fn []
       [:div {:class (str "md-preview" (when-not @active? " hide"))}

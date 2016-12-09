@@ -33,22 +33,13 @@
        event
        handler))
 
-(def linebreak-overlay
-  #js{"token"
-      (fn [stream]
-        (if (.match stream #"^\s\s+$")
-          "linebreak"
-          (do (.match stream #"^\s*\S*")
-              nil)))})
-
 (defn register-all-event-handlers [cm]
   (do
     (register-event-handler
       cm
       "changes"
       #(r/dispatch [:save-editor-value]))
-    (.addOverlay cm spellcheck/spellcheck-overlay)
-    (.addOverlay cm linebreak-overlay)))
+    (.addOverlay cm spellcheck/spellcheck-overlay)))
 
 (defn new-editor
   "return a new codemirror editor"
