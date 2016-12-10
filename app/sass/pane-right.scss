@@ -53,11 +53,11 @@
         border: solid 1px #f0f0f0;
         border-radius: $border-radius;
         margin-left: -$left-padding;
-        padding: 5px 0;
-        box-shadow: 6px 6px 10px rgba(0, 0, 0, $dim-alpha / 2);
+        padding: 4px 0;
+        box-shadow: 0 0 15px rgba(0, 0, 0, $dim-alpha / 2);
 
         .suggestion {
-          padding: 2px $left-padding;
+          padding: 4px $left-padding;
         }
       }
     }

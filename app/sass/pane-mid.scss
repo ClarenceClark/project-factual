@@ -8,13 +8,14 @@
 
   .items-list {
     list-style-type: none;
+    padding-left: 1px;
 
     .items-list-elem {
       padding: 12px 25px;
 
       .list-elem-title {
         font-size: $font-size;
-        padding-right: 40px;
+        padding: 0 40px 3px 0;
       }
 
       .list-elem-summary {
