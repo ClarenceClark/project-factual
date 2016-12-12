@@ -27,7 +27,7 @@
       [:div {:class (str "sidebar" (when-not @active " sidebar-hidden"))}
        [:div {:class "sidebar-section section-special"}
         [sidebar-group-elem-icon group-all active-group]]
-       [:div.sidebar-groups
+       [:div {:class "sidebar-section section-groups"}
         (for [group @groups]
           ^{:key group}
           [sidebar-group-elem group active-group])]])))
