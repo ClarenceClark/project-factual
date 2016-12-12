@@ -178,7 +178,8 @@
     color: darkgray; }
   .CodeMirror .CodeMirror-code .cm-header {
     color: inherit;
-    line-height: 1.5em; }
+    line-height: 1.5em;
+    font-weight: 500; }
   .CodeMirror .CodeMirror-code .cm-header-1 {
     font-size: 2em; }
   .CodeMirror .CodeMirror-code .cm-header-2 {
@@ -296,6 +297,7 @@ div {
   z-index: 1;
   font-size: 15px;
   font-family: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
+  font-weight: normal;
   line-height: 1.5em;
   height: 100%;
   -webkit-user-select: none;
