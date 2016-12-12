@@ -20,10 +20,10 @@
       [:div {:class (str "items-list-elem hover-background"
                          (when (= id active-item-id) " active"))
              :on-click #(r/dispatch [:item.switch-to id])}
-       [:div {:class "list-elem-title one-line-summary"}
+       [:div {:class "list-elem-title"}
         (space-if-blank (first lines))]
-       [:div {:class "list-elem-summary one-line-summary"}
-        (space-if-blank (second lines))]])))
+       [:div {:class "list-elem-summary"}
+        (space-if-blank (str/join "\n" (take 3 (rest lines))))]])))
 
 (defn items-list [items active-item-id]
   [:div {:class "items-list"}

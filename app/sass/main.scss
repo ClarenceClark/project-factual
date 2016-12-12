@@ -75,12 +75,6 @@ div {
   cursor: pointer;
 }
 
-.one-line-summary {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .dim {
   background-color: rgba(0, 0, 0, $dim-alpha);
   position: absolute;
