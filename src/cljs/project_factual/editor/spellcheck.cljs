@@ -1,7 +1,10 @@
 (ns project-factual.editor.spellcheck
   (:require [clojure.string :as string]))
 
-(defonce spellcheck (js/Typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
+(defonce typo (js/require "typo-js"))
+
+(defonce spellcheck
+         (typo. "en_GB" false false #js{:dictionaryPath "./dict"}))
 (defonce word-seperators "'!'\\\"#$%&()*+,-./:);<=>?@[\\\\]^_`{|}~ '")
 (defonce number-regex #"[0-9]+")
 

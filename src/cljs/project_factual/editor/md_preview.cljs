@@ -2,8 +2,10 @@
   "Markdown preview module"
   (:require [re-frame.core :as r]))
 
+(defonce markdown-it (js/require "markdown-it"))
+
 (defn new-mdrenderer []
-  (js/Remarkable.
+  (markdown-it.
     #js{"html" false
         "xhtmlout" true
         "breaks" true
