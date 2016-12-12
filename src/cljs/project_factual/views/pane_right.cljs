@@ -34,8 +34,8 @@
    (:group.name group)])
 
 (defn groupbar []
-  (let [groups (r/subscribe [:active-groups])
-        all-groups (r/subscribe [:all-normal-groups])]
+  (let [groups (r/subscribe [:groups.active-list])
+        all-groups (r/subscribe [:groups.all-normal])]
     [:div.groupbar
      (for [group @groups]
        ^{:key group}
@@ -56,7 +56,7 @@
       :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar-editor []
-  (let [preview-status (r/subscribe [:editor-mdpreview-status])]
+  (let [preview-status (r/subscribe [:editor.mdpreview-status])]
     (fn []
       [:div {:class "toolbar toolbar-editor border-bottom"}
        [groupbar]
@@ -68,7 +68,7 @@
         [misc/toolbar-button "icon-dot-3" [:todo]]]])))
 
 (defn pane-right []
-  (let [preview? (r/subscribe [:editor-mdpreview-status])]
+  (let [preview? (r/subscribe [:editor.mdpreview-status])]
     (fn []
       [:div {:class "pane-right"}
        [toolbar-editor]

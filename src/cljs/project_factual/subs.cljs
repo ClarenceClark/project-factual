@@ -20,19 +20,19 @@
 ;;; ITEMS
 ;;; -----
 
-(reg-keyword-sub :active-item-id)
-(reg-keyword-diff-sub :items-map :items)
+(reg-keyword-sub :items.active-id)
+(reg-keyword-diff-sub :items.map-list :items)
 
 (r/reg-sub
-  :all-items
-  :<- [:items-map]
+  :items.all
+  :<- [:items.map-list]
   (fn [items-map _]
     (vals items-map)))
 
 (r/reg-sub
-  :active-item
-  :<- [:items-map]
-  :<- [:active-item-id]
+  :items.active
+  :<- [:items.map-list]
+  :<- [:items.active-id]
   (fn [[items-map active-item-id] _]
     (items-map active-item-id)))
 
@@ -40,23 +40,23 @@
 ;;; GROUPS
 ;;; ------
 
-(reg-keyword-sub :active-group-id)
-(reg-keyword-diff-sub :groups-map :groups)
+(reg-keyword-sub :groups.active-id)
+(reg-keyword-diff-sub :groups.map-all :groups)
 
 (r/reg-sub
-  :all-groups
-  :<- [:groups-map]
+  :groups.all
+  :<- [:groups.map-all]
   (fn [groups-map _]
     (vals groups-map)))
 
 (r/reg-sub
-  :active-group
+  :groups.active
   (fn [db _]
-    ((:groups db) (:active-group-id db))))
+    ((:groups db) (:groups.active-id db))))
 
 (r/reg-sub
-  :all-normal-groups
-  :<- [:all-groups]
+  :groups.all-normal
+  :<- [:groups.all]
   (fn [all-groups _]
     (filter #(= :group.collection
                 (:group.type %))
@@ -67,23 +67,15 @@
   (fn [all-groups _]
     project-factual.data.db/group-all))
 
-;;; --------
-;;; Groupbar
-;;; --------
-
-(reg-keyword-sub :groupbar-suggestions-search)
-(reg-keyword-sub :groupbar-suggestions-active)
-(reg-keyword-sub :active-suggestions-index)
-
 ;;; ---------------------
 ;;; Active items & groups
 ;;; ---------------------
 
 (r/reg-sub
-  :active-items
-  :<- [:active-group]
-  :<- [:all-items]
-  :<- [:active-group-id]
+  :items.active-list
+  :<- [:groups.active]
+  :<- [:items.all]
+  :<- [:groups.active-id]
   (fn [[active-group all-items active-group-id] _]
     (let [group-type (:group.type active-group)]
       ; If there is ever a need for more types of groups, this needs to be refactored into its own
@@ -93,35 +85,24 @@
         :group.collection (filter #(contains? (:item.groups %) active-group-id) all-items)))))
 
 (r/reg-sub
-  :active-groups
-  :<- [:active-item]
-  :<- [:groups-map]
+  :groups.active-list
+  :<- [:items.active]
+  :<- [:groups.map-all]
   (fn [[active-item groups-map] _]
-    (sort-by #(:group.name %)
+    (sort-by
+      #(:group.name %)
       (vals (select-keys groups-map
                          (:item.groups active-item))))))
-
-(r/reg-sub
-  :groupbar-suggestions
-  :<- [:groupbar-suggestions-search]
-  :<- [:all-normal-groups]
-  :<- [:active-groups]
-  (fn [[input groups active-groups] _]
-    (sort-by #(:group.name %)
-             (set/difference
-               (set (filter #(s/includes? (:group.name %) input)
-                             groups))
-               (set active-groups)))))
 
 ;;; ------
 ;;; OTHERS
 ;;; ------
 
-(reg-keyword-sub :sidebar-active)
-(reg-keyword-sub :editor-mdpreview-status)
+(reg-keyword-sub :sidebar.active)
+(reg-keyword-sub :editor.mdpreview-status)
 
 (r/reg-sub
   :screen-dim
   (fn [db _]
     ; The only source of screen dim (currently) is the sidebar
-    (:sidebar-active db)))
+    (:sidebar.active db)))

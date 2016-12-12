@@ -15,7 +15,7 @@
   (fn [db]
     (let [editor (:editor db)]
       (assoc-in db
-                [:items (:active-item-id db) :item.content]
+                [:items (:items.active-id db) :item.content]
                 (editor/get-value editor)))))
 
 (r/reg-event-fx
@@ -37,7 +37,7 @@
   (fn [{:keys [db]}]
     {:db db
      :set-editor-value [(:editor db)
-                        (get-in db [:items (:active-item-id db) :item.content])]}))
+                        (get-in db [:items (:items.active-id db) :item.content])]}))
 
 (r/reg-event-fx
   :focus-editor

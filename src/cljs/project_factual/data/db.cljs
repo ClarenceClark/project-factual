@@ -15,15 +15,15 @@
 (s/def ::group.group (s/keys :req-un [::group.id ::group.type ::group.name]))
 (s/def ::groups (s/map-of ::group.id ::group.group))
 
-(s/def ::active-item-id int?)
-(s/def ::active-group-id int?)
-(s/def ::sidebar-active boolean?)
-(s/def ::editor-mdpreview-status boolean?)
+(s/def ::items.active-id int?)
+(s/def ::groups.active-id int?)
+(s/def ::sidebar.active boolean?)
+(s/def ::editor.mdpreview-status boolean?)
 
 (s/def ::db (s/keys :req-un [::items ::groups
-                             ::active-item-id ::active-group-id
-                             ::sidebar-active
-                             ::editor-mdpreview-status
+                             ::items.active-id ::groups.active-id
+                             ::sidebar.active
+                             ::editor.mdpreview-status
                              ::editor]))
 
 ;; ----------
@@ -89,8 +89,8 @@
             4 {:group.id 4
                :group.name "number 4"
                :group.type :group.collection}}
-   :active-item-id 1
-   :active-group-id -1
-   :sidebar-active false
-   :editor-mdpreview-status false
+   :items.active-id 1
+   :groups.active-id -1
+   :sidebar.active false
+   :editor.mdpreview-status false
    :editor nil})

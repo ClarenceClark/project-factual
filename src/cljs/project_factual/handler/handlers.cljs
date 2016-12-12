@@ -29,14 +29,14 @@
   [default-interceptors]
   (fn [{:keys [db]} [id]]
     (let [editor (:editor db)]
-      {:db (assoc db :active-item-id id)
+      {:db (assoc db :items.active-id id)
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
 
 (r/reg-event-db
   :move-active-item-to-trash
   [default-interceptors]
   (fn [db]
-    (let [active-item-id (:active-item-id db)]
+    (let [active-item-id (:items.active-id db)]
       (assoc db :items
                 (dissoc (:items db) active-item-id)))))
 
@@ -44,13 +44,13 @@
   :new-active-group
   [default-interceptors]
   (fn [db [id]]
-    (assoc db :active-group-id id)))
+    (assoc db :groups.active-id id)))
 
 (r/reg-event-db
   :sidebar.set-visibility
   [default-interceptors]
   (fn [db [visibility]]
-    (assoc db :sidebar-active visibility)))
+    (assoc db :sidebar.active visibility)))
 
 (defn difference [col1 col2]
   (set/difference (set col1) (set col2)))
@@ -92,16 +92,16 @@
   [default-interceptors]
   (fn [db [group]]
     (update-in db
-               [:items (:active-item-id db) :item.groups]
+               [:items (:items.active-id db) :item.groups]
                #(conj % (:group.id group)))))
 
 (r/reg-event-db
   :toggle-editor-mdpreview
   [default-interceptors]
   (fn toggle-editor-mdpreview
-    [{:keys [editor-mdpreview-status] :as db}]
-    (assoc db :editor-mdpreview-status
-              (not editor-mdpreview-status))))
+    [{preview-status :editor.mdpreview-status :as db}]
+    (assoc db :editor.mdpreview-status
+              (not preview-status))))
 
 (r/reg-event-db
   :todo

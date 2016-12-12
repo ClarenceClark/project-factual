@@ -38,8 +38,8 @@
    [misc/toolbar-button "icon-doc-new icon-right" [:item.new :item.markdown]]])
 
 (defn pane-mid []
-  (let [items (r/subscribe [:active-items])
-        active-item-id (r/subscribe [:active-item-id])]
+  (let [items (r/subscribe [:items.active-list])
+        active-item-id (r/subscribe [:items.active-id])]
     (fn []
       [:div {:class "pane-mid"}
        [toolbar-items]

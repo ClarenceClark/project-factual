@@ -19,13 +19,13 @@
   [sidebar-group-elem-base group active-group (:group.icon group)])
 
 (defn sidebar []
-  (let [active (r/subscribe [:sidebar-active])
-        groups (r/subscribe [:all-normal-groups])
-        active-group (r/subscribe [:active-group-id])
+  (let [active (r/subscribe [:sidebar.active])
+        groups (r/subscribe [:groups.all-normal])
+        active-group (r/subscribe [:groups.active-id])
         group-all @(r/subscribe [:group-all])] ; Will never change, probably
     (fn []
       [:div {:class (str "sidebar" (when-not @active " sidebar-hidden"))}
-       [:div.special-elems
+       [:div {:class "sidebar-section section-special"}
         [sidebar-group-elem-icon group-all active-group]]
        [:div.sidebar-groups
         (for [group @groups]

@@ -13,8 +13,8 @@
         "typographer" true}))
 
 (defn md-preview []
-  (let [active-item (r/subscribe [:active-item])
-        active? (r/subscribe [:editor-mdpreview-status])
+  (let [active-item (r/subscribe [:items.active])
+        active? (r/subscribe [:editor.mdpreview-status])
         renderer (new-mdrenderer)]
     (fn []
       [:div {:class (str "md-preview" (when-not @active? " hide"))}

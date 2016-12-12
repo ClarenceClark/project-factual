@@ -5,6 +5,10 @@
             [project-factual.views.sidebar :as sidebar]
             [re-frame.core :as r]))
 
+(defn dim-component [dim]
+  [:div {:class (str "dim" (when-not dim " hide"))
+         :on-click #(r/dispatch [:sidebar.set-visibility false])}])
+
 (defn main-page []
   (let [dimmed (r/subscribe [:screen-dim])]
     (fn []
@@ -12,5 +16,4 @@
        [sidebar/sidebar]
        [mid-pane/pane-mid]
        [right-pane/pane-right]
-       [:div {:class (str "dim" (when-not @dimmed " hide"))
-              :on-click #(r/dispatch [:sidebar.set-visibility false])}]])))
+       [dim-component @dimmed]])))
