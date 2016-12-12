@@ -126,7 +126,8 @@
     overflow: hidden; }
   .pane-right .md-preview {
     overflow: scroll;
-    padding: 10px 20px; }
+    padding: 10px 20px;
+    flex: 1 0 0; }
     .pane-right .md-preview .md-preview-text-container {
       max-width: 720px; }
 
