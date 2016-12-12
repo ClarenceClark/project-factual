@@ -44,6 +44,7 @@ div {
   z-index: $base-z;
   font-size: $font-size;
   font-family: $serif-font;
+  line-height: $line-height;
   height: 100%;
   @include user-select(none);
 }

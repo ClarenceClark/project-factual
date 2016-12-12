@@ -11,13 +11,13 @@
   height: 100%;
   width: 90%;
   font-size: $font-size;
-  padding: 0 15px 0 15px;
+  padding: 0 15px;
   color: inherit;
   background-color: inherit;
 
-  .CodeMirror-lines {
+  .CodeMirror-sizer {
     max-width: $editor-width;
-    @extend .hor-centre;
+    margin: 0 auto !important;
   }
 
   .CodeMirror-code {
@@ -27,29 +27,15 @@
     .cm-tag, .cm-link { color: $grey-500 }
     .cm-url { color: darken($grey-400, 8%) }
 
-    .cm-header-1 {
-      font-size: 200%;
-      line-height: 100%;
+    .cm-header {
       color: inherit;
+      line-height: $line-height;
     }
 
-    .cm-header-2 {
-      font-size: 160%;
-      line-height: 100%;
-      color: inherit;
-    }
-
-    .cm-header-3 {
-      font-size: 125%;
-      line-height: 100%;
-      color: inherit;
-    }
-
-    .cm-header-4 {
-      font-size: 110%;
-      line-height: 100%;
-      color: inherit;
-    }
+    .cm-header-1 { font-size: 2em; }
+    .cm-header-2 { font-size: 1.6em; }
+    .cm-header-3 { font-size: 1.25em; }
+    .cm-header-4 { font-size: 1.1em; }
 
     .cm-comment {
       background: rgba(0, 0, 0, .05);
@@ -60,18 +46,11 @@
     }
 
     // Custom modes
-
-    .cm-linebreak:last-child::after {
-      font-size: 12px;
-      content: '↵';
-    }
-
     .CodeMirror-matchingbracket { background: rgba(0,0,0,0.05); }
+    .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
+      background: rgba(255,0,0,.15)
+    }
   }
 }
 
 .CodeMirror .CodeMirror-placeholder { opacity: .5; }
-
-.CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
-  background: rgba(255,0,0,.15)
-}
