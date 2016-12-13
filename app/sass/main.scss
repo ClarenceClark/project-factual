@@ -29,6 +29,7 @@ div {
   margin: 0;
   padding: 0;
   font-size: inherit;
+  line-height: inherit;
   background-color: inherit;
   color: inherit;
 }
@@ -44,7 +45,7 @@ div {
   z-index: $base-z;
   font-size: $font-size;
   font-family: $serif-font;
-  font-weight: normal; // Helvetica Neue and San Francisco looks better with 300
+  font-weight: normal;
   line-height: $line-height;
   height: 100%;
   @include user-select(none);

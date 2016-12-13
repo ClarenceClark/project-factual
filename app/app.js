@@ -83,6 +83,7 @@ var debugMenu = {
   submenu: [
   {
     label: 'Toggle DevTools',
+    accelerator: "Cmd+I",
     click: function ()
     {
       mainWindow.toggleDevTools();

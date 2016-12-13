@@ -22,9 +22,9 @@
   transition: all 200ms ease-in-out;
   z-index: 3; }
   .sidebar .sidebar-section {
-    padding: 10px 0; }
+    padding: 5px 0; }
   .sidebar .sidebar-elem {
-    padding: 3px 14px 3px 24px; }
+    padding: 2px 10px 2px 20px; }
     .sidebar .sidebar-elem .group-name {
       display: inline; }
 
@@ -53,10 +53,10 @@
     list-style-type: none;
     padding-left: 1px; }
     .pane-mid .items-list .items-list-elem {
-      padding: 12px 16px;
+      padding: 8px 14px;
       border-bottom: 1px solid #bdbdbd; }
       .pane-mid .items-list .items-list-elem .list-elem-title {
-        font-size: 15px;
+        font-size: 14px;
         padding: 0 40px 3px 0;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -159,7 +159,7 @@
   font-family: inherit;
   height: 100%;
   width: 90%;
-  font-size: 15px;
+  font-size: 14px;
   padding: 0 15px;
   color: inherit;
   background-color: inherit; }
@@ -290,12 +290,13 @@ div {
   margin: 0;
   padding: 0;
   font-size: inherit;
+  line-height: inherit;
   background-color: inherit;
   color: inherit; }
 
 .main {
   z-index: 1;
-  font-size: 15px;
+  font-size: 14px;
   font-family: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
   font-weight: normal;
   line-height: 1.5em;
@@ -318,7 +319,7 @@ div {
   .toolbar .toolbar-icon {
     font-size: 14px;
     display: inline-block;
-    padding: 7px;
+    padding: 4.66667px;
     border-radius: 6px; }
 
 .hover-background:hover {
