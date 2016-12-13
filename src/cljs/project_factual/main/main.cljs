@@ -1,4 +1,5 @@
-(ns project-factual.main.main)
+(ns project-factual.main.main
+  (:require [project-factual.main.menubar :as menubar]))
 
 (def electron (js/require "electron"))
 
@@ -7,7 +8,7 @@
 (def browser-window (.-BrowserWindow electron))
 (def menu (.-Menu electron))
 
-(goog-define dev? true)
+(goog-define dev? false)
 
 ; Keep ref to main window so it doesn't get GC'ed
 (def main-win (atom nil))
@@ -21,8 +22,10 @@
   (let [win (browser-window. (clj->js {:height 750
                                        :width 1200
                                        :title "Project Factual"}))]
+    (.setApplicationMenu menu menubar/built-menu)
     (reset! main-win win)
     (load-main-page win)
+    (if dev? (.openDevTools win))
     (.on win "closed" #(reset! main-win nil))))
 
 (defn init []
