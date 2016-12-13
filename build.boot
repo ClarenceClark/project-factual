@@ -41,13 +41,16 @@
     ; Watch fs
     (watch)
 
-    ;; Inject REPL and reloading code into renderer build
-    (cljs-repl :ids #{"renderer"})
+    ; Inject REPL and reloading code into renderer build
+    (cljs-repl :ids #{"renderer"}
+               :nrepl-opts {:port 9001})
+
+    ; Live-reload JS for the renderer
     (reload :ids #{"renderer"}
             :ws-host "localhost"
             :on-jsload 'project-factual.core/main)
 
-    ;; Compile renderer
+    ; Compile renderer
     (cljs :ids #{"renderer"})
 
     ;; Compile JS for main process
