@@ -99,7 +99,7 @@ var menuTemplate = [fileMenu, editMenu, debugMenu, helpMenu];
 // on all operating systems
 const browserWindowOptions = {
   height: 750,
-  title: 'project-factual',
+  title: 'Project Factual',
   width: 1200,
   icon: __dirname + '/img/logo_96x96.png'
 };
