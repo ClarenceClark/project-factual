@@ -12,8 +12,20 @@
 ; Keep ref to main window so it doesn't get GC'ed
 (def main-win (atom nil))
 
+(defn load-main-page [window]
+  (if dev?
+    (.loadURL window (str "file://" js/__dirname "/../../../index.html"))
+    (.loadURL window (str "file://" js/__dirname "/index.html"))))
+
 (defn lauch-win! []
-  (let []))
+  (let [win (browser-window. (clj->js {:height 750
+                                       :width 1200
+                                       :title "Project Factual"}))]
+    (reset! main-win win)
+    (load-main-page win)
+    (.on win "closed" #(reset! main-win nil))))
 
 (defn init []
-  (.on app "ready" lauch-win!))
+  (set! *main-cli-fn* (fn [] nil))
+  (.on app "ready" lauch-win!)
+  (.on app "window-all-closed" #(.quit app)))
