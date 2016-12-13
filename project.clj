@@ -1,57 +1,27 @@
-(defproject project-factual "0.1.0-alpha1"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "GPLv3"
-            :url "https://www.gnu.org/licenses/gpl-3.0.en.html"}
-
-  :source-paths ["src/cljs"]
-
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
-                 [cljsjs/react "15.3.1-0"]
-                 [cljsjs/nodejs-externs "1.0.4-1"]
-                 [cljsjs/codemirror "5.11.0-2"]
-                 [reagent "0.6.0"]
-                 [re-frame "0.8.0"]
-                 [re-com "1.0.0"]]
-
-  :plugins [[lein-cljsbuild "1.1.3"]
-            [lein-ancient "0.6.8"]
-            [lein-figwheel "0.5.8"]]
-
-  :min-lein-version "2.5.3"
-
-  :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
-                             :compiler {:output-to "app/js/p/app.js"
-                                        :output-dir "app/js/p/out"
-                                        :asset-path "js/p/out"
-                                        :optimizations :none
-                                        :pretty-print true
-                                        :cache-analysis true}}}}
-
-  :clean-targets ^{:protect false} [:target-path "out" "app/js/p"]
-
-  :figwheel {:css-dirs ["app"]}
-
-  :profiles
-  {:dev
-   {:cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                               :compiler {:optimizations :none
-                                          :source-map true
-                                          :main "project-factual.dev"
-                                          :verbose true}
-                               :figwheel {:on-jsload "project-factual.core/mount-root"}}}}
-    :source-paths ["env/dev/cljs"]
-    :dependencies [[figwheel-sidecar "0.5.7"]
-                   [binaryage/devtools "0.8.2"]
-                   [re-frisk "0.3.1"]]
-
-    :production
-    {:cljsbuild {:builds {:app {:compiler {:optimizations :advanced
-                                           :main "project-factual.prod"
-                                           :parallel-build true
-                                           :cache-analysis false
-                                           :closure-defines {"goog.DEBUG" false}
-                                           :externs ["externs/misc.js"
-                                                     :pretty-print false]}}}}
-     :source-paths ["env/prod/cljs"]}}})
+(defproject
+  boot-project
+  "0.0.0-SNAPSHOT"
+  :repositories
+  [["clojars" {:url "https://repo.clojars.org/"}]
+   ["maven-central" {:url "https://repo1.maven.org/maven2"}]]
+  :dependencies
+  [[org.clojure/clojure "1.8.0"]
+   [org.clojure/clojurescript "1.9.229"]
+   [cljsjs/react "15.3.1-0"]
+   [cljsjs/nodejs-externs "1.0.4-1"]
+   [cljsjs/codemirror "5.11.0-2"]
+   [reagent "0.6.0"]
+   [re-frame "0.8.0"]
+   [re-com "1.0.0"]
+   [re-frisk "0.3.1"]
+   [onetom/boot-lein-generate "0.1.3" :scope "test"]
+   [adzerk/boot-cljs "1.7.228-1" :scope "test"]
+   [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
+   [adzerk/boot-reload "0.4.12" :scope "test"]
+   [com.cemerick/piggieback "0.2.1" :scope "test"]
+   [weasel "0.7.0" :scope "test"]
+   [org.clojure/tools.nrepl "0.2.12" :scope "test"]]
+  :source-paths
+  ["src/cljs"]
+  :resource-paths
+  ["resources"])

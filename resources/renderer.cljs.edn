@@ -1,0 +1,2 @@
+{:require  [project-factual.core]
+ :init-fns [project-factual.core/main]}

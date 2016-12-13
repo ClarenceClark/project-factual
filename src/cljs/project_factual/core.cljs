@@ -3,12 +3,13 @@
             [cljsjs.react]
             [re-frame.core :as r]
             [re-frisk.core :as re-frisk]
-            [project-factual.subs :as subs]
-            [project-factual.handler.handlers :as handlers]
-            [project-factual.handler.editor-handlers :as editor-handlers]
-            [project-factual.editor.cm-wrapper :as editor]
-            [project-factual.views.main :as main]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+
+            ; Included for deps loading and registration
+            [project-factual.views.master-view :as main]
+            [project-factual.handler.handlers]
+            [project-factual.handler.editor-handlers]
+            [project-factual.subs]))
 
 (defn mount-root []
   (reagent/render [main/main-page]
@@ -19,7 +20,3 @@
   (r/dispatch-sync [:init-db])
   (re-frisk/enable-re-frisk!)
   (mount-root))
-
-;;; REPL Conveniences
-
-(def repl-db re-frame.db/app-db)

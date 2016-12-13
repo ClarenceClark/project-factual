@@ -121,7 +121,6 @@
 (r/reg-event-db
   :repl-current-db
   (fn [db [_]]
-    (cljs.pprint/pprint db)
     db))
 
 (r/reg-event-db

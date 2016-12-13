@@ -1,0 +1,3 @@
+{:require  [project-factual.main.main]
+ :init-fns [project-factual.main.main/init]
+ :compiler-options {:target :nodejs}}

@@ -1,4 +1,4 @@
-(ns project-factual.views.main
+(ns project-factual.views.master-view
   "Main view of the entire application"
   (:require [project-factual.views.pane-mid :as mid-pane]
             [project-factual.views.pane-right :as right-pane]
