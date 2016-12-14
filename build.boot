@@ -12,9 +12,14 @@
 
                   ; Dev deps
                   [re-frisk "0.3.1"]
+                  [binaryage/devtools "0.8.3"]
 
                   ; Boot deps
+
+                  ; Generate lein
                   [onetom/boot-lein-generate "0.1.3" :scope "test"]
+
+                  ; Build
                   [adzerk/boot-cljs "1.7.228-1" :scope "test"]
                   [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
                   [adzerk/boot-reload "0.4.12" :scope "test"]
@@ -22,8 +27,9 @@
                   [weasel "0.7.0" :scope "test"]
                   [org.clojure/tools.nrepl "0.2.12" :scope "test"]])
 
-(require '[boot.lein])
-(boot.lein/generate)
+(deftask generate-lein []
+  (require '[boot.lein])
+  ((resolve 'boot.lein/generate)))
 
 (require
   '[adzerk.boot-cljs :refer [cljs]]
@@ -51,7 +57,8 @@
             :on-jsload 'project-factual.core/main)
 
     ; Compile renderer
-    (cljs :ids #{"renderer"})
+    (cljs :ids #{"renderer"}
+          :compiler-options {:preloads '[devtools.preload]})
 
     ;; Compile JS for main process
     ;; path.resolve(".") which is used in CLJS's node shim
