@@ -26,6 +26,7 @@
   {:label "Project Factual"
    :submenu
    [{:label "About Project Factual" :role "about"}
+    (normal-item "Preferences" "Cmd+," "ui.pref.show.toggle")
     seperator
     {:role "services" :submenu []}
     seperator

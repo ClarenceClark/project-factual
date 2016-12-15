@@ -14,7 +14,7 @@
 
 (defn md-preview []
   (let [active-item (r/subscribe [:items.active])
-        active? (r/subscribe [:editor.mdpreview-status])
+        active? (r/subscribe [:ui.preview.show])
         renderer (new-mdrenderer)]
     (fn []
       [:div {:class (str "md-preview" (when-not @active? " hide"))}

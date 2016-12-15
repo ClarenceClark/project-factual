@@ -20,13 +20,17 @@
 
 (s/def ::ui.sidebar.show boolean?)
 (s/def ::ui.pane-mid.show boolean?)
-(s/def ::editor.mdpreview-status boolean?)
+(s/def ::ui.preview.show boolean?)
+(s/def ::ui.pref.show boolean?)
 
 (s/def ::db (s/keys :req-un [::items ::groups
                              ::items.active-id ::groups.active-id
+
                              ::ui.sidebar.show
                              ::ui.pane-mid.show
-                             ::editor.mdpreview-status
+                             ::ui.preview.show
+                             ::ui.pref.show
+
                              ::editor]))
 
 ;; ----------
@@ -98,7 +102,10 @@
    :groups.active-id -1
 
    :ui.sidebar.show false
-   :ui.pane-mid.show true
+   :ui.pane-mid.show false
+   :ui.preview.show false
+   :ui.pref.show false
 
-   :editor.mdpreview-status false
+   :pref.theme "theme-light"
+
    :editor nil})

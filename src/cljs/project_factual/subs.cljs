@@ -98,10 +98,12 @@
 ;;; OTHERS
 ;;; ------
 
-(reg-keyword-sub :ui.pane-mid.show)
-
+(reg-keyword-sub :ui.pref.show)
 (reg-keyword-sub :ui.sidebar.show)
-(reg-keyword-sub :editor.mdpreview-status)
+(reg-keyword-sub :ui.pane-mid.show)
+(reg-keyword-sub :ui.preview.show)
+
+(reg-keyword-sub :pref.theme)
 
 (r/reg-sub
   :screen-dim

@@ -56,22 +56,21 @@
       :on-blur #(r/dispatch [:focus-editor])]]))
 
 (defn toolbar-editor []
-  (let [preview-status (r/subscribe [:editor.mdpreview-status])]
+  (let [preview-status (r/subscribe [:ui.preview.show])]
     (fn []
       [:div {:class "toolbar toolbar-editor border-bottom"}
        [groupbar]
        [:div.icon-bar
         [misc/toolbar-button "icon-info-circled-alt" [:display-active-item-info]]
         [misc/toolbar-button (if @preview-status "icon-eye-off" "icon-eye")
-         [:ui.mdpreview.toggle]]
+         [:ui.preview.toggle]]
         [misc/toolbar-button "icon-trash-empty" [:item.trash]]
         [misc/toolbar-button "icon-dot-3" [:todo]]]])))
 
 (defn pane-right []
-  (let [preview? (r/subscribe [:editor.mdpreview-status])]
+  (let [preview? (r/subscribe [:ui.preview.show])]
     (fn []
       [:div {:class "pane-right"}
-       [toolbar-editor]
        [:div {:class (str "cm-container" (when @preview? " hide"))}
         [codemirror-component]]
        [md-preview/md-preview]])))

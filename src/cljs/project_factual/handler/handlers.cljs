@@ -95,6 +95,16 @@
   (fn todo []
     (println "TODO")))
 
+(defn reg-dbk-set [event db-key]
+  "Registers a db handler for `event` that sets the db's `db-key` to the value given"
+  (r/reg-event-db
+    event
+    [default-interceptors]
+    (fn [db [new-val]]
+      (assoc db db-key new-val))))
+
+(reg-dbk-set :pref.theme.set :pref.theme)
+
 ;; ----------
 ;; REPL conveniences
 ;; ----------
