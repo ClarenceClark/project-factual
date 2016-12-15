@@ -7,7 +7,7 @@
 
 (defn dim-component [dim]
   [:div {:class (str "dim" (when-not dim " hide"))
-         :on-click #(r/dispatch [:sidebar.set-visibility false])}])
+         :on-click #(r/dispatch [:ui.sidebar.show.set false])}])
 
 (defn main-page []
   (let [dimmed (r/subscribe [:screen-dim])]

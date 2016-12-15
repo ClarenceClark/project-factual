@@ -98,11 +98,13 @@
 ;;; OTHERS
 ;;; ------
 
-(reg-keyword-sub :sidebar.active)
+(reg-keyword-sub :ui.pane-mid.show)
+
+(reg-keyword-sub :ui.sidebar.show)
 (reg-keyword-sub :editor.mdpreview-status)
 
 (r/reg-sub
   :screen-dim
   (fn [db _]
     ; The only source of screen dim (currently) is the sidebar
-    (:sidebar.active db)))
+    (:ui.sidebar.show db)))

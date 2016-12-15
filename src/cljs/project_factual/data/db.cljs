@@ -17,12 +17,15 @@
 
 (s/def ::items.active-id int?)
 (s/def ::groups.active-id int?)
-(s/def ::sidebar.active boolean?)
+
+(s/def ::ui.sidebar.show boolean?)
+(s/def ::ui.pane-mid.show boolean?)
 (s/def ::editor.mdpreview-status boolean?)
 
 (s/def ::db (s/keys :req-un [::items ::groups
                              ::items.active-id ::groups.active-id
-                             ::sidebar.active
+                             ::ui.sidebar.show
+                             ::ui.pane-mid.show
                              ::editor.mdpreview-status
                              ::editor]))
 
@@ -76,6 +79,7 @@
                                  "2. ...work too!\n"
                                  "3. \n\n## What about images?"
                                  "\n![Yes](http://i.imgur.com/sZlktY7.png)")}}
+
    :groups {-1 group-all ; TODO get rid of magical constant
             1 {:group.id 1
                :group.name "Default"
@@ -89,8 +93,12 @@
             4 {:group.id 4
                :group.name "number 4"
                :group.type :group.collection}}
+
    :items.active-id 1
    :groups.active-id -1
-   :sidebar.active false
+
+   :ui.sidebar.show false
+   :ui.pane-mid.show true
+
    :editor.mdpreview-status false
    :editor nil})

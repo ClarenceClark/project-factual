@@ -6,7 +6,7 @@
                      (when (= @active-group (:group.id group)) " selected"))
          :on-click #(do
                       (r/dispatch [:new-active-group (:group.id group)])
-                      (r/dispatch [:sidebar.set-visibility false]))}
+                      (r/dispatch [:ui.sidebar.show.set false]))}
    (if (not (nil? icon))
      [:i {:class (str "group-icon " icon)}])
    [:div {:class "group-name"}
@@ -19,7 +19,7 @@
   [sidebar-group-elem-base group active-group (:group.icon group)])
 
 (defn sidebar []
-  (let [active (r/subscribe [:sidebar.active])
+  (let [active (r/subscribe [:ui.sidebar.show])
         groups (r/subscribe [:groups.all-normal])
         active-group (r/subscribe [:groups.active-id])
         group-all @(r/subscribe [:group-all])] ; Will never change, probably

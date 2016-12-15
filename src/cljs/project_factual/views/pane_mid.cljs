@@ -33,14 +33,15 @@
 
 (defn toolbar-items []
   [:div {:class "toolbar toolbar-midpane border-bottom"}
-   [misc/toolbar-button "icon-menu" [:sidebar.set-visibility true]]
+   [misc/toolbar-button "icon-menu" [:ui.sidebar.show.set true]]
    [misc/toolbar-button "icon-search" [:todo]]
    [misc/toolbar-button "icon-doc-new icon-right" [:item.new :item.markdown]]])
 
 (defn pane-mid []
   (let [items (r/subscribe [:items.active-list])
-        active-item-id (r/subscribe [:items.active-id])]
+        active-item-id (r/subscribe [:items.active-id])
+        show? (r/subscribe [:ui.pane-mid.show])]
     (fn []
-      [:div {:class "pane-mid"}
+      [:div {:class (str "pane-mid" (when-not @show? " hide"))}
        [toolbar-items]
        [items-list @items @active-item-id]])))
