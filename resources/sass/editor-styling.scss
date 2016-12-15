@@ -49,7 +49,7 @@
     // Custom modes
     .CodeMirror-matchingbracket { background: rgba(0,0,0,0.05); }
     .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
-      background: rgba(255,0,0,.15)
+      background: url("./img/red-squiggly-underline.svg") left bottom repeat-x;
     }
   }
 }
