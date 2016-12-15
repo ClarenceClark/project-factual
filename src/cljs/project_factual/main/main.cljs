@@ -25,7 +25,6 @@
     (.setApplicationMenu menu menubar/built-menu)
     (reset! main-win win)
     (load-main-page win)
-    (if dev? (.openDevTools win))
     (.on win "closed" #(reset! main-win nil))))
 
 (defn init []
