@@ -33,7 +33,7 @@
        :set-editor-value [editor (get-in db [:items id :item.content])]})))
 
 (r/reg-event-db
-  :move-active-item-to-trash
+  :item.trash
   [default-interceptors]
   (fn [db]
     (let [active-item-id (:items.active-id db)]
@@ -45,12 +45,6 @@
   [default-interceptors]
   (fn [db [id]]
     (assoc db :groups.active-id id)))
-
-(r/reg-event-db
-  :sidebar.set-visibility
-  [default-interceptors]
-  (fn [db [visibility]]
-    (assoc db :sidebar.active visibility)))
 
 (defn difference [col1 col2]
   (set/difference (set col1) (set col2)))
@@ -117,28 +111,3 @@
   :repl-reset-db
   (fn [_ [_]]
     db/testing-database))
-
-(r/reg-event-db
-  :repl-current-db
-  (fn [db [_]]
-    db))
-
-(r/reg-event-db
-  :repl-change-db
-  (fn [db [_ func]]
-    (func db)))
-
-(r/reg-event-db
-  :repl-change-key
-  (fn [db [_ k v]]
-    (assoc db k v)))
-
-(r/reg-event-db
-  :repl-reset-items
-  (fn [db _]
-    (assoc db :items (:items db/testing-database))))
-
-(r/reg-event-db
-  :repl-reset-groups
-  (fn [db _]
-    (assoc db :groups (:groups db/testing-database))))

@@ -12,7 +12,7 @@
   (reagent/create-class
     {:reagent-render
      (fn []
-       [:textarea#codemirror-textarea])
+       [:textarea {:id "codemirror-textarea"}])
 
      ; Init CodeMirror instance on mount
      :component-did-mount
@@ -64,7 +64,7 @@
         [misc/toolbar-button "icon-info-circled-alt" [:display-active-item-info]]
         [misc/toolbar-button (if @preview-status "icon-eye-off" "icon-eye")
          [:toggle-editor-mdpreview]]
-        [misc/toolbar-button "icon-trash-empty" [:move-active-item-to-trash]]
+        [misc/toolbar-button "icon-trash-empty" [:item.trash]]
         [misc/toolbar-button "icon-dot-3" [:todo]]]])))
 
 (defn pane-right []

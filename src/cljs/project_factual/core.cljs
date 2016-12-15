@@ -5,10 +5,18 @@
             [re-frisk.core :as re-frisk]
             [clojure.string :as str]
 
-            ; Included for deps loading and registration
+            ; Views
             [project-factual.views.master-view :as main]
+
+            ; Handlers and views are required so that they actually register
+            ; with re-frame
+            ; Handlers
             [project-factual.handler.handlers]
             [project-factual.handler.editor-handlers]
+            [project-factual.handler.keyboard-shorccuts]
+            [project-factual.handler.ui-handlers]
+
+            ; Subs
             [project-factual.subs]))
 
 (defn mount-root []
@@ -18,5 +26,6 @@
 (defn main
   []
   (r/dispatch-sync [:init-db])
+  (r/dispatch-sync [:init-ipc-handlers])
   (re-frisk/enable-re-frisk!)
   (mount-root))

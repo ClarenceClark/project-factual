@@ -1,8 +1,26 @@
 (ns project-factual.main.menubar)
 
-(def menu (.-Menu (js/require "electron")))
+(def electron (js/require "electron"))
+(def menu (.-Menu electron))
+(def web-contents (.-webContents electron))
+(def ipc (.-ipcMain electron))
 
 (defonce seperator {:type "separator"})
+
+(defn send-rf-event [eventid]
+  (let [focused (.getFocusedWebContents web-contents)]
+    (when focused
+      (.send focused "shortcut-event" eventid))))
+
+(defn normal-item [label shortcut eventid]
+  {:label label
+   :accelerator shortcut
+   :click #(send-rf-event eventid)})
+
+(defn role-item [label shortcut role]
+  {:label label
+   :accelerator shortcut
+   :role role})
 
 (def menu-sys
   {:label "Project Factual"
@@ -11,41 +29,40 @@
     seperator
     {:role "services" :submenu []}
     seperator
-    {:label "Hide Project Factual" :accelerator "Cmd+H" :role "hide"}
-    {:label "Hide Others" :accelerator "Cmd+Shift+H" :role "hideothers"}
+    (role-item "Hide Project Factual" "Cmd+H" "hide")
+    (role-item "Hide Others" "Cmd+Shift+H" "hideothers")
     {:label "Show All" :role "unhide"}
     seperator
-    {:label "Quit" :accelerator "Cmd+Q" :role "quit"}]})
+    (role-item "Quit" "Cmd+Q" "quit")]})
 
 (def menu-file
   {:label "File"
    :submenu
-   [{:label "New Item" :accelerator "Cmd+N"}
-    {:label "Delete Item" :accelerator "Cmd+Backspace"}]})
+   [(normal-item "New Item" "Cmd+N" "items.new.mditem")
+    (normal-item "Delete Item" "Cmd-Backspace" "items.active.trash")]})
 
 (def menu-edit
   {:label "Edit"
    :submenu
-   [{:label "Undo" :accelerator "Cmd+Z" :role "undo"}
-    {:label "Redo" :accelerator "Cmd+Shift+Z" :role "redo"}
+   [(role-item "Undo" "Cmd+Z" "undo")
+    (role-item "Redo" "Cmd+Shift+Z" "redo")
     seperator
-    {:label "Cut" :accelerator "Cmd+X" :role "cut"}
-    {:label "Copy" :accelerator "Cmd+C" :role "copy"}
-    {:label "Paste" :accelerator "Cmd+V" :role "paste"}
-    {:label "Paste and Match Style" :accelerator "Cmd+Shift+V" :role "pasteandmatchstyle"}
-    {:label "Select All" :accelerator "Cmd+A" :role "selectall"}
+    (role-item "Cut" "Cmd+X" "cut")
+    (role-item "Copy" "Cmd+C" "copy")
+    (role-item "Paste" "Cmd+V" "paste")
+    (role-item "Paste and Match Style" "Cmd+Shift+V" "pasteandmatchstyle")
+    (role-item "Select All" "Cmd+A" "selectall")
     seperator
     {:label "Speech" :submenu [{:role "startspeaking"} {:role "stopspeaking"}]}]})
 
 (def menu-view
   {:label "View"
    :submenu
-   [{:label "Sidebar" :accelerator "Cmd+1"}
-    {:label "Items List" :accelerator "Cmd+2"}
-    {:label "Editor Toolbar" :accelerator "Cmd+3"}
+   [(normal-item "Sidebar" "Cmd+1" "ui.sidebar.show.toggle")
+    (normal-item "Items List" "Cmd+2" "ui.pane-mid.show.toggle")
     seperator
-    {:label "Reload" :accelerator "Cmd+Alt+R" :role "reload"}
-    {:label "Toggle Developer Tools" :accelerator "Cmd+Alt+I" :role "toggledevtools"}]})
+    (role-item "Reload" "Cmd+Alt+R" "reload")
+    (role-item "Dev Tools" "Cmd+Alt+I" "toggledevtools")]})
 
 (def menu-format
   {:label "Format"
