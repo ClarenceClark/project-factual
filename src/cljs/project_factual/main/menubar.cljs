@@ -39,7 +39,7 @@
   {:label "File"
    :submenu
    [(normal-item "New Item" "Cmd+N" "items.new.mditem")
-    (normal-item "Delete Item" "Cmd-Backspace" "items.active.trash")]})
+    (normal-item "Delete Item" "Cmd+Backspace" "items.active.trash")]})
 
 (def menu-edit
   {:label "Edit"
@@ -60,6 +60,8 @@
    :submenu
    [(normal-item "Sidebar" "Cmd+1" "ui.sidebar.show.toggle")
     (normal-item "Items List" "Cmd+2" "ui.pane-mid.show.toggle")
+    seperator
+    (normal-item "Preview" "Cmd+P" "ui.preview.show.toggle")
     seperator
     (role-item "Reload" "Cmd+Alt+R" "reload")
     (role-item "Dev Tools" "Cmd+Alt+I" "toggledevtools")]})

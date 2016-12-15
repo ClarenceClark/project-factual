@@ -33,7 +33,7 @@
 
 (defn toolbar-items []
   [:div {:class "toolbar toolbar-midpane border-bottom"}
-   [misc/toolbar-button "icon-menu" [:ui.sidebar.show.set true]]
+   [misc/toolbar-button "icon-menu" [:ui.sidebar.set true]]
    [misc/toolbar-button "icon-search" [:todo]]
    [misc/toolbar-button "icon-doc-new icon-right" [:item.new :item.markdown]]])
 

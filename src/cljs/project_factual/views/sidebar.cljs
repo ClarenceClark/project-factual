@@ -6,7 +6,7 @@
                      (when (= @active-group (:group.id group)) " selected"))
          :on-click #(do
                       (r/dispatch [:new-active-group (:group.id group)])
-                      (r/dispatch [:ui.sidebar.show.set false]))}
+                      (r/dispatch [:ui.sidebar.set false]))}
    (if (not (nil? icon))
      [:i {:class (str "group-icon " icon)}])
    [:div {:class "group-name"}

@@ -5,8 +5,10 @@
 (def ipc (.-ipcRenderer electron))
 
 (def rf-event
-  {"ui.sidebar.show.toggle" [:ui.sidebar.show.toggle]
-   "ui.pane-mid.show.toggle" [:ui.pane-mid.show.toggle]
+  {"ui.sidebar.show.toggle" [:ui.sidebar.toggle]
+   "ui.pane-mid.show.toggle" [:ui.pane-mid.toggle]
+   "ui.preview.show.toggle" [:ui.mdpreview.toggle]
+
    "items.new.mditem" [:item.new :item.markdown]
    "items.active.trash" [:item.trash]})
 

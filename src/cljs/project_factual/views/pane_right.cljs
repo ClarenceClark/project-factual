@@ -63,7 +63,7 @@
        [:div.icon-bar
         [misc/toolbar-button "icon-info-circled-alt" [:display-active-item-info]]
         [misc/toolbar-button (if @preview-status "icon-eye-off" "icon-eye")
-         [:toggle-editor-mdpreview]]
+         [:ui.mdpreview.toggle]]
         [misc/toolbar-button "icon-trash-empty" [:item.trash]]
         [misc/toolbar-button "icon-dot-3" [:todo]]]])))
 

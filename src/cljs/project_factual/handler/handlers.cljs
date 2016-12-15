@@ -90,14 +90,6 @@
                #(conj % (:group.id group)))))
 
 (r/reg-event-db
-  :toggle-editor-mdpreview
-  [default-interceptors]
-  (fn toggle-editor-mdpreview
-    [{preview-status :editor.mdpreview-status :as db}]
-    (assoc db :editor.mdpreview-status
-              (not preview-status))))
-
-(r/reg-event-db
   :todo
   [default-interceptors]
   (fn todo []
