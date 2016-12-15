@@ -23,6 +23,7 @@
                 :lineNumbers false
                 :lineWrapping true
                 :scrollPastEnd true
+                :scrollbarStyle "null"
                 :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList" ; From addon continuelist
                             "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
