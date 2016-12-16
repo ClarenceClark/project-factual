@@ -16,11 +16,6 @@ $grey-700: #616161;
 $grey-800: #424242;
 $grey-900: #212121;
 
-// Secondary colour: blue
-$blue-lightest: #64B5F6;
-$blue-lighter: #42A5F5;
-$blue: #2196f3;
-
 // =====
 // SIZES
 // =====
@@ -30,10 +25,12 @@ $icon-size: 14px;
 $icon-padding: $icon-size / 3;
 
 // Global Measurements
-$sidebar-width: 300px;
-$items-list-width: 300px;
+$width-sidebar: 300px;
+$width-pane-mid: 300px;
+$width-pane-pref: 720px;
+$width-editor: 720px;
+
 $toolbar-height: 36px;
-$editor-width: 720px;
 
 // Text
 $line-height: 1.5em;
@@ -47,7 +44,7 @@ $light: 300;
 
 $serif-font: "Cormorant Garamond", "Adobe Garamond Pro", "Garamond", serif;
 $sans-serif-font: BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-$monospace-font: "Source Code Pro", monospace;
+$monospace-font: "Inconsolata", "Source Code Pro", monospace;
 
 // Animations
 $anim-transition: all 200ms ease-in-out;
@@ -63,10 +60,6 @@ $border-radius: 6px;
 $z-index-dialogs: 1000;
 $base-z: 1;
 $z-dim: $base-z + 1;
-
-// Viewport widths for media queries
-$single-column: 750px;
-$medium: 900px;
 
 // =========
 // CONSTANTS

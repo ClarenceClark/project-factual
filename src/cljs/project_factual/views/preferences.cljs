@@ -15,7 +15,6 @@
        :child
        [rc/v-box
         :class "pref-pane"
-        :width "700px"
         :gap "10px"
         :children
         [[rc/title

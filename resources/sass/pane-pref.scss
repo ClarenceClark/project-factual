@@ -2,6 +2,8 @@
 
 .pref-pane-container {
   .pref-pane {
+    width: $width-pane-pref;
+
     .level2 {
       font-size: $font-size-large;
       font-family: inherit;

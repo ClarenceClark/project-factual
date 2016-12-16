@@ -16,7 +16,7 @@
   background-color: inherit;
 
   .CodeMirror-sizer {
-    max-width: $editor-width;
+    max-width: $width-editor;
     margin: 0 auto !important;
   }
 
@@ -24,8 +24,8 @@
     .cm-variable-2, .cm-variable-3 { color: inherit }
     .cm-quote { color: inherit; }
     .cm-strikethrough { text-decoration: line-through; }
-    .cm-tag, .cm-link { color: $grey-500 }
-    .cm-url { color: darken($grey-400, 8%) }
+    .cm-tag, .cm-link { color: inherit }
+    .cm-url { color: darken($grey-500, 6%) }
 
     .cm-header {
       color: inherit;
@@ -39,10 +39,8 @@
     .cm-header-4 { font-size: 1.1em; }
 
     .cm-comment {
-      background: rgba(0, 0, 0, .05);
-      border-radius: 3px;
       font-family: $monospace-font;
-      font-size: 0.8em;
+      font-size: 0.9em;
       color: inherit;
     }
 

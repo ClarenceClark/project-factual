@@ -149,13 +149,15 @@
   margin: 0;
   padding: 0; }
 
-.pref-pane-container .pref-pane .level2 {
-  font-size: 20px;
-  font-family: inherit;
-  font-weight: bold; }
-.pref-pane-container .pref-pane .rc-label {
-  margin-top: auto;
-  margin-bottom: auto; }
+.pref-pane-container .pref-pane {
+  width: 720px; }
+  .pref-pane-container .pref-pane .level2 {
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: bold; }
+  .pref-pane-container .pref-pane .rc-label {
+    margin-top: auto;
+    margin-bottom: auto; }
 
 /* Stolen (sorry, adapted) from SimpleMDE */
 .inherit, .pane-right .groupbar .suggestions-box input {
@@ -192,9 +194,9 @@
   .CodeMirror .CodeMirror-code .cm-strikethrough {
     text-decoration: line-through; }
   .CodeMirror .CodeMirror-code .cm-tag, .CodeMirror .CodeMirror-code .cm-link {
-    color: #9e9e9e; }
+    color: inherit; }
   .CodeMirror .CodeMirror-code .cm-url {
-    color: darkgray; }
+    color: #8f8f8f; }
   .CodeMirror .CodeMirror-code .cm-header {
     color: inherit;
     line-height: 1.5em;
@@ -208,10 +210,8 @@
   .CodeMirror .CodeMirror-code .cm-header-4 {
     font-size: 1.1em; }
   .CodeMirror .CodeMirror-code .cm-comment {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 3px;
-    font-family: "Source Code Pro", monospace;
-    font-size: 0.8em;
+    font-family: "Inconsolata", "Source Code Pro", monospace;
+    font-size: 0.9em;
     color: inherit; }
   .CodeMirror .CodeMirror-code .CodeMirror-matchingbracket {
     background: rgba(0, 0, 0, 0.05); }
