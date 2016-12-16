@@ -104,6 +104,7 @@
 (reg-keyword-sub :ui.preview.show)
 
 (reg-keyword-sub :pref.theme)
+(reg-keyword-sub :pref.ui.font)
 
 (r/reg-sub
   :screen-dim

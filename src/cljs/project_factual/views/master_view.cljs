@@ -13,9 +13,11 @@
 (defn main-page []
   (let [dimmed (r/subscribe [:screen-dim])
         pref-active? (r/subscribe [:ui.pref.show])
-        theme (r/subscribe [:pref.theme])]
+        theme (r/subscribe [:pref.theme])
+        ui-font (r/subscribe [:pref.ui.font])]
     (fn []
-      [:div {:class (str "main " @theme)}
+      [:div {:class (str "main " @theme)
+             :style {:font-family @ui-font}}
        [sidebar/sidebar]
        [mid-pane/pane-mid]
        [right-pane/pane-right]

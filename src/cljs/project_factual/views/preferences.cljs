@@ -6,8 +6,26 @@
   [{:id "theme-light" :label "Light"}
    {:id "theme-dark" :label "Dark"}])
 
+(defn identical-map [a] {:id a :label a})
+
+(def fonts
+  [(identical-map "Cormorant Garamond")
+   (identical-map "Adobe Garamond Pro")
+   (identical-map "Inconsolata")
+   {:id "BlinkMacSystemFont" :label "San Francisco"}
+   (identical-map "Helvetica Neue")
+   (identical-map "Source Code Pro")])
+
+(defn pref-pane-elem [name comp]
+  [rc/h-box
+   :gap "10px"
+   :children
+   [[rc/label :label name]
+    comp]])
+
 (defn pref-pane [active?]
-  (let [theme (r/subscribe [:pref.theme])]
+  (let [theme (r/subscribe [:pref.theme])
+        ui-font (r/subscribe [:pref.ui.font])]
     (fn [active?]
       [rc/modal-panel
        :backdrop-on-click #(r/dispatch [:ui.pref.toggle])
@@ -20,11 +38,11 @@
         [[rc/title
           :level :level2
           :label "Preferences"]
-         [rc/h-box
-          :gap "20px"
-          :children
-          [[rc/label :label "Theme: "]
-           [rc/single-dropdown
-            :choices theme-choices
-            :model @theme
-            :on-change #(r/dispatch [:pref.theme.set %])]]]]]])))
+         [pref-pane-elem "Theme:" [rc/single-dropdown
+                                    :choices theme-choices
+                                    :model @theme
+                                    :on-change #(r/dispatch [:pref.theme.set %])]]
+         [pref-pane-elem "UI Font:" [rc/single-dropdown
+                                     :choices fonts
+                                     :model @ui-font
+                                     :on-change #(r/dispatch [:pref.ui.font.set %])]]]]])))

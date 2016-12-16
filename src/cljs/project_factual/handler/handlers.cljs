@@ -104,6 +104,7 @@
       (assoc db db-key new-val))))
 
 (reg-dbk-set :pref.theme.set :pref.theme)
+(reg-dbk-set :pref.ui.font.set :pref.ui.font)
 
 ;; ----------
 ;; REPL conveniences
