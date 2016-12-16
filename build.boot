@@ -2,16 +2,16 @@
   :source-paths #{"src/cljs"}
   :resource-paths #{"resources"}
   :dependencies '[[org.clojure/clojure "1.8.0"]
-                  [org.clojure/clojurescript "1.9.229"]
+                  [org.clojure/clojurescript "1.9.293"]
                   [cljsjs/react "15.3.1-0"]
                   [cljsjs/nodejs-externs "1.0.4-1"]
-                  [cljsjs/codemirror "5.11.0-2"]
+                  [cljsjs/codemirror "5.21.0-1"]
                   [reagent "0.6.0"]
-                  [re-frame "0.8.0"]
-                  [re-com "1.0.0"]
+                  [re-frame "0.9.0"]
+                  [re-com "1.2.0"]
 
                   ; Dev deps
-                  [re-frisk "0.3.1"]
+                  [re-frisk "0.3.2"]
                   [binaryage/devtools "0.8.3"]
 
                   ; Boot deps
@@ -20,7 +20,7 @@
                   [onetom/boot-lein-generate "0.1.3" :scope "test"]
 
                   ; Build
-                  [adzerk/boot-cljs "1.7.228-1" :scope "test"]
+                  [adzerk/boot-cljs "1.7.228-2" :scope "test"]
                   [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
                   [adzerk/boot-reload "0.4.13" :scope "test"]
                   [com.cemerick/piggieback "0.2.1" :scope "test"]
@@ -54,11 +54,12 @@
     ; Live-reload JS for the renderer
     (reload :ids #{"renderer"}
             :ws-host "localhost"
-            :on-jsload 'project-factual.core/mount-root
+            :on-jsload 'project-factual.core/reload
             :target-path "target")
 
     ; Compile renderer
     (cljs :ids #{"renderer"}
+          :optimizations :none
           :compiler-options {:preloads '[devtools.preload]})
 
     ;; Compile JS for main process

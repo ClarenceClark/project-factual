@@ -8,14 +8,7 @@
     "typo-js": "^1.0.2"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-download-electron": "*",
-    "moment": "^2.12.0",
-    "shelljs": "^0.7.5",
-    "winresourcer": "^0.9.0",
-    "electron-packager": "^8.2.0"
   },
   "optionalDependencies": {
-    "grunt-appdmg": "^0.3.2"
   }
 }

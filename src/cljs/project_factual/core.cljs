@@ -23,6 +23,10 @@
   (reagent/render [main/main-page]
                   (.getElementById js/document "app")))
 
+(defn reload []
+  (r/clear-subscription-cache!)
+  (mount-root))
+
 (defn main
   []
   (r/dispatch-sync [:init-db])
