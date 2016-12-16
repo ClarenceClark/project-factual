@@ -29,6 +29,7 @@
 
 ; Preferences
 (s/def ::pref.theme string?)
+(s/def ::pref.ui.font string?)
 
 (s/def ::db
   (s/keys :req-un
@@ -48,6 +49,7 @@
 
      ; Preferences
      ::pref.theme
+     ::pref.ui.font
 
      ::editor]))
 
@@ -125,5 +127,6 @@
    :ui.pref.show false
 
    :pref.theme "theme-light"
+   :pref.ui.font "Cormorant Garamond"
 
    :editor nil})

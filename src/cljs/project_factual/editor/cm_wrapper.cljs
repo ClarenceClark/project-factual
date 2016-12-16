@@ -24,6 +24,7 @@
                 :lineWrapping true
                 :scrollPastEnd true
                 :scrollbarStyle "null"
+                :cursorScrollMargin 300 ; Keep 300px to the top/bottom of cursor
                 :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList" ; From addon continuelist
                             "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
                             "Shift-Tab" (r/dispatch [:exec-cm-command "indentLess"])}}
