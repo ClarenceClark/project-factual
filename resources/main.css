@@ -149,6 +149,14 @@
   margin: 0;
   padding: 0; }
 
+.pref-pane-container .pref-pane .level2 {
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: bold; }
+.pref-pane-container .pref-pane .rc-label {
+  margin-top: auto;
+  margin-bottom: auto; }
+
 /* Stolen (sorry, adapted) from SimpleMDE */
 .inherit, .pane-right .groupbar .suggestions-box input {
   font-size: inherit;

@@ -1,1 +1,16 @@
 @import "variables";
+
+.pref-pane-container {
+  .pref-pane {
+    .level2 {
+      font-size: $font-size-large;
+      font-family: inherit;
+      font-weight: bold;
+    }
+
+    .rc-label {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+}
