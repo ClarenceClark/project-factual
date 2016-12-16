@@ -22,7 +22,7 @@
                   ; Build
                   [adzerk/boot-cljs "1.7.228-1" :scope "test"]
                   [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
-                  [adzerk/boot-reload "0.4.12" :scope "test"]
+                  [adzerk/boot-reload "0.4.13" :scope "test"]
                   [com.cemerick/piggieback "0.2.1" :scope "test"]
                   [weasel "0.7.0" :scope "test"]
                   [org.clojure/tools.nrepl "0.2.12" :scope "test"]])
@@ -54,7 +54,8 @@
     ; Live-reload JS for the renderer
     (reload :ids #{"renderer"}
             :ws-host "localhost"
-            :on-jsload 'project-factual.core/main)
+            :on-jsload 'project-factual.core/mount-root
+            :target-path "target")
 
     ; Compile renderer
     (cljs :ids #{"renderer"}
