@@ -21,7 +21,11 @@
         [[rc/title
           :level :level2
           :label "Preferences"]
-         [rc/single-dropdown
-          :choices theme-choices
-          :model @theme
-          :on-change #(r/dispatch [:pref.theme.set %])]]]])))
+         [rc/h-box
+          :gap "20px"
+          :children
+          [[rc/label :label "Theme: "]
+           [rc/single-dropdown
+            :choices theme-choices
+            :model @theme
+            :on-change #(r/dispatch [:pref.theme.set %])]]]]]])))
