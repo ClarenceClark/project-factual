@@ -3,35 +3,53 @@
 
 ;; DATABASE SPEC
 
+; Items
 (s/def ::item.id int?)
 (s/def ::item.type keyword?)
 (s/def ::item.content string?)
 (s/def ::item.item (s/keys :req-un [::item.id ::item.type ::item.content]))
 (s/def ::items (s/map-of ::item.id ::item.item))
 
+; Groups
 (s/def ::group.id int?)
 (s/def ::group.type keyword?)
 (s/def ::group.name string?)
 (s/def ::group.group (s/keys :req-un [::group.id ::group.type ::group.name]))
 (s/def ::groups (s/map-of ::group.id ::group.group))
 
+; Active state
 (s/def ::items.active-id int?)
 (s/def ::groups.active-id int?)
 
+; UI state
 (s/def ::ui.sidebar.show boolean?)
 (s/def ::ui.pane-mid.show boolean?)
 (s/def ::ui.preview.show boolean?)
 (s/def ::ui.pref.show boolean?)
 
-(s/def ::db (s/keys :req-un [::items ::groups
-                             ::items.active-id ::groups.active-id
+; Preferences
+(s/def ::pref.theme string?)
 
-                             ::ui.sidebar.show
-                             ::ui.pane-mid.show
-                             ::ui.preview.show
-                             ::ui.pref.show
+(s/def ::db
+  (s/keys :req-un
+    [; Map of id->item/group
+     ::items
+     ::groups
 
-                             ::editor]))
+     ; Currently active item/group
+     ::items.active-id
+     ::groups.active-id
+
+     ; UI states
+     ::ui.sidebar.show
+     ::ui.pane-mid.show
+     ::ui.preview.show
+     ::ui.pref.show
+
+     ; Preferences
+     ::pref.theme
+
+     ::editor]))
 
 ;; ----------
 ;; MOCK DATA
