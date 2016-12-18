@@ -3,7 +3,7 @@
 .pane-right {
   display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   height: 100%;
   width: auto;
 
@@ -51,7 +51,8 @@
         width: 216px;
         top: $toolbar-height * 9/16;
         z-index: $z-index-dialogs;
-        border: solid 1px #f0f0f0;
+        border-width: 1px;
+        border-style: solid;
         border-radius: $border-radius;
         margin-left: -$left-padding;
         padding: 4px 0;

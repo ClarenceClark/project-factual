@@ -3,7 +3,7 @@
 
 (defn sidebar-group-elem-base [group active-group icon]
   [:div {:class (str "sidebar-elem hover-background"
-                     (when (= @active-group (:group.id group)) " selected"))
+                     (when (= @active-group (:group.id group)) " active"))
          :on-click #(do
                       (r/dispatch [:new-active-group (:group.id group)])
                       (r/dispatch [:ui.sidebar.set false]))}
@@ -24,7 +24,7 @@
         active-group (r/subscribe [:groups.active-id])
         group-all @(r/subscribe [:group-all])] ; Will never change, probably
     (fn []
-      [:div {:class (str "sidebar" (when-not @active " sidebar-hidden"))}
+      [:div {:class (str "theme-dark sidebar" (when-not @active " sidebar-hidden"))}
        [:div {:class "sidebar-section section-special"}
         [sidebar-group-elem-icon group-all active-group]]
        [:div {:class "sidebar-section section-groups"}
