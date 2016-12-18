@@ -19,7 +19,8 @@
           id (:item.id item)]
       [:div {:class (str "items-list-elem hover-background"
                          (when (= id active-item-id) " active"))
-             :on-click #(r/dispatch [:item.switch-to id])}
+             :on-click #(r/dispatch [:item.switch-to id])
+             :draggable true}
        [:div {:class "list-elem-title"}
         (space-if-blank (first lines))]
        [:div {:class "list-elem-summary"}
@@ -31,17 +32,10 @@
      ^{:key item}
      [items-list-elem item active-item-id])])
 
-(defn toolbar-items []
-  [:div {:class "toolbar toolbar-midpane"}
-   [misc/toolbar-button "icon-menu" [:ui.sidebar.toggle true]]
-   [misc/toolbar-button "icon-search" [:todo]]
-   [misc/toolbar-button "icon-doc-new icon-right" [:item.new :item.markdown]]])
-
 (defn pane-mid []
   (let [items (r/subscribe [:items.active-list])
         active-item-id (r/subscribe [:items.active-id])
         show? (r/subscribe [:ui.pane-mid.show])]
     (fn []
-      [:div {:class (str "pane-mid" (when-not @show? " hide"))}
-       [toolbar-items]
+      [:div {:class (str "flex-fixed pane-mid" (when-not @show? " hide"))}
        [items-list @items @active-item-id]])))
