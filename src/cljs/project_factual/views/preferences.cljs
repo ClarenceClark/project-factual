@@ -25,6 +25,7 @@
 
 (defn pref-pane [active?]
   (let [theme (r/subscribe [:pref.theme])
+        sidebar-dark-theme (r/subscribe [:pref.ui.sidebar.dark-theme])
         ui-font (r/subscribe [:pref.ui.font])]
     (fn [active?]
       [rc/modal-panel
@@ -45,4 +46,7 @@
          [pref-pane-elem "UI Font:" [rc/single-dropdown
                                      :choices fonts
                                      :model @ui-font
-                                     :on-change #(r/dispatch [:pref.ui.font.set %])]]]]])))
+                                     :on-change #(r/dispatch [:pref.ui.font.set %])]]
+         [pref-pane-elem "Dark theme for sidebar? " [rc/checkbox
+                                                     :model @sidebar-dark-theme
+                                                     :on-change #(r/dispatch [:pref.ui.sidebar.dark-theme.set %])]]]]])))

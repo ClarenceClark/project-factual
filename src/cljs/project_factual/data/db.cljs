@@ -128,5 +128,6 @@
 
    :pref.theme "theme-light"
    :pref.ui.font "Cormorant Garamond"
+   :pref.ui.sidebar.dark-theme true
 
    :editor nil})

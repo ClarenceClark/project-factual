@@ -7,13 +7,14 @@
   width: $width-sidebar;
   transition: $anim-transition;
   flex: 0 0 auto;
+  line-height: 1.3em;
 
   .sidebar-section {
     padding: 5px 0;
   }
 
   .sidebar-elem {
-    padding: 1px 10px 1px 20px;
+    padding: 2px 10px 2px 20px;
 
     .group-name { display: inline; }
   }

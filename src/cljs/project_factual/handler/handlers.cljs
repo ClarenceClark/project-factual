@@ -105,6 +105,7 @@
 
 (reg-dbk-set :pref.theme.set :pref.theme)
 (reg-dbk-set :pref.ui.font.set :pref.ui.font)
+(reg-dbk-set :pref.ui.sidebar.dark-theme.set :pref.ui.sidebar.dark-theme)
 
 ;; ----------
 ;; REPL conveniences

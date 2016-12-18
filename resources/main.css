@@ -16,11 +16,12 @@
   border-right-style: solid;
   width: 200px;
   transition: all 300ms ease-in-out;
-  flex: 0 0 auto; }
+  flex: 0 0 auto;
+  line-height: 1.3em; }
   .sidebar .sidebar-section {
     padding: 5px 0; }
   .sidebar .sidebar-elem {
-    padding: 1px 10px 1px 20px; }
+    padding: 2px 10px 2px 20px; }
     .sidebar .sidebar-elem .group-name {
       display: inline; }
 
@@ -254,8 +255,7 @@
   color: #424242;
   border-color: #bdbdbd; }
   .theme-light .active {
-    background-color: #bdbdbd;
-    outline: #757575 solid thin; }
+    background-color: #bdbdbd; }
   .theme-light .hover-background:hover {
     background-color: #bdbdbd; }
   .theme-light .pane-mid {

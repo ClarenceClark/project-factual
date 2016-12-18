@@ -105,3 +105,4 @@
 
 (reg-keyword-sub :pref.theme)
 (reg-keyword-sub :pref.ui.font)
+(reg-keyword-sub :pref.ui.sidebar.dark-theme)
