@@ -1,14 +1,11 @@
 @import "variables";
 
-$sidebar-width: 250px;
-
 .sidebar {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
 
-  width: $sidebar-width;
+  width: $width-sidebar;
   transition: $anim-transition;
-  z-index: $z-dim + 1;
 
   .sidebar-section {
     padding: 5px 0;
@@ -22,5 +19,5 @@ $sidebar-width: 250px;
 }
 
 .sidebar.sidebar-hidden {
-  left: -$sidebar-width;
+  display: none;
 }

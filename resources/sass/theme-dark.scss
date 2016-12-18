@@ -5,6 +5,7 @@
 .theme-dark {
   background-color: $grey-800;
   color: $grey-300;
+  border-color: $grey-500;
 
   .active {
     background-color: $grey-700;
@@ -21,9 +22,6 @@
       color: $grey-400;
     }
   }
-
-  .border-right { border-right: 1px solid $grey-500; }
-  .border-bottom { border-bottom: 1px solid $grey-500; }
 
   .CodeMirror-cursor { border-left: 1px solid $grey-500; }
   .CodeMirror-selected { background: $grey-700; }

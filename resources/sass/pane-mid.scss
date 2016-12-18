@@ -1,18 +1,24 @@
 @import "variables";
 
 .pane-mid {
-  float: left;
+  border-right-width: 1px;
+  border-right-style: solid;
+
   width: $width-pane-mid;
   height: 100%;
-  border-right: 1px solid $grey-500;
+
+  .toolbar {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
 
   .items-list {
     list-style-type: none;
-    padding-left: 1px;
 
     .items-list-elem {
       padding: 8px 14px;
-      border-bottom: 1px solid $grey-400;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
 
       .list-elem-title {
         font-size: $font-size;

@@ -105,9 +105,3 @@
 
 (reg-keyword-sub :pref.theme)
 (reg-keyword-sub :pref.ui.font)
-
-(r/reg-sub
-  :screen-dim
-  (fn [db _]
-    ; The only source of screen dim (currently) is the sidebar
-    (:ui.sidebar.show db)))

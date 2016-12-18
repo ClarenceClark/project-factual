@@ -29,6 +29,7 @@ div {
   line-height: inherit;
   background-color: inherit;
   color: inherit;
+  border-color: inherit;
 }
 
 @mixin user-select($select) {
@@ -82,4 +83,8 @@ div {
   width: 100%;
   height: 100%;
   z-index: $z-dim;
+}
+
+.main-panes {
+  height: 100%;
 }

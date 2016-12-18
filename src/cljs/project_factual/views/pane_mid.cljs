@@ -32,7 +32,7 @@
      [items-list-elem item active-item-id])])
 
 (defn toolbar-items []
-  [:div {:class "toolbar toolbar-midpane border-bottom"}
+  [:div {:class "toolbar toolbar-midpane"}
    [misc/toolbar-button "icon-menu" [:ui.sidebar.toggle true]]
    [misc/toolbar-button "icon-search" [:todo]]
    [misc/toolbar-button "icon-doc-new icon-right" [:item.new :item.markdown]]])
