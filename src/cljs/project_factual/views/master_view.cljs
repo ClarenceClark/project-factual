@@ -7,10 +7,6 @@
             [re-frame.core :as r]
             [re-com.core :as rc]))
 
-(defn dim-component [dim]
-  [:div {:class (str "dim" (when-not dim " hide"))
-         :on-click #(r/dispatch [:ui.sidebar.toggle])}])
-
 (defn main-page []
   (let [pref-active? (r/subscribe [:ui.pref.show])
         theme (r/subscribe [:pref.theme])
