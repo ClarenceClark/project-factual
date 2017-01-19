@@ -1,5 +1,12 @@
 // Compile all css into one file
 
+// External deps
+@import "fontello.css";
+@import "bootstrap.css";
+@import "re-com.css";
+@import "simplescrollbars.css";
+@import "codemirror.min.css";
+
 // Views
 @import "sidebar";
 @import "pane-mid";

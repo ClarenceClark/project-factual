@@ -20,6 +20,8 @@
                   [onetom/boot-lein-generate "0.1.3" :scope "test"]
 
                   ; Build
+                  [deraen/boot-sass "0.3.0" :scope "test"]
+
                   [adzerk/boot-cljs "1.7.228-2" :scope "test"]
                   [adzerk/boot-cljs-repl "0.3.3" :scope "test"]
                   [adzerk/boot-reload "0.4.13" :scope "test"]
@@ -34,7 +36,8 @@
 (require
   '[adzerk.boot-cljs :refer [cljs]]
   '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
-  '[adzerk.boot-reload :refer [reload]])
+  '[adzerk.boot-reload :refer [reload]]
+  '[deraen.boot-sass :refer [sass]])
 
 (deftask prod-build []
   (comp (cljs :ids #{"main"}
@@ -44,8 +47,20 @@
 
 (deftask dev-build []
   (comp
+    ; Add resources from jars
+    (sift 
+      :add-jar {'cljsjs/codemirror #".*\.css"
+                're-com #".*\.(css|svg)"}
+      :move {#".*/(.*\.css)" "css/$1"
+             #".*/(chosen-sprite.*\.png)" "css/$1"}) ; re-com uses same dir as css for some reason
+
     ; Watch fs
     (watch)
+
+    ; Compile SASS
+    (sass 
+      :source-map false
+      :output-style :expanded)
 
     ; Inject REPL and reloading code into renderer build
     (cljs-repl :ids #{"renderer"}
