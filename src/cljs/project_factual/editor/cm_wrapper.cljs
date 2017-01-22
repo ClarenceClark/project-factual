@@ -23,7 +23,7 @@
                 :lineNumbers false
                 :lineWrapping true
                 :scrollPastEnd true
-                :scrollbarStyle "null"
+                :scrollbarStyle "native"
                 :cursorScrollMargin 300 ; Keep 300px to the top/bottom of cursor
                 :extraKeys {"Enter" "newlineAndIndentContinueMarkdownList" ; From addon continuelist
                             "Tab" #(r/dispatch [:exec-cm-command "indentMore"])
