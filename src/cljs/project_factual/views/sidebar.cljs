@@ -26,7 +26,6 @@
         group-all @(r/subscribe [:group-all])] ; Will never change, probably
     (fn []
       [:div {:class (str "sidebar"
-                         (when @dark-sidebar " theme-dark")
                          (when-not @active " sidebar-hidden"))}
        [:div {:class "sidebar-section section-special"}
         [sidebar-group-elem-icon group-all active-group]]

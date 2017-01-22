@@ -46,7 +46,4 @@
          [pref-pane-elem "UI Font:" [rc/single-dropdown
                                      :choices fonts
                                      :model @ui-font
-                                     :on-change #(r/dispatch [:pref.ui.font.set %])]]
-         [pref-pane-elem "Dark theme for sidebar? " [rc/checkbox
-                                                     :model @sidebar-dark-theme
-                                                     :on-change #(r/dispatch [:pref.ui.sidebar.dark-theme.set %])]]]]])))
+                                     :on-change #(r/dispatch [:pref.ui.font.set %])]]]]])))
