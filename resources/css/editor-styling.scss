@@ -11,13 +11,22 @@
   height: 100%;
   width: 90%;
   font-size: $font-size;
-  padding: 0 15px;
+  padding: 0 0px;
   color: inherit;
   background-color: inherit;
 
   .CodeMirror-sizer {
     max-width: $width-editor;
     margin: 0 auto !important;
+    width: 85%;
+  }
+
+  .CodeMirror-scroll {
+    margin-right: 0; // Disable CM scrollbar-hiding thingy
+  }
+
+  .CodeMirro-lines {
+    padding-top: 20px;
   }
 
   .CodeMirror-code {
