@@ -20,7 +20,6 @@
 
 (defn sidebar []
   (let [active (r/subscribe [:ui.sidebar.show])
-        dark-sidebar (r/subscribe [:pref.ui.sidebar.dark-theme])
         groups (r/subscribe [:groups.all-normal])
         active-group (r/subscribe [:groups.active-id])
         group-all @(r/subscribe [:group-all])] ; Will never change, probably
