@@ -7,11 +7,10 @@ $sidebar-select: rgb(200, 200, 200);
 .theme-light {
   background-color: #fff;
   color: $grey-800;
-  border-color: $grey-500;
+  border-color: $grey-400;
 
   .active, .hover-background:hover {
-    background-color: $grey-600;
-    color: #fff;
+    background-color: lighten($grey-400, 8%);
   }
 
   .sidebar {
@@ -28,11 +27,6 @@ $sidebar-select: rgb(200, 200, 200);
 
     .list-elem-summary {
       color: $grey-600;
-    }
-
-    .active .list-elem-summary,
-    .hover-background:hover .list-elem-summary {
-      color: $grey-100;
     }
   }
 
