@@ -1,3 +1,5 @@
+NOTICE: This project is put on hold since I discovered the existence of [Ulysses](https://ulyssesapp.com/)
+
 
 # Project Factual
 
